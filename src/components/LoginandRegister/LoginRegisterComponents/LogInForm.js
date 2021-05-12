@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState, useRef, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { userContext } from "../../context/Globalcontext";
+// import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+// import { userContext } from "../../context/Globalcontext";
 
 function Loginform() {
   const [email, setEmail] = useState("");

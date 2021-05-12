@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "../CSS/LoginRegister.css";
-import axios from "axios";
-import { userContext } from "../../context/Globalcontext";
+// import axios from "axios";
+// import { userContext } from "../../context/Globalcontext";
 
 function SignUpform() {
-  const history = useHistory();
+  // const history = useHistory();
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordverify, setPasswordVerify] = useState("");
-  const { getLoggedIn } = useContext(userContext);
   const fullnameref = useRef(null);
 
   // async function handleSubmit(e) {
@@ -52,7 +51,7 @@ function SignUpform() {
           </section>
         </div>
         <div className="right">
-          <form onSubmit={handleSubmit}>
+          <form>
             <section className="copy">
               <h2 className="h2class">Sign Up</h2>
               <div className="login-container">

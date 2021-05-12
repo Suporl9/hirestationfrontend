@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "./imgs/logo.png";
-import "../welcomepagecoponents/css/welcomestyles.css";
+import logo from "../welcomepage/welcomepagecoponents/imgs/logo.png";
+import "../welcomepage/welcomepagecoponents/css/welcomestyles.css";
 export class Footer extends Component {
   render() {
     return (

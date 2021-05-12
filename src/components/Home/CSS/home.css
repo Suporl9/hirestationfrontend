@@ -1,0 +1,58 @@
+.bg {
+  background: rgb(26, 24, 22);
+  background: linear-gradient(
+    180deg,
+    rgba(26, 24, 22, 1) 90%,
+    rgba(39, 39, 43, 1) 100%
+  );
+}
+.bgbody {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+.gigstitle {
+  color: var(--main-white);
+  padding: 3rem 3rem 0 3rem;
+}
+.cards {
+  padding: 3rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.card {
+  display: flex;
+  background-color: var(--main-dark);
+  flex-direction: column;
+  width: 25rem;
+}
+.card-content {
+  padding: 2rem;
+  color: var(--main-white);
+}
+.nameh5 {
+  margin-bottom: 15px;
+}
+.titleh2 {
+  margin-bottom: 20px;
+}
+.reviewh5 {
+  margin-bottom: 20px;
+}
+.card-btn {
+  padding: 9px 25px;
+  background-color: #fd4c4c;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 100%;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  text-shadow: #000 2px;
+  outline: none;
+  margin-top: 10%;
+}
+.card-btn:hover {
+  background-color: #f83636;
+}
