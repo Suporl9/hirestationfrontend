@@ -34,7 +34,7 @@ export class Footer extends Component {
             <div className="right-col">
               <h1>Our Newslater</h1>
               <p>eniam enim tempor sit officia reprehenderit.</p>
-              <div className="border">
+              <div className="border1">
                 <form className="newslater-form">
                   <input
                     type="text"

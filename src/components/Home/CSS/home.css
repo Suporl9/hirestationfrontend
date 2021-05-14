@@ -5,6 +5,8 @@
     rgba(26, 24, 22, 1) 90%,
     rgba(39, 39, 43, 1) 100%
   );
+  min-height: 50rem;
+  overflow: hidden;
 }
 .bgbody {
   display: flex;
@@ -13,31 +15,46 @@
 }
 .gigstitle {
   color: var(--main-white);
-  padding: 3rem 3rem 0 3rem;
+  padding: 3rem 3rem 0.5rem 7rem;
 }
 .cards {
-  padding: 3rem;
-  display: flex;
-  justify-content: flex-start;
+  padding: 1rem 3rem 3rem 3rem;
+  margin-left: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
 }
 .card {
   display: flex;
   background-color: var(--main-dark);
   flex-direction: column;
-  width: 25rem;
+  width: 20rem;
 }
 .card-content {
-  padding: 2rem;
+  padding: 1rem;
   color: var(--main-white);
+  display: inline-block;
+  word-wrap: break-word;
 }
 .nameh5 {
+  font-size: 18px;
+  margin-top: -0.1rem;
   margin-bottom: 15px;
 }
 .titleh2 {
   margin-bottom: 20px;
+  font-size: 18px;
+  transition: all 0.1s ease-in;
+}
+.titleh2:hover {
+  color: #fd4c4c;
 }
 .reviewh5 {
   margin-bottom: 20px;
+}
+.imgservice {
+  height: 220px;
+  width: 100%;
 }
 .card-btn {
   padding: 9px 25px;
@@ -51,8 +68,39 @@
   transition: all 0.3s ease 0s;
   text-shadow: #000 2px;
   outline: none;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .card-btn:hover {
   background-color: #f83636;
+}
+.ratings {
+  margin-bottom: 10px;
+}
+.starRating {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -10px;
+}
+
+.serviceRating {
+  margin: 1.5px 0 0 5px;
+}
+.no_of_reviews {
+  margin-top: -10px;
+}
+
+@media (max-width: 1200px) {
+  .cards {
+    margin-left: 3.3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+}
+@media (max-width: 780px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2.3rem;
+  }
 }

@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import App from "./components/App";
-// import Globalcontext from "./components/context/Globalcontext";
-
+import store from "./components/store";
+import { Provider } from "react-redux";
+// import "bootstrap/dist/css/bootstrap.min.css";
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <Globalcontext> */}
+  <Provider store={store}>
     <App />
-    {/* </Globalcontext> */}
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
