@@ -1,9 +1,13 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import serviceReducer from "./redux/service/serviceReducer";
+import {
+  serviceDetailsReducer,
+  serviceReducer,
+} from "./redux/service/serviceReducer";
 const rootReducer = combineReducers({
   services: serviceReducer,
+  serviceDetails: serviceDetailsReducer,
 });
 
 const initialState = {};

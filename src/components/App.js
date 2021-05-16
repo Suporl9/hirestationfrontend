@@ -13,6 +13,7 @@ import Navbar from "./layout/NavBar";
 import Footer from "./layout/Footer";
 import Home from "./Home/Home";
 import Welcomepage from "./welcomepage/welcomepage";
+import ServiceDetails from "./service/ServiceDetails";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
 // axios.defaults.withCredentials = true;
@@ -32,6 +33,7 @@ function App() {
         <Route path="/welcome" component={Welcomepage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/:id" component={ServiceDetails} />
       </Switch>
       <Footer />
     </Router>

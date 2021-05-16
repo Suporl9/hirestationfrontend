@@ -7,13 +7,13 @@ import "../CSS/home.css";
 import MetaData from "../../layout/metaData";
 import { getAllServices } from "../../redux/service/serviceActions";
 import { Link } from "react-router-dom";
+import { Loader } from "../../layout/Loader";
 
 export default function HomeBody() {
   const dispatch = useDispatch();
 
-  const { loading, services, error, servicesCount } = useSelector(
-    (state) => state.services
-  );
+  // const { loading, services, error, servicesCount } = useSelector(     //use this  later on
+  const { loading, services } = useSelector((state) => state.services);
 
   useEffect(() => {
     dispatch(getAllServices());
@@ -21,12 +21,13 @@ export default function HomeBody() {
 
   return (
     <Fragment>
-      {loading ? (
-        <h1>loading...</h1>
-      ) : (
-        <Fragment>
-          <MetaData title={`Freelance services`} />
-          <div className="bg">
+      <div className="bg">
+        {loading ? (
+          <Loader />
+        ) : (
+          <Fragment>
+            <MetaData title={`Freelance services`} />
+
             <div className="bgbody">
               <div className="gigstitle">
                 <h1>Latest Gigs:</h1>
@@ -36,7 +37,7 @@ export default function HomeBody() {
                 {services &&
                   services.map((service) => (
                     <div key={service._id} className="card">
-                      <Link to={`/service/${service._id}`}>
+                      <Link to={`/services/${service._id}`}>
                         <img
                           src={service.images[0].url}
                           alt="serviceImg"
@@ -44,27 +45,29 @@ export default function HomeBody() {
                         />
                       </Link>
                       <div className="card-content">
-                        <h5 className="nameh5">{service.seller}</h5>
+                        <h5 className="nameh5">{service.user[0].fullname}</h5>
                         <Link
-                          to={`/service/${service._id}`}
+                          to={`/services/${service._id}`}
                           style={{ textDecoration: "none", color: "inherit" }}
                         >
                           <h2 className="titleh2">{service.title}</h2>
                         </Link>
-                        <div className="ratings">
-                          <div className="starRating">
-                            <Star />
-                            <div className="serviceRating">
-                              {service.ratings}
+                        <div className="reviewPrice">
+                          <div className="ratings">
+                            <div className="starRating">
+                              <Star />
+                              <div className="serviceRating">
+                                {service.ratings}
+                              </div>
+                            </div>
+                            <br />
+                            <div className="no_of_reviews">
+                              ({service.numOfReviews} Reviews)
                             </div>
                           </div>
-                          <br />
-                          <div className="no_of_reviews">
-                            ({service.numOfReviews} Reviews)
-                          </div>
+                          <h2 className="priceh2">Rs.{service.price}</h2>
                         </div>
-                        <h2 className="priceh2">Rs.{service.price}</h2>
-                        <Link to={`/service/${service._id}`}>
+                        <Link to={`/${service._id}`}>
                           <button className="card-btn">View details</button>
                         </Link>
                         <p></p>
@@ -73,9 +76,9 @@ export default function HomeBody() {
                   ))}
               </div>
             </div>
-          </div>
-        </Fragment>
-      )}
+          </Fragment>
+        )}
+      </div>
     </Fragment>
   );
 }

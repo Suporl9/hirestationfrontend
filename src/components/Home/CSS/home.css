@@ -1,3 +1,5 @@
+/* background and cards : grid */
+
 .bg {
   background: rgb(26, 24, 22);
   background: linear-gradient(
@@ -15,20 +17,21 @@
 }
 .gigstitle {
   color: var(--main-white);
-  padding: 3rem 3rem 0.5rem 7rem;
+  padding: 3rem 3rem 0.5rem 6rem;
 }
 .cards {
   padding: 1rem 3rem 3rem 3rem;
-  margin-left: 4rem;
+  margin-left: 3rem;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 }
 .card {
   display: flex;
   background-color: var(--main-dark);
   flex-direction: column;
-  width: 20rem;
+  width: 17rem;
 }
 .card-content {
   padding: 1rem;
@@ -37,13 +40,13 @@
   word-wrap: break-word;
 }
 .nameh5 {
-  font-size: 18px;
+  font-size: 15px;
   margin-top: -0.1rem;
   margin-bottom: 15px;
 }
 .titleh2 {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 15px;
   transition: all 0.1s ease-in;
 }
 .titleh2:hover {
@@ -53,7 +56,7 @@
   margin-bottom: 20px;
 }
 .imgservice {
-  height: 220px;
+  height: 200px;
   width: 100%;
 }
 .card-btn {
@@ -69,9 +72,15 @@
   text-shadow: #000 2px;
   outline: none;
   margin-top: 5%;
+  align-self: end;
 }
 .card-btn:hover {
   background-color: #f83636;
+}
+.reviewPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .ratings {
   margin-bottom: 10px;
@@ -88,8 +97,52 @@
 .no_of_reviews {
   margin-top: -10px;
 }
+.priceh2 {
+  padding-top: 21px;
+}
 
-@media (max-width: 1200px) {
+/* loader component */
+
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  width: 80px;
+  height: 80px;
+  padding-left: 0;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #f83636;
+  border-color: #f83636 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* end of loader components */
+
+@media (max-width: 1300px) {
+  .cards {
+    margin-left: 3.3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+}
+@media (max-width: 1000px) {
   .cards {
     margin-left: 3.3rem;
     display: grid;
@@ -97,7 +150,7 @@
     grid-gap: 30px;
   }
 }
-@media (max-width: 780px) {
+@media (max-width: 700px) {
   .cards {
     display: flex;
     flex-direction: column;

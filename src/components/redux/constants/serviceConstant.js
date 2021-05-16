@@ -1,4 +1,12 @@
+//to get all the services
+
 export const FETCH_SERVICES = "FETCH_SERVICES";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";
+
+//to get specific service details
+
+export const FETCH_SERVICE_DETAILS = "FETCH_SERVICE_DETAILS";
+export const FETCH_SERVICE_DETAILS_SUCCESS = "FETCH_SERVICE_DETAILS_SUCCESS";
+export const FETCH_SERVICE_DETAILS_ERROR = "FETCH_SERVICE_DETAILS_ERROR";
