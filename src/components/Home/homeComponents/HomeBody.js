@@ -37,7 +37,7 @@ export default function HomeBody() {
                 {services &&
                   services.map((service) => (
                     <div key={service._id} className="card">
-                      <Link to={`/services/${service._id}`}>
+                      <Link to={`/${service._id}`}>
                         <img
                           src={service.images[0].url}
                           alt="serviceImg"
@@ -47,7 +47,7 @@ export default function HomeBody() {
                       <div className="card-content">
                         <h5 className="nameh5">{service.user[0].fullname}</h5>
                         <Link
-                          to={`/services/${service._id}`}
+                          to={`/${service._id}`}
                           style={{ textDecoration: "none", color: "inherit" }}
                         >
                           <h2 className="titleh2">{service.title}</h2>

@@ -33,6 +33,7 @@ function App() {
         <Route path="/welcome" component={Welcomepage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        {/* when path:{service/:id} tried it shows error and goes to service/services/:id // so fix that error later on*/}
         <Route path="/:id" component={ServiceDetails} />
       </Switch>
       <Footer />
