@@ -16,9 +16,33 @@
   flex-direction: column;
   padding-bottom: 2rem;
 }
+.servicesearch {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+}
+.servicesearchfield {
+  display: flex;
+  flex-direction: row;
+}
+.stuffsearchbtn1 {
+  border: none;
+  color: black;
+  background-color: #ff2424;
+  display: flex;
+  flex-direction: row;
+  margin: 0 5px;
+  padding: 15px 45px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
 .gigstitle {
   color: var(--main-white);
-  padding: 3rem 3rem 0.5rem 6rem;
+  padding: 3rem 3rem 1.5rem 6rem;
 }
 .cards {
   padding: 1rem 3rem 3rem 3rem;
@@ -100,6 +124,7 @@
 }
 .priceh2 {
   padding-top: 21px;
+  color: #fd4c4c;
 }
 
 /* loader component */
@@ -137,39 +162,76 @@
 
 /* service Details Page */
 
-.detailsflexrow {
-  display: flex;
-  justify-content: center;
+.marginauto80 {
   width: 80%;
   margin: auto;
-  padding: 5% 0 5% 0;
 }
 
-.detailsflexright {
+.detailsflexrow {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 7% 0 0 0;
+  position: relative;
+}
+
+/* .detailsflexright {
   width: 140%;
+} */
+.detailsflexleft {
+  margin-left: -2rem;
+  /* margin-right: 2rem; */
+  padding-right: 2rem;
+  /* border: 0.2px solid gray; */
+  border-radius: 5px;
+  background-color: var(--main-dark);
+}
+
+.serviceDetails {
+  padding: 3rem 0.1rem 3rem 1.5rem;
+}
+.servicetitleh1 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 3%;
 }
 .userandreviewflexrow {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  margin-bottom: 5%;
 }
 .userh5 {
   font-weight: bold;
+  font-size: 15px;
+  margin: 0.3rem 1rem 0 0.5rem;
 }
 .reviewfieldh3 {
   font-weight: bold;
 }
 .vl {
-  border-left: 2px solid gray;
-  height: inherit;
+  border-left: 1px solid gray;
+  height: 31px;
+  margin-right: 1.5rem;
+}
+.starRating1 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -10px;
+  margin: 0.3rem 1rem 0 0;
 }
 .hl {
   border-bottom: 1px solid gray;
   height: inherit;
 }
+.hl2 {
+  border-bottom: 0.1px solid gray;
+  height: inherit;
+}
 .meimg {
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 }
 
 .imgcarousel {
@@ -183,20 +245,146 @@
   height: 28rem;
 }
 
-.reviewpanel {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.gigdescription {
+  margin-top: 5%;
 }
-.userswithreviews {
-  display: flex;
-  flex-direction: column;
+.descriptp {
+  font-size: 19px;
+  margin-bottom: 10%;
 }
-.firstuser {
+
+.bodydetails {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: baseline;
 }
+.leftdetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/* serviceDetailscard */
+.cardServiceDetails {
+  background-color: var(--main-dark);
+}
+.list-group-flush {
+  background-color: var(--main-dark);
+}
+.cardtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pricecardtitle {
+  color: #f83636;
+  font-size: 20px;
+  font-weight: bold;
+}
+.detailsflexright {
+  position: relative;
+  margin-left: 2rem;
+}
+
+.servicedetailscard {
+  position: sticky;
+  left: 0;
+  top: 0;
+  bottom: 1rem;
+}
+.card {
+  position: sticky;
+  right: 0;
+  top: 0;
+}
+.twoCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.aboutsellercard {
+  padding: 15% 0 0 0;
+}
+.contbeforeOrder {
+  word-spacing: 3px;
+}
+.h6bold {
+  font-weight: bold;
+}
+.h6bold.li {
+  font-size: 15px;
+  padding: 0.4rem;
+  margin-left: 0.2rem;
+}
+
+/* end of serviceDetailscard */
+
+/* about seller card */
+
+.userpp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* end of about seller car */
+
+/* review section */
+
+.reviewdiv {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  margin-left: -2rem;
+}
+.reviewpanel {
+  /* margin-left: -2rem; */
+  /* margin-right: 2rem; */
+  padding: 2rem;
+  border: 0.2px solid gray;
+  border-radius: 5px;
+  width: 100%;
+}
+.userswithreview {
+  display: flex;
+  flex-direction: column;
+}
+.userborder {
+  /* border: 0.2px solid gray; */
+  border-radius: 5px;
+  margin-bottom: 3%;
+  background-color: var(--main-dark);
+}
+.firstuser {
+  padding: 1.2rem 3rem 2rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.username {
+  font-weight: bold;
+  padding-top: 10px;
+}
+.reviewfield {
+  padding-left: 8rem;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.h6boldreview {
+  font-weight: bold;
+  /* margin-top: 5%; */
+}
+.serviceRating3 {
+  padding-bottom: 20px;
+}
+/* end of review section */
+
 /*End of service Details Page */
 
 @media (max-width: 1300px) {
@@ -205,6 +393,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+  }
+  .detailsflexrow {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  .detailsflexright {
+    padding-top: 5rem;
   }
 }
 @media (max-width: 1000px) {
@@ -215,10 +411,28 @@
     grid-gap: 30px;
   }
   .imgcarousel {
-    width: 40rem;
+    width: 33rem;
   }
   .itemcarousel {
-    height: 23rem;
+    height: 18rem;
+  }
+  .detailsflexrow {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  .detailsflexright {
+    padding-top: 5rem;
+  }
+  .servicesearchfield {
+    display: flex;
+    flex-direction: column;
+  }
+  .stuffsearchbtn1 {
+    margin-top: 5%;
+  }
+  .searchsvg {
+    padding-left: 50%;
   }
 }
 @media (max-width: 700px) {
@@ -228,9 +442,26 @@
     margin-left: 2.3rem;
   }
   .imgcarousel {
-    width: 28rem;
+    width: 21rem;
   }
   .itemcarousel {
-    height: 16rem;
+    height: 12rem;
+  }
+  .firstuser {
+    padding: 1rem 3rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .reviewfield {
+    padding-left: 0rem;
+  }
+  .username {
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  .servicesearchfield {
+    display: flex;
+    flex-direction: column;
   }
 }

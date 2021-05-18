@@ -8,6 +8,7 @@ import MetaData from "../../layout/metaData";
 import { getAllServices } from "../../redux/service/serviceActions";
 import { Link } from "react-router-dom";
 import { Loader } from "../../layout/Loader";
+import searchsvg from "../../welcomepage/welcomepagecoponents/imgs/search.svg";
 
 export default function HomeBody() {
   const dispatch = useDispatch();
@@ -28,9 +29,21 @@ export default function HomeBody() {
           <Fragment>
             <MetaData title={`Freelance services`} />
 
+            <div className="servicesearch">
+              <div className="servicesearchfield">
+                <input
+                  className="inputstuff"
+                  placeholder="Find Services"
+                ></input>
+                <button className="stuffsearchbtn1">
+                  <img src={searchsvg} alt="search" className="searchsvg" />
+                </button>
+              </div>
+            </div>
+
             <div className="bgbody">
               <div className="gigstitle">
-                <h1>Latest Gigs:</h1>
+                <h1 className="servicetittleh1">Latest Gigs:</h1>
               </div>
 
               <div className="cards">
@@ -50,7 +63,9 @@ export default function HomeBody() {
                           to={`/${service._id}`}
                           style={{ textDecoration: "none", color: "inherit" }}
                         >
-                          <h2 className="titleh2">{service.title}</h2>
+                          <h2 className="titleh2" style={{ lineHeight: "1.6" }}>
+                            {service.title}
+                          </h2>
                         </Link>
                         <div className="reviewPrice">
                           <div className="ratings">
@@ -67,10 +82,14 @@ export default function HomeBody() {
                           </div>
                           <h2 className="priceh2">Rs.{service.price}</h2>
                         </div>
-                        <Link to={`/${service._id}`}>
-                          <button className="card-btn">View details</button>
-                        </Link>
-                        <p></p>
+                        <div
+                          className="cardetailsbtn"
+                          style={{ margin: "1rem 0 0.5rem 0" }}
+                        >
+                          <Link to={`/${service._id}`}>
+                            <button className="card-btn">View details</button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   ))}

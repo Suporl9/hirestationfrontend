@@ -68,13 +68,14 @@ button {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  padding: 2.5rem 10rem 2.5rem 14rem;
+  padding: 2.5rem 10rem 2.5rem 10rem;
   overflow: hidden;
 }
 .h1p1search {
   display: flex;
 
   flex-direction: column;
+  margin-right: 5%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -243,6 +244,15 @@ footer {
 
 /* end of footer */
 
+@media (max-width: 1300px) {
+  .StuffDone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @media (max-width: 780px) {
   /* media query stuff done */
   .StuffDone {
@@ -267,9 +277,6 @@ footer {
   }
   .searchsvg {
     padding-left: 8rem;
-  }
-  .logoimg {
-    margin-left: -8rem;
   }
 
   /* end of media query stuff done */
