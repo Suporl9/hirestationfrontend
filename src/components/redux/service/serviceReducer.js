@@ -29,6 +29,8 @@ export const serviceReducer = (state = initialState, action) => {
         loading: false,
         services: action.payload.getServices,
         servicesCount: action.payload.servicesCount,
+        resDataPerPage: action.payload.resDataPerPage,
+        totalCount: action.payload.count,
       };
     case FETCH_ERROR:
       return {

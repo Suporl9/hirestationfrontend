@@ -4,7 +4,7 @@
   background: rgb(26, 24, 22);
   background: linear-gradient(
     180deg,
-    rgba(26, 24, 22, 1) 90%,
+    rgba(26, 24, 22, 1) 95%,
     rgba(39, 39, 43, 1) 100%
   );
   min-height: 50rem;
@@ -159,6 +159,50 @@
 }
 
 /* end of loader components */
+
+/* pagination section */
+
+.paginationsection {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  margin: 2% 0 4% 0;
+}
+
+.pagination > li > a {
+  background-color: rgb(17, 17, 17);
+  color: #f83636;
+  border: none;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: var(--main-white);
+  background-color: #f83636;
+
+  /* border: none;
+  border-radius: 2px; */
+}
+
+.pagination > .active > a {
+  color: white;
+  background-color: rgb(243, 19, 19) !important;
+  /* border: solid 1px #5a4181 !important; */
+  /* border: none;
+  border-radius: 2px; */
+}
+
+.pagination > .active > a:hover {
+  background-color: #f83636 !important;
+  /* border: none;
+  border-radius: 2px; */
+}
+
+/* end of pagination section */
 
 /* service Details Page */
 
