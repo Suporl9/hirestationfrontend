@@ -40,9 +40,18 @@
   outline: none;
   cursor: pointer;
 }
-.gigstitle {
+.gigstitleandslider {
   color: var(--main-white);
-  padding: 3rem 3rem 1.5rem 6rem;
+  padding: 4rem 0rem 3.5rem 0rem;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+.gigsh1 {
+  font-weight: bold;
+  margin-left: -2%;
 }
 .cards {
   padding: 1rem 3rem 3rem 3rem;
@@ -203,6 +212,29 @@
 }
 
 /* end of pagination section */
+
+/* rc-slider section */
+
+.sliderdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 23rem;
+}
+
+.h5Range {
+  padding-right: 15%;
+  font-weight: bold;
+}
+
+.rc-slider-step {
+  background-color: #24252a !important;
+}
+.rc-slider-mark-text.rc-slider-mark-text-active {
+  color: white;
+}
+
+/* end of rc-slider section */
 
 /* service Details Page */
 
@@ -478,6 +510,27 @@
   .searchsvg {
     padding-left: 50%;
   }
+  .gigstitleandslider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .gigsh1 {
+    margin-bottom: 3rem;
+  }
+  .sliderdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+  }
+  .h5Range {
+    padding-right: 0%;
+    margin-bottom: 20%;
+    font-weight: bold;
+  }
 }
 @media (max-width: 700px) {
   .cards {
@@ -507,5 +560,26 @@
   .servicesearchfield {
     display: flex;
     flex-direction: column;
+  }
+  .gigstitleandslider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .gigsh1 {
+    margin-bottom: 3rem;
+  }
+  .sliderdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+  }
+  .h5Range {
+    padding-right: 0%;
+    margin-bottom: 20%;
+    font-weight: bold;
   }
 }

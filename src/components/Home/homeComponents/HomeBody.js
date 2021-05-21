@@ -4,8 +4,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "react-js-pagination";
 import { Link, Route, useParams } from "react-router-dom";
-// import Slider from "rc-slider";
-// import "rc-slider/assets/index.css";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+
 import { ReactComponent as Star } from "../testimgs/star.svg";
 import "../CSS/home.css";
 import MetaData from "../../layout/metaData";
@@ -16,10 +17,14 @@ import { Loader } from "../../layout/Loader";
 import PropTypes from "prop-types";
 import Search from "../../layout/Search";
 
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+
 export default function HomeBody({ match }) {
   //match params  id does not work rightnow fix later
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([298, 20000]);
 
   const { keyword } = useParams();
   // const keyword = match.params.keyword;  //didn't work for some reason check later on
@@ -30,8 +35,8 @@ export default function HomeBody({ match }) {
   );
 
   useEffect(() => {
-    dispatch(getAllServices(keyword, currentPage));
-  }, [dispatch, keyword, currentPage]);
+    dispatch(getAllServices(keyword, currentPage, price));
+  }, [dispatch, keyword, currentPage, price]);
 
   const setCurrentPageNo = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -51,9 +56,45 @@ export default function HomeBody({ match }) {
             </div>
 
             <div className="bgbody">
-              <div className="gigstitle">
-                <h1 className="servicetittleh1">Latest Gigs:</h1>
-              </div>
+              {keyword ? (
+                <div className="gigstitleandslider">
+                  <h1 className="gigsh1">Latest Gigs:</h1>
+                  <div className="sliderdiv">
+                    <h5 className="h5Range">Range:</h5>
+                    {/* some kind  of error is showing for range(Uncaught Error: Unable to find node on an unmounted component.) Fix later */}
+                    <Range
+                      marks={{
+                        298: "Rs.298",
+                        20000: "Rs.20,000",
+                      }}
+                      min={298}
+                      max={20000}
+                      defaultValue={[298, 20000]}
+                      tipFormatter={(value) => `Rs.${value}`}
+                      tipProps={{
+                        placement: "top",
+                        visible: "true",
+                      }}
+                      value={price}
+                      onChange={(price) => setPrice(price)}
+                      dotStyle={{
+                        border: "none",
+                      }}
+                      railStyle={{
+                        background: "#24252a",
+                      }}
+                      handleStyle={{
+                        backgroundColor: "red",
+                        border: "none",
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="gigstitleandslider">
+                  <h1 className="gigsh1">Latest Gigs:</h1>
+                </div>
+              )}
 
               <div className="cards">
                 {services &&
