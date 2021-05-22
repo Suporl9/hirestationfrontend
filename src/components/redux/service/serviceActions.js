@@ -12,16 +12,17 @@ import {
 } from "../constants/serviceConstant"; //importing the constants for dispatching the actions
 
 export const getAllServices =
-  (keyword = "", currentPage = 1, price) =>
+  (keyword = "", currentPage = 1, price, category) =>
   async (dispatch) => {
     try {
       dispatch({ type: FETCH_SERVICES }); //set the loading to true
+      let link = `/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
-      const data = await axios
-        .get(
-          `/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`
-        )
-        .then((result) => result.data);
+      if (category) {
+        link = `/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+      }
+
+      const data = await axios.get(link).then((result) => result.data);
       //get the data from the backend and set it to const data
       // const { data } = await axios.get("/services");
       dispatch({

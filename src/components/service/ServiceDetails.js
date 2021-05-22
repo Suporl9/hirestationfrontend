@@ -39,7 +39,17 @@ const ServiceDetails = ({ match }) => {
                       <img src={meImg} alt="user" className="meimg" />
                       <h5 className="userh5">{service.seller}</h5>
                       <div className="vl"></div>
-                      <div className="starRating1">
+                      <h6
+                        className="h6bold"
+                        style={{ marginTop: "0.6rem", marginRight: "3%" }}
+                      >
+                        Category : &nbsp;&nbsp; {service.category}
+                      </h6>
+                      <div className="vl"></div>
+                      <div
+                        className="starRating1"
+                        style={{ marginLeft: "-0.5rem" }}
+                      >
                         <Star />
                         <div className="serviceRating1">{service.ratings}</div>
                         <div className="no_of_reviews1">

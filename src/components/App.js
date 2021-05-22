@@ -28,6 +28,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/search/:keyword" component={Home} />
+        <Route path={`/category/:category`} component={Home} />
         {/* <Redirect from="/**" to="/" /> */}
 
         {/* <Redirect from="/" to="/welcome" /> */}
