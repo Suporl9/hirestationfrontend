@@ -8,12 +8,12 @@ import img1 from "../welcomepage/welcomepagecoponents/imgs/logo.png";
 import "../welcomepage/welcomepagecoponents/css/welcomestyles.css";
 // import { userContext } from "../../context/Globalcontext";
 function Navbar() {
-  const Categories = [
-    "Graphics-And-Design",
-    "Game-Development",
-    "Web-Programming",
-    "Mobile-Apps",
-  ];
+  // const Categories = [
+  //   "Graphics-And-Design",
+  //   "Game-Development",
+  //   "Web-Programming",
+  //   "Mobile-Apps",
+  // ];
   return (
     <nav>
       <Link to="/welcome">
@@ -26,8 +26,8 @@ function Navbar() {
             Explore
           </Link>
         </li>{" "}
-        <li className="listyle">
-          {/* no to added here fix at last */}
+        {/* <li className="listyle">
+          
           <Link className="listyleLink ct">
             Categories &nbsp;
             <i className="fa fa-sort-desc" aria-hidden="true"></i>
@@ -41,7 +41,7 @@ function Navbar() {
               </li>
             ))}
           </ul>
-        </li>
+        </li> */}
         <li className="listyle">
           <Link to="/welcome" className="listyleLink">
             Become a seller

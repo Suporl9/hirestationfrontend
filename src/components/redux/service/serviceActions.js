@@ -48,7 +48,7 @@ export const getServiceDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_SERVICE_DETAILS });
     const data = await axios
-      .get(`services/${id}`)
+      .get(`/services/${id}`)
       .then((result) => result.data);
 
     dispatch({
