@@ -5,6 +5,8 @@
   background-color: var(--main-test-dark);
   display: flex;
   flex-direction: column;
+  min-height: 55rem;
+  /* height: 100vh; */
 }
 .explorecrec {
   font-size: 3rem;
@@ -35,9 +37,7 @@ h2 {
   font-size: 100%;
   text-align: center;
 }
-.left {
-  height: 200px;
-}
+
 .left,
 .right {
   display: flex;
@@ -127,6 +127,14 @@ label {
   letter-spacing: 0.5px;
   cursor: pointer;
 }
+
+.avatarsection {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  margin-bottom: 7%;
+}
+
 /* end of this is for  small screen  */
 
 /* ||||||||||||||||||||||||||||||||||||| */
@@ -136,7 +144,8 @@ label {
 @media screen and (min-width: 900px) {
   .split-screen {
     flex-direction: row;
-    height: 100vh;
+    /* height: 100vh; */
+    /* min-height: auto !important; */
   }
 
   .left,
