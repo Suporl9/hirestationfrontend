@@ -9,7 +9,7 @@ import {
   FETCH_SERVICE_DETAILS_ERROR,
   FETCH_SERVICE_DETAILS_SUCCESS,
   FETCH_SUCCESS,
-} from "../constants/serviceConstant"; //importing the constants for dispatching the actions
+} from "../constants/Constants"; //importing the constants for dispatching the actions
 
 export const getAllServices =
   (keyword = "", currentPage = 1, price, category) =>

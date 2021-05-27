@@ -43,7 +43,9 @@ function SignUpform() {
   };
   const onChange = (e) => {
     if (e.target.name === "avatar") {
+      const file = e.target.files[0];
       const reader = new FileReader();
+      reader.readAsDataURL(file);
 
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -53,7 +55,7 @@ function SignUpform() {
         }
       };
 
-      reader.readAsDataURL(e.target.files[0]);
+      // reader.readAsDataURL(e.target.files[0]);
       // console.log("reader:", reader.readAsDataURL);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
@@ -166,7 +168,11 @@ function SignUpform() {
                     <span className="checkmark">Sign Up for Email updates</span>
                   </label>
                 </div>
-                <button className="signup-btn" type="submit">
+                <button
+                  className="signup-btn"
+                  type="submit"
+                  disabled={loading ? true : false}
+                >
                   Sign Up
                 </button>
                 <section className="copy legal">

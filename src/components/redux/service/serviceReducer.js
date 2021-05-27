@@ -6,7 +6,7 @@ import {
   FETCH_SERVICE_DETAILS,
   FETCH_SERVICE_DETAILS_SUCCESS,
   FETCH_SERVICE_DETAILS_ERROR,
-} from "../constants/serviceConstant";
+} from "../constants/Constants";
 
 const initialState = {
   loading: false,

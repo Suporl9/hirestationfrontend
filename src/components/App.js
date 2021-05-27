@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { userContext } from "./context/Globalcontext";
 import Login from "./LoginandRegister/Login";
 
 import SignUp from "./LoginandRegister/SignUp";
-
-// import Footer from "./welcomepage/welcomepagecoponents/Footer";
-// import Navbar from "./welcomepage/welcomepagecoponents/NavBar";
-// import axios from "axios";
 
 import Navbar from "./layout/NavBar";
 import Footer from "./layout/Footer";
 import Home from "./Home/Home";
 import Welcomepage from "./welcomepage/welcomepage";
 import ServiceDetails from "./service/ServiceDetails";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./redux/user/userAction";
+// import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
 // axios.defaults.withCredentials = true;
 //this is like setting the cookies globally .
 
 function App() {
-  // const { loggedIn } = useContext(userContext); //cant destructure or something like  that error
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  });
+  // const { user } = useSelector((state) => state.auth);
   return (
-    // <Globalcontext>
     <Router>
       <Navbar />
       <Switch>
@@ -41,7 +42,6 @@ function App() {
       </Switch>
       <Footer />
     </Router>
-    // </Globalcontext>
   );
 }
 

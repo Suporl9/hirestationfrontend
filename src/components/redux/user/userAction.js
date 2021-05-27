@@ -6,9 +6,12 @@ import {
   FETCH_REGISER_ERROR,
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
-} from "../constants/serviceConstant";
+  LOAD_USER_ERROR,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+} from "../constants/Constants";
 
-//login acion creator
+//login acttion creator
 export const Login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_LOGIN_REQUEST });
@@ -32,6 +35,7 @@ export const Login = (email, password) => async (dispatch) => {
   }
 };
 
+//user registration action
 export const Register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_REGISTER_REQUEST });
@@ -48,5 +52,19 @@ export const Register = (userData) => async (dispatch) => {
     dispatch({ type: FETCH_REGISTER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: FETCH_REGISER_ERROR, payload: error });
+  }
+};
+
+//load loggedIn User action creator
+
+export const loadUser = () => async (dispatch) => {
+  try {
+    dispatch({ type: LOAD_USER_REQUEST });
+
+    const data = await axios.get("/auth/me").then((result) => result.data);
+
+    dispatch({ type: LOAD_USER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: LOAD_USER_ERROR, payload: error });
   }
 };

@@ -19,7 +19,8 @@ const initialState = {};
 
 const store = createStore(
   rootReducer,
-  initialState,
+  initialState, //optional specify to restore previous serialised user session// must be plain if combineReducer used
+  //without initailstate the reducer will return undefined and therefore servicereduver.servces,authreducer.user would be undefined but since preloadedstate is provided the properties will be set and hydrate the data coming from the server
   composeWithDevTools(applyMiddleware(thunk))
 );
 
