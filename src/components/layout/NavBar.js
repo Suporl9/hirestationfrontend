@@ -5,21 +5,32 @@ import img1 from "../welcomepage/welcomepagecoponents/imgs/logo.png";
 import wishlist from "../Home/testimgs/wishlist.svg";
 
 import "../welcomepage/welcomepagecoponents/css/welcomestyles.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutUser } from "../redux/user/userAction";
+
+//(problem to be solved : dropdown is showing whne  registering or logging in(fix later))
+//understand how click event is working in dropdown
+
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
 
   const onCLickHandler = () => {
     setIsActive(!isActive);
   };
-
+  const logOutHandler = () => {
+    dispatch(logOutUser());
+  };
   const Categories = [
     "Graphics-And-Design",
     "Game-Development",
     "Web-Programming",
     "Mobile-Apps",
   ];
+
+  // const string = "abc bcd";
+  // console.log("abc", string.split(" ")[0]);
   useEffect(() => {
     const pageClickEvent = (e) => {
       if (
@@ -36,8 +47,19 @@ function Navbar() {
       window.removeEventListener("click", pageClickEvent);
     };
   }, [isActive]);
-  // const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.auth);
+  const hello = () => {
+    // split only runs at third time //first two times is undefined (creates error of split() undefined )
+    try {
+      const { fullname } = user;
+      // console.log(fullname.split(" ")[0]);
+      const fname = fullname.split(" ")[0];
+      // console.log("fname", fname);
+      return fname;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <nav>
       <Link to="/welcome">
@@ -88,8 +110,7 @@ function Navbar() {
               <button className="menu-trigger" onClick={onCLickHandler}>
                 <div className="insidetriggerbtn">
                   <span style={{ color: "white", fontWeight: "bold  " }}>
-                    {/* {user && user.fullname.split(" ")[0]} */}
-                    Suman
+                    {user && hello()}
                   </span>
                   <img
                     src={user.avatar && user.avatar.url}
@@ -124,7 +145,11 @@ function Navbar() {
                   </li>
 
                   <li className="libg">
-                    <Link to="/" className="listyleLink">
+                    <Link
+                      to="/"
+                      className="listyleLink"
+                      onClick={logOutHandler}
+                    >
                       Log Out
                     </Link>
                   </li>
@@ -134,9 +159,11 @@ function Navbar() {
           </Fragment>
         ) : (
           !loading && (
-            <Link to="/login">
-              <button className="LogInBtn">Log In</button>
-            </Link>
+            <div className="loginbtndiv">
+              <Link to="/login">
+                <button className="LogInBtn">Log In</button>
+              </Link>
+            </div>
           )
         )}
       </div>

@@ -50,6 +50,7 @@ export default function HomeBody({ match }) {
   if (keyword || category) {
     count = filteredServiceCount;
   }
+  // console.log(services);
 
   return (
     <Fragment>

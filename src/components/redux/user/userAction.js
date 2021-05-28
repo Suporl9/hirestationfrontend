@@ -9,6 +9,8 @@ import {
   LOAD_USER_ERROR,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
+  LOGOUT_ERROR,
+  LOGOUT_SUCCESS,
 } from "../constants/Constants";
 
 //login acttion creator
@@ -45,7 +47,7 @@ export const Register = (userData) => async (dispatch) => {
         "Content-Type": "multipart/form-data",
       },
     };
-    const data = axios
+    const data = await axios
       .post("/auth/new", userData, config)
       .then((result) => result.data);
 
@@ -66,5 +68,14 @@ export const loadUser = () => async (dispatch) => {
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: LOAD_USER_ERROR, payload: error });
+  }
+};
+
+export const logOutUser = () => async (dispatch) => {
+  try {
+    await axios.get("/auth/logout");
+    dispatch({ type: LOGOUT_SUCCESS });
+  } catch (error) {
+    dispatch({ type: LOGOUT_ERROR, payload: error });
   }
 };

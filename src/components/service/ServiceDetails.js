@@ -23,6 +23,7 @@ const ServiceDetails = ({ match }) => {
   useEffect(() => {
     dispatch(getServiceDetails(match.params.id));
   }, [dispatch, match.params.id]);
+  console.log(service); // comes 3rd time //first two rimeempty object
   return (
     <Fragment>
       <div className="bg">

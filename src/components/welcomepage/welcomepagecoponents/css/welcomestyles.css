@@ -111,7 +111,9 @@ button {
 .LogInBtn:hover {
   background-color: var(--main-red-hover);
 }
-
+.loginbtndiv {
+  margin-top: 5%;
+}
 .test {
   background-color: aliceblue;
   height: 50px;
