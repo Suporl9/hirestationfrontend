@@ -53,6 +53,7 @@
   font-weight: bold;
   margin-left: -2%;
 }
+
 .cards {
   padding: 1rem 3rem 3rem 3rem;
   margin-left: 3rem;
@@ -484,6 +485,102 @@
 
 /*End of service Details Page */
 
+/* my Profile Page */
+
+.myprofilebody {
+  width: 80%;
+  margin: auto;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: row;
+  /* font-weight: bold; */
+}
+
+.profilecardsleft {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.firstprofilecard {
+  background-color: var(--main-dark);
+  margin: 0 10% 10% 0;
+  /* border: ; */
+  border-radius: 5px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+}
+.locationfrom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.usercredentials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondprofilecard {
+  background-color: var(--main-dark);
+  margin: 0 10% 30% 0;
+  /* border: ; */
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+.ordersh6 {
+  font-size: 16px;
+  /* margin-bottom: 10%; */
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.ordersh6.a {
+  margin-bottom: 10%;
+}
+.ordersh6:hover {
+  color: #f83636;
+}
+
+.profilecardsright {
+  /* width: 700%; */
+  display: flex;
+  flex-direction: column;
+}
+.descriptionprofile {
+  background-color: var(--main-dark);
+  margin: 0 0 5% 0;
+  /* border: ; */
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+.myserviceprofile {
+  background-color: var(--main-dark);
+  margin: 0 0 5% 0;
+  /* border: ; */
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.myServiceCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 10%;
+}
+.myServiceCard {
+  display: flex;
+  background-color: var(--main-dark);
+  flex-direction: column;
+  width: 17rem;
+}
+
+/* End of my Profile Page */
+
 @media (max-width: 1300px) {
   .cards {
     margin-left: 3.3rem;
@@ -498,6 +595,13 @@
   }
   .detailsflexright {
     padding-top: 5rem;
+  }
+
+  .myServiceCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    margin-bottom: 10%;
   }
 }
 @media (max-width: 1000px) {
@@ -551,6 +655,21 @@
     padding-right: 0%;
     margin-bottom: 20%;
     font-weight: bold;
+  }
+
+  .myprofilebody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profilecardsleft {
+    width: 100%;
+  }
+  .firstprofilecard {
+    margin: 0 0 10% 0;
+  }
+  .secondprofilecard {
+    margin: 0 0 10% 0;
   }
 }
 @media (max-width: 700px) {
@@ -608,5 +727,12 @@
   }
   .userandreviewflexrow {
     margin-bottom: 8%;
+  }
+  .myServiceCards {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+    justify-content: center;
+    align-items: center;
   }
 }

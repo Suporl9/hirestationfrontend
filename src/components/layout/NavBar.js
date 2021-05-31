@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 // eslint-disable-next-line
 import { Link } from "react-router-dom";
 import img1 from "../welcomepage/welcomepagecoponents/imgs/logo.png";
-import wishlist from "../Home/testimgs/wishlist.svg";
+// import wishlist from "../Home/testimgs/wishlist.svg";
 
 import "../welcomepage/welcomepagecoponents/css/welcomestyles.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import { logOutUser } from "../redux/user/userAction";
 //understand how click event is working in dropdown
 
 function Navbar() {
+  const { user, loading } = useSelector((state) => state.auth);
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
@@ -22,12 +23,12 @@ function Navbar() {
   const logOutHandler = () => {
     dispatch(logOutUser());
   };
-  const Categories = [
-    "Graphics-And-Design",
-    "Game-Development",
-    "Web-Programming",
-    "Mobile-Apps",
-  ];
+  // const Categories = [
+  //   "Graphics-And-Design",
+  //   "Game-Development",
+  //   "Web-Programming",
+  //   "Mobile-Apps",
+  // ];
 
   // const string = "abc bcd";
   // console.log("abc", string.split(" ")[0]);
@@ -47,19 +48,19 @@ function Navbar() {
       window.removeEventListener("click", pageClickEvent);
     };
   }, [isActive]);
-  const { user, loading } = useSelector((state) => state.auth);
-  const hello = () => {
-    // split only runs at third time //first two times is undefined (creates error of split() undefined )
-    try {
-      const { fullname } = user;
-      // console.log(fullname.split(" ")[0]);
-      const fname = fullname.split(" ")[0];
-      // console.log("fname", fname);
-      return fname;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+  // const hello = () => {
+  //   // split only runs at third time //first two times is undefined (creates error of split() undefined )
+  //   try {
+  //     const { fullname } = user;
+  //     // console.log(fullname.split(" ")[0]);
+  //     const fname = fullname.split(" ")[0];
+  //     // console.log("fname", fname);
+  //     return fname;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <nav>
       <Link to="/welcome">
@@ -72,8 +73,7 @@ function Navbar() {
             Explore
           </Link>
         </li>{" "}
-        <li className="listyle">
-          {/* Fix later: Uncaught Error: Unable to find node on an unmounted component. */}
+        {/* <li className="listyle">
           <Link to="/" className="listyleLink ct">
             Categories &nbsp;
             <i className="fa fa-sort-desc" aria-hidden="true"></i>
@@ -87,30 +87,36 @@ function Navbar() {
               </li>
             ))}
           </ul>
-        </li>
+        </li> */}
         <li className="listyle">
           <Link to="/welcome" className="listyleLink">
             Become a seller
           </Link>
         </li>
+        <li className="listyle">
+          <Link to="/welcome" className="listyleLink">
+            About us
+          </Link>
+        </li>
       </ul>
 
       <div className="loginandcart">
-        <div className="cartanditems">
+        {/* <div className="cartanditems">
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <img src={wishlist} alt="wishlist" style={{ paddingRight: "1%" }} />
           </Link>
           <Link to="/cart" className="linkcart">
             <h4 className="h4cart">2</h4>
           </Link>
-        </div>
+        </div> */}
         {user ? (
           <Fragment>
             <div className="menu-container">
               <button className="menu-trigger" onClick={onCLickHandler}>
                 <div className="insidetriggerbtn">
                   <span style={{ color: "white", fontWeight: "bold  " }}>
-                    {user && hello()}
+                    {/* {user && hello()} */}
+                    {user.fullname && user.fullname.split(" ")[0]}
                   </span>
                   <img
                     src={user.avatar && user.avatar.url}

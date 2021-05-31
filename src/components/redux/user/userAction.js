@@ -57,7 +57,7 @@ export const Register = (userData) => async (dispatch) => {
   }
 };
 
-//load loggedIn User action creator
+//load loggedIn User action creator //also gets the user datails from here
 
 export const loadUser = () => async (dispatch) => {
   try {

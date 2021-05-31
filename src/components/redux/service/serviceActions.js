@@ -9,6 +9,9 @@ import {
   FETCH_SERVICE_DETAILS_ERROR,
   FETCH_SERVICE_DETAILS_SUCCESS,
   FETCH_SUCCESS,
+  USER_SERVICES_ERROR,
+  USER_SERVICES_REQUEST,
+  USER_SERVICES_SUCCESS,
 } from "../constants/Constants"; //importing the constants for dispatching the actions
 
 export const getAllServices =
@@ -60,5 +63,20 @@ export const getServiceDetails = (id) => async (dispatch) => {
       type: FETCH_SERVICE_DETAILS_ERROR,
       payload: error,
     });
+  }
+};
+
+//get user's Services Details
+
+export const getUserServices = () => async (dispatch) => {
+  try {
+    dispatch({ type: USER_SERVICES_REQUEST });
+
+    const data = await axios
+      .get("/services/me")
+      .then((response) => response.data);
+    dispatch({ type: USER_SERVICES_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_SERVICES_ERROR, payload: error });
   }
 };

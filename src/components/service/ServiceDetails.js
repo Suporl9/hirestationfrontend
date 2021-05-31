@@ -205,7 +205,7 @@ const ServiceDetails = ({ match }) => {
                               </div>
                               <h6 className="h6bold li">From</h6>
                             </div>
-                            <h6 className="h6bold li">Kahmandu</h6>
+                            <h6 className="h6bold li">Kathmandu</h6>
                           </div>
                           <div className="bodydetails">
                             <div className="leftdetails">

@@ -29,6 +29,7 @@ export const authReducer = (state = initialState, action) => {
         loading: true,
         user: {},
       };
+
     case LOAD_USER_SUCCESS:
     case FETCH_LOGIN_SUCCESS:
     case FETCH_REGISTER_SUCCESS:
