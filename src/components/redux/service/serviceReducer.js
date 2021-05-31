@@ -46,7 +46,7 @@ export const serviceReducer = (state = initialState, action) => {
     case USER_SERVICES_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: action.payload.response.data.message,
       };
     case CLEAR_ERROR:
       return {
@@ -77,7 +77,7 @@ export const serviceDetailsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.payload.response.data.message,
       };
     default:
       return state;
