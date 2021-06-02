@@ -31,13 +31,23 @@ export const MyProfile = () => {
                   <h6 style={{ marginBottom: "15%" }}>{user.email}</h6>
                 </div>
 
-                <div className="locationfrom">
+                <div className="locationfrom" style={{ marginBottom: "5%" }}>
                   <h6 className="h6bold">From:</h6>
                   <h6 className="h6bold">kathmandu</h6>
                 </div>
                 <div className="locationfrom">
                   <h6 className="h6bold">Joined On:</h6>
-                  <h6 className="h6bold">3/23/2016</h6>
+                  <h6 className="h6bold">
+                    {String(user.createdAt).substring(0, 10)}
+                  </h6>
+                </div>
+                <div
+                  className="cardetailsbtn"
+                  style={{ margin: "1rem 0 0.5rem 0" }}
+                >
+                  <Link to="me/update">
+                    <button className="card-btn">Update Profile</button>
+                  </Link>
                 </div>
               </div>
               <div className="secondprofilecard">
@@ -61,10 +71,11 @@ export const MyProfile = () => {
                   description
                 </h4>
                 <h6 style={{ fontWeight: "bold", lineHeight: "1.6" }}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste
-                  placeat blanditiis veritatis consequuntur enim soluta
-                  voluptatibus doloribus aliquam nihil, atque alias ipsa autem
-                  suscipit unde sed assumenda architecto quas quae.
+                  {user.bio ? (
+                    user.bio
+                  ) : (
+                    <Fragment>(No Bio Available)</Fragment>
+                  )}
                 </h6>
               </div>
               <div className="myservice">

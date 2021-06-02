@@ -7,12 +7,13 @@ import {
   serviceReducer,
 } from "./redux/service/serviceReducer";
 
-import { authReducer } from "./redux/user/userReducer";
+import { authReducer, userUpdateReducer } from "./redux/user/userReducer";
 
 const rootReducer = combineReducers({
   services: serviceReducer,
   serviceDetails: serviceDetailsReducer,
   auth: authReducer,
+  userUpdate: userUpdateReducer,
 });
 
 const initialState = {};

@@ -10,6 +10,13 @@ import {
   LOAD_USER_ERROR,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
+  USER_PROFILE_UPDATE_REQUEST,
+  USER_PROFILE_UPDATE_SUCCESS,
+  USER_PROFILE_UPDATE_RESET,
+  USER_PROFILE_UPDATE_ERROR,
+  // AVATAR_REQUEST,
+  // AVATAR_SUCCESS,
+  // AVATAR_ERROR,
 } from "../constants/Constants";
 
 const initialState = {
@@ -68,3 +75,67 @@ export const authReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+//user profile update reducer
+
+export const userUpdateReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case USER_PROFILE_UPDATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case USER_PROFILE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload.success,
+      };
+
+    case USER_PROFILE_UPDATE_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case USER_PROFILE_UPDATE_RESET:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: false,
+      };
+
+    default:
+      return state;
+  }
+};
+
+// export const avatarReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case AVATAR_REQUEST:
+//       return {
+//         ...state,
+//         loading: true,
+//       };
+//     case AVATAR_SUCCESS:
+//       return {
+//         ...state,
+//         loading: false,
+//         isUpdated: action.payload,
+//       };
+//     case "AVATAR_ISUPDATED_RESET":
+//       return {
+//         ...state,
+//         isUpdated: false,
+//       };
+//     case AVATAR_ERROR:
+//       return {
+//         ...state,
+//         error: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// };

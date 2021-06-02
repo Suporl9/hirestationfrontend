@@ -52,6 +52,7 @@ function SignUpform() {
           setAvatarPreview(reader.result);
           setAvatar(reader.result);
           // console.log("result", reader.result);
+          // console.log(avatar);
         }
       };
 

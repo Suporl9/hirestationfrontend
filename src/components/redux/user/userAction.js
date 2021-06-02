@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  // AVATAR_ERROR,
+  // AVATAR_REQUEST,
+  // AVATAR_SUCCESS,
   FETCH_LOGIN_ERROR,
   FETCH_LOGIN_REQUEST,
   FETCH_LOGIN_SUCCESS,
@@ -11,6 +14,9 @@ import {
   LOAD_USER_SUCCESS,
   LOGOUT_ERROR,
   LOGOUT_SUCCESS,
+  USER_PROFILE_UPDATE_ERROR,
+  USER_PROFILE_UPDATE_REQUEST,
+  USER_PROFILE_UPDATE_SUCCESS,
 } from "../constants/Constants";
 
 //login acttion creator
@@ -57,6 +63,27 @@ export const Register = (userData) => async (dispatch) => {
   }
 };
 
+//update user with form
+
+export const updateUser = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_PROFILE_UPDATE_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+
+    const data = await axios
+      .put("/auth/me/update", userData, config)
+      .then((resp) => resp.data);
+
+    dispatch({ type: USER_PROFILE_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_PROFILE_UPDATE_ERROR, payload: error });
+  }
+};
+
 //load loggedIn User action creator //also gets the user datails from here
 
 export const loadUser = () => async (dispatch) => {
@@ -79,3 +106,23 @@ export const logOutUser = () => async (dispatch) => {
     dispatch({ type: LOGOUT_ERROR, payload: error });
   }
 };
+
+// export const avatarUpdate = (avatar) => async (dispatch) => {
+//   try {
+//     dispatch({ type: AVATAR_REQUEST });
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     };
+
+//     const data = await axios
+//       .put("/auth/avatarUpdate", avatar, config)
+//       .then((response) => response.data);
+
+//     dispatch({ type: AVATAR_SUCCESS, payload: data.success });
+//   } catch (error) {
+//     // dispatch({type:AVATAR})
+//     dispatch({ type: AVATAR_ERROR, payload: error });
+//   }
+// };
