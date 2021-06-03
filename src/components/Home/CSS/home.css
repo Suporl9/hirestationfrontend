@@ -11,6 +11,28 @@
   overflow: hidden;
   color: var(--main-white);
 }
+.bg1 {
+  background: rgb(26, 24, 22);
+  background: linear-gradient(
+    180deg,
+    rgba(26, 24, 22, 1) 95%,
+    rgba(39, 39, 43, 1) 100%
+  );
+  min-height: 40rem;
+  overflow: hidden;
+  color: var(--main-white);
+}
+.bg2 {
+  background: rgb(26, 24, 22);
+  background: linear-gradient(
+    180deg,
+    rgba(26, 24, 22, 1) 95%,
+    rgba(39, 39, 43, 1) 100%
+  );
+  min-height: 27rem;
+  overflow: hidden;
+  color: var(--main-white);
+}
 .bgbody {
   display: flex;
   flex-direction: column;
@@ -510,14 +532,14 @@
 .profilecardsleft {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  /* width: 65%; */
 }
 .profilecardsleftupdate {
   display: flex;
   flex-direction: column;
   /* width: 65%; */
 }
-
+/* s */
 .firstprofilecard {
   background-color: var(--main-dark);
   margin: 0 10% 10% 0;
@@ -563,7 +585,7 @@
 }
 
 .profilecardsright {
-  /* width: 700%; */
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -600,7 +622,46 @@
   width: 17rem;
 }
 
-/* End of my Profile Page */
+/* End of my Profile Page and Update */
+
+/* Udate Password page */
+
+.pwcarddiv {
+  width: 80%;
+  margin: auto;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.passwordcard {
+  background-color: var(--main-dark);
+  /* padding: 3rem; */
+  /* padding: 1rem; */
+  width: 30rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+  /* display: flex; */
+
+  /* justify-content: center; */
+}
+.oldPassword {
+  width: 100%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  color: black;
+  font-weight: bold;
+  /* outline: none !important; */
+}
+.pwdontmatch {
+  position: relative;
+  /* transform: translateY(-25px); */
+}
+
+/* End of Udate Password page */
 
 @media (max-width: 1300px) {
   .cards {
@@ -623,6 +684,9 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
     margin-bottom: 10%;
+  }
+  .profilecardsright {
+    width: 100%;
   }
 }
 @media (max-width: 1000px) {
@@ -691,6 +755,7 @@
   .profilecardsleft {
     width: 100%;
   }
+
   .profilecardsleftupdate {
     width: 100%;
   }

@@ -75,6 +75,7 @@ function Loginform() {
                     }}
                   ></input>
                 </div>
+                <Link to="/me/forgotPassword">Forgot password?</Link>
                 <div className="input-container cta">
                   <label className="checkbox-container">
                     <input type="checkbox" />

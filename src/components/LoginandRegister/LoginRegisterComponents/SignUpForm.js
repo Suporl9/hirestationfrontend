@@ -162,7 +162,6 @@ function SignUpform() {
                     </div>
                   </div>
                 </div>
-
                 <div className="input-container cta">
                   <label className="checkbox-container">
                     <input type="checkbox" />

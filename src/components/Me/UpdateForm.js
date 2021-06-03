@@ -15,8 +15,8 @@ export const UpdateForm = () => {
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState(defaultImg);
-  const { user } = useSelector((state) => state.auth);
-  const { isUpdated, loading } = useSelector((state) => state.userUpdate);
+  const { user, loading } = useSelector((state) => state.auth);
+  const { isUpdated } = useSelector((state) => state.userUpdate);
   const dispatch = useDispatch();
 
   useEffect(() => {

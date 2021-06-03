@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  CLEAR_ERRORS,
   // AVATAR_ERROR,
   // AVATAR_REQUEST,
   // AVATAR_SUCCESS,
@@ -9,11 +10,17 @@ import {
   FETCH_REGISER_ERROR,
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
+  FORGOT_PASSWORD_ERROR,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
   LOAD_USER_ERROR,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOGOUT_ERROR,
   LOGOUT_SUCCESS,
+  PASSWORD_UDPATE_REQUEST,
+  PASSWORD_UPDATE_ERROR,
+  PASSWORD_UPDATE_SUCCESS,
   USER_PROFILE_UPDATE_ERROR,
   USER_PROFILE_UPDATE_REQUEST,
   USER_PROFILE_UPDATE_SUCCESS,
@@ -84,6 +91,27 @@ export const updateUser = (userData) => async (dispatch) => {
   }
 };
 
+//update password
+export const updatePassword = (passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: PASSWORD_UDPATE_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const data = await axios
+      .put("/auth/password/update", passwords, config)
+      .then((resp) => resp.data);
+
+    dispatch({ type: PASSWORD_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PASSWORD_UPDATE_ERROR, payload: error });
+  }
+};
+
 //load loggedIn User action creator //also gets the user datails from here
 
 export const loadUser = () => async (dispatch) => {
@@ -107,6 +135,30 @@ export const logOutUser = () => async (dispatch) => {
   }
 };
 
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const data = await axios
+      .post("/auth/password/forgot", email, config)
+      .then((resp) => resp.data);
+
+    dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: FORGOT_PASSWORD_ERROR, payload: error });
+  }
+};
+
+export const clearErrors = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_ERRORS,
+  });
+};
 // export const avatarUpdate = (avatar) => async (dispatch) => {
 //   try {
 //     dispatch({ type: AVATAR_REQUEST });

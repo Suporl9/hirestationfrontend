@@ -6,7 +6,9 @@ export default function StuffDone() {
   return (
     <div className="StuffDone">
       <div className="h1p1search">
-        <h1 className="h1stuff">Get your service done from 5$</h1>
+        <h1 className="h1stuff" style={{ fontWeight: "bold" }}>
+          Get your service done from 5$
+        </h1>
         <p className="p1stuff">
           Browse through many micro services.Choose one you trust and pay as you
           go!!

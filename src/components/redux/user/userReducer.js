@@ -14,9 +14,14 @@ import {
   USER_PROFILE_UPDATE_SUCCESS,
   USER_PROFILE_UPDATE_RESET,
   USER_PROFILE_UPDATE_ERROR,
-  // AVATAR_REQUEST,
-  // AVATAR_SUCCESS,
-  // AVATAR_ERROR,
+  PASSWORD_UDPATE_REQUEST,
+  PASSWORD_UPDATE_SUCCESS,
+  PASSWORD_UDPATE_RESET,
+  PASSWORD_UPDATE_ERROR,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_ERROR,
+  CLEAR_ERRORS,
 } from "../constants/Constants";
 
 const initialState = {
@@ -80,19 +85,21 @@ export const authReducer = (state = initialState, action) => {
 
 export const userUpdateReducer = (state = initialState, action) => {
   switch (action.type) {
+    case PASSWORD_UDPATE_REQUEST:
     case USER_PROFILE_UPDATE_REQUEST:
       return {
         ...state,
         loading: true,
+        // abc: "ccc",
       };
-
+    case PASSWORD_UPDATE_SUCCESS:
     case USER_PROFILE_UPDATE_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload.success,
       };
-
+    case PASSWORD_UPDATE_ERROR:
     case USER_PROFILE_UPDATE_ERROR:
       return {
         ...state,
@@ -100,6 +107,7 @@ export const userUpdateReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
+    case PASSWORD_UDPATE_RESET:
     case USER_PROFILE_UPDATE_RESET:
       return {
         ...state,
@@ -107,6 +115,38 @@ export const userUpdateReducer = (state = initialState, action) => {
         isUpdated: false,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswodReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FORGOT_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        message: action.payload.message,
+        loading: false,
+        // error: "",
+      };
+
+    case FORGOT_PASSWORD_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

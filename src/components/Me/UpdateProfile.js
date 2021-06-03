@@ -7,7 +7,7 @@ export const UpdateProfile = () => {
   const dispatch = useDispatch();
   const [previewAvatar, setPreviewAvatar] = useState(avatarPreview);
   const [fileInputState, setfileInputState] = useState("");
-  const [avatar, setAvatar] = useState("");
+  // const [avatar, setAvatar] = useState("");
   const onChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
