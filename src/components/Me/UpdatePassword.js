@@ -48,7 +48,7 @@ export const UpdatePassword = () => {
               Old Password:
             </h5>
             <input
-              type="text"
+              type="password"
               className="oldPassword"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
@@ -57,7 +57,7 @@ export const UpdatePassword = () => {
               New Password:
             </h5>
             <input
-              type="text"
+              type="password"
               className="oldPassword"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -66,7 +66,7 @@ export const UpdatePassword = () => {
               Verify New Password:
             </h5>
             <input
-              type="text"
+              type="password"
               className="oldPassword"
               value={verifyNewPassword}
               onChange={(e) => setVerifyPassword(e.target.value)}

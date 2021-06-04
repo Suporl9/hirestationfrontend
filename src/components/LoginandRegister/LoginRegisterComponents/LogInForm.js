@@ -4,29 +4,42 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useHistory } from "react-router-dom";
 
-import { Login } from "../../redux/user/userAction";
+import { clearErrors, Login } from "../../redux/user/userAction";
 import "../CSS/LoginRegister.css";
 import { Loader } from "../../layout/Loader";
+import { useAlert } from "react-alert";
 
+//alert error to be done later
 function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const emailref = useRef(null);
   const dispatch = useDispatch();
+  const alert = useAlert();
 
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
+    // console.log(error);
     emailref.current.focus();
     if (isAuthenticated) {
       history.push("/");
     }
+    // if (error) {
+    //   alert.error(error);
+    //   dispatch(clearErrors());
+    // }
   }, [history, isAuthenticated]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(Login(email, password));
+    // if (isAuthenticated) {
+    //   history.push("/");
+    // }
   };
 
   return (
@@ -75,7 +88,11 @@ function Loginform() {
                     }}
                   ></input>
                 </div>
-                <Link to="/me/forgotPassword">Forgot password?</Link>
+                <Link to="/forgotPassword">
+                  <h6 style={{ marginBottom: "5%", fontWeight: "bold" }}>
+                    Forgot password?
+                  </h6>
+                </Link>
                 <div className="input-container cta">
                   <label className="checkbox-container">
                     <input type="checkbox" />

@@ -22,6 +22,7 @@ import { ProtectedRoute } from "./route/ProtectedRoute";
 import { UpdateForm } from "./Me/UpdateForm";
 import { UpdatePassword } from "./Me/UpdatePassword";
 import { ForgotPassword } from "./Me/ForgotPassword";
+import { ResetPassword } from "./Me/ResetPassword";
 // import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
@@ -53,8 +54,8 @@ function App() {
           exact
           component={UpdatePassword}
         />
-        <Route path="/me/forgotPassword" component={ForgotPassword} />
-
+        <Route path="/forgotPassword" component={ForgotPassword} />
+        <Route path="/password/reset/:token" component={ResetPassword} />
         {/* when path:{service/:id} tried it shows error and goes to service/services/:id // so fix that error later on*/}
         {/* <Route path="services/:keyword" component={Home} /> */}
         <Route path="/:id" component={ServiceDetails} />

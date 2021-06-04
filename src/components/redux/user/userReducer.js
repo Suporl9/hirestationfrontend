@@ -22,6 +22,9 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_ERROR,
   CLEAR_ERRORS,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_ERROR,
 } from "../constants/Constants";
 
 const initialState = {
@@ -73,7 +76,13 @@ export const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         user: null,
-        error: action.payload,
+        error: action.payload.response.data.message,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
 
     default:
@@ -123,6 +132,7 @@ export const userUpdateReducer = (state = initialState, action) => {
 export const forgotPasswodReducer = (state = initialState, action) => {
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST:
+    case RESET_PASSWORD_REQUEST:
       return {
         ...state,
         loading: true,
@@ -135,8 +145,14 @@ export const forgotPasswodReducer = (state = initialState, action) => {
         loading: false,
         // error: "",
       };
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        success: action.payload.success,
+      };
 
     case FORGOT_PASSWORD_ERROR:
+    case RESET_PASSWORD_ERROR:
       return {
         ...state,
         loading: false,
