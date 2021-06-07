@@ -17,6 +17,7 @@ function Navbar() {
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
+  const { cartItemsCount } = useSelector((state) => state.getCart);
 
   const onCLickHandler = () => {
     setIsActive(!isActive);
@@ -92,7 +93,7 @@ function Navbar() {
                 <span className="material-icons">
                   <Cart />
                 </span>
-                <span className="icon-button_badge">2</span>
+                <span className="icon-button_badge">{cartItemsCount}</span>
               </div>
             </Link>
             {/* <Link to="/cart" className="linkcart">

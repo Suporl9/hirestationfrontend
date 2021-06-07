@@ -66,6 +66,16 @@ export const RESET_PASSWORD_REQUEST = "RESET_PASSWORD_REQUEST";
 export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
 export const RESET_PASSWORD_ERROR = "RESET_PASSWORD_ERROR";
 
+//get cart items constants
+
+export const CART_ITEMS_REQUEST = "CART_ITEMS_REQUEST";
+export const CART_ITEMS_SUCCESS = "CART_ITEMS_SUCCESS";
+export const CART_ITEMS_ERROR = "CART_ITEMS_ERROR";
+
+//cart constants
+
+export const ADD_TO_CART = "ADD_TO_CART";
+
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";

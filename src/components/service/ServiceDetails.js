@@ -172,7 +172,7 @@ const ServiceDetails = ({ match }) => {
                         <Card.Body>
                           <Link to={`/${service._id}`}>
                             <button className="card-btn">
-                              Order Now(Rs.{service.price})
+                              Add to wishlist(Rs.{service.price})
                             </button>
                           </Link>
                         </Card.Body>
