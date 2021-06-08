@@ -18,7 +18,7 @@ function Navbar() {
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const { cartItemsCount } = useSelector((state) => state.getCart);
-
+  // const { cartItem, isAdded, loadin } = useSelector((state) => state.addToCart);
   const onCLickHandler = () => {
     setIsActive(!isActive);
   };

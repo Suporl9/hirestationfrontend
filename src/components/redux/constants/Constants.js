@@ -74,7 +74,17 @@ export const CART_ITEMS_ERROR = "CART_ITEMS_ERROR";
 
 //cart constants
 
-export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_CART_REQUEST = "ADD_TO_CART_REQUEST";
+export const ADD_TO_CART_SUCCESS = "ADD_TO_CART_SUCCESS";
+export const ADD_TO_CART_ERROR = "ADD_TO_CART_ERROR";
+export const ADD_TO_CART_ISADDED_RESET = "ADD_TO_CART_ISADDED_RESET";
+
+//delete cart Items
+
+export const DELETE_CART_ITEMS_REQUEST = "DELETE_CART_ITEMS_REQUEST";
+export const DELETE_CART_ITEMS_SUCCESS = "DELETE_CART_ITEMS_SUCCESS";
+export const DELETE_CART_ITEMS_ERROR = "DELETE_CART_ITEMS_ERROR";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 //cloudinary (avatar)
 

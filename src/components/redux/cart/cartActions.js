@@ -1,9 +1,15 @@
 import axios from "axios";
 import {
+  ADD_TO_CART_ERROR,
+  ADD_TO_CART_REQUEST,
+  ADD_TO_CART_SUCCESS,
   // ADD_TO_CART,
   CART_ITEMS_ERROR,
   CART_ITEMS_REQUEST,
   CART_ITEMS_SUCCESS,
+  DELETE_CART_ITEMS_ERROR,
+  DELETE_CART_ITEMS_REQUEST,
+  DELETE_CART_ITEMS_SUCCESS,
 } from "../constants/Constants";
 
 export const getCartItems = () => async (dispatch) => {
@@ -14,11 +20,36 @@ export const getCartItems = () => async (dispatch) => {
       .get("/cart/getMyCartItems")
       .then((resp) => resp.data);
 
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: CART_ITEMS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: CART_ITEMS_ERROR, payload: error });
+  }
+};
+
+export const deleteCartItem = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_CART_ITEMS_REQUEST });
+
+    const data = await axios
+      .delete(`/cart/deleteCartItem/${id}`)
+      .then((resp) => resp.data);
+
+    dispatch({ type: DELETE_CART_ITEMS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: DELETE_CART_ITEMS_ERROR, payload: error });
+  }
+};
+
+export const addItemToCart = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_TO_CART_REQUEST });
+
+    const data = await axios.post(`/cart/new/${id}`).then((resp) => resp.data);
+    dispatch({ type: ADD_TO_CART_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: ADD_TO_CART_ERROR, payload: error });
   }
 };
 

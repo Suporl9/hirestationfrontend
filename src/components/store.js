@@ -1,7 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { getCartItemsReducer } from "./redux/cart/cartReducer";
+import {
+  cartReducer,
+  deleteCartReducer,
+  getCartItemsReducer,
+} from "./redux/cart/cartReducer";
 
 import {
   serviceDetailsReducer,
@@ -20,8 +24,9 @@ const rootReducer = combineReducers({
   auth: authReducer,
   userUpdate: userUpdateReducer,
   forgotPasswordReducer: forgotPasswodReducer,
-  // addToCart: cartReducer,
+  addToCart: cartReducer,
   getCart: getCartItemsReducer,
+  deleteCartItem: deleteCartReducer,
 });
 
 const initialState = {};

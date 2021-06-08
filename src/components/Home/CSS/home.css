@@ -675,13 +675,19 @@
   flex-direction: column;
   border-radius: 5px;
   width: 100%;
+  min-height: 16rem;
   padding: 1.5rem;
-  margin-top: 7%;
+  margin-top: 3.8rem;
   margin-right: 8rem;
   font-weight: bold;
   /* margin: 0 10% 10% 0; */
 }
-
+.nogigscart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
 .myitemscardright {
   background-color: var(--main-dark);
   padding: 1.5rem;

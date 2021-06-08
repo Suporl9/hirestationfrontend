@@ -2,18 +2,31 @@ import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
-import { getCartItems } from "../redux/cart/cartActions";
+import { deleteCartItem, getCartItems } from "../redux/cart/cartActions";
 import { ReactComponent as Bin } from "./ntrash.svg";
+import { useHistory } from "react-router-dom";
+import { CLEAR_MESSAGE } from "../redux/constants/Constants";
 
 export const MyWishList = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { loading, cartItems, cartItemsCount } = useSelector(
     (state) => state.getCart
   );
+  const { message, loadingg } = useSelector((state) => state.deleteCartItem);
+
+  const deleteHandler = (id) => {
+    dispatch(deleteCartItem(id));
+    history.push("/myWishList");
+  };
 
   useEffect(() => {
     dispatch(getCartItems());
-  }, [dispatch]);
+    if (message) {
+      history.push("/myWishList");
+      dispatch({ type: CLEAR_MESSAGE });
+    } //clear up the message in state
+  }, [dispatch, history, message]);
 
   return (
     <div className="bg">
@@ -22,49 +35,75 @@ export const MyWishList = () => {
       ) : (
         <Fragment>
           <div className="myprofilebody1">
-            <div className="h1andmyitemscardleft">
-              <span style={{ fontWeight: "bold", fontSize: "30px" }}>
-                My WishList:
-              </span>
-              <div className="myitemscardleft">
-                <div className="gigstitleandphoto">
-                  {cartItems &&
-                    cartItems.map((cartItem) => (
-                      <div key={cartItem._id} className="cardleft">
-                        <div className="titleandphoto">
-                          <img
-                            src={cartItem.service.images[0].url}
-                            alt="gig"
-                            style={{
-                              height: "100px",
-                              width: "120px",
-                              borderRadius: "5px",
-                            }}
-                          />
-                          <span className="titlerow">
-                            {cartItem.service.title}
-                          </span>
-                        </div>
+            {cartItems.length > 0 ? (
+              <Fragment>
+                <div className="h1andmyitemscardleft">
+                  <span style={{ fontWeight: "bold", fontSize: "30px" }}>
+                    My WishList:
+                  </span>
+                  <div className="myitemscardleft">
+                    <div className="gigstitleandphoto">
+                      {cartItems &&
+                        cartItems.map((cartItem) => (
+                          <div key={cartItem._id} className="cardleft">
+                            <div className="titleandphoto">
+                              <img
+                                src={cartItem.service.images[0].url}
+                                alt="gig"
+                                style={{
+                                  height: "100px",
+                                  width: "120px",
+                                  borderRadius: "5px",
+                                }}
+                              />
+                              <span className="titlerow">
+                                {cartItem.service.title}
+                              </span>
+                            </div>
 
-                        <h2 style={{ marginTop: "20px" }}>
-                          Rs.{cartItem.service.price}
-                        </h2>
-                        <div className="btns">
-                          <button className="binclass">
-                            <Bin />
-                          </button>
-                          <button
-                            className="card-btn1"
-                            style={{ marginLeft: "5%" }}
-                          >
-                            Order Now!
-                          </button>
-                        </div>
-                      </div>
-                    ))}
+                            <h2 style={{ marginTop: "20px" }}>
+                              Rs.{cartItem.service.price}
+                            </h2>
+                            <div className="btns">
+                              <button
+                                className="binclass"
+                                onClick={() => deleteHandler(cartItem._id)}
+                                disabled={loadingg ? true : false}
+                              >
+                                <Bin />
+                              </button>
+                              <button
+                                className="card-btn1"
+                                style={{ marginLeft: "5%" }}
+                              >
+                                Order Now!
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <div className="h1andmyitemscardleft">
+                  <span
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "30px",
+                    }}
+                  >
+                    My WishList:
+                  </span>
+                  <div className="myitemscardleft">
+                    <div className="nogigscart">
+                      <h2>WishList is Empty.</h2>
+                    </div>
+                  </div>
+                </div>
+              </Fragment>
+            )}
             <div className="myitemscardright">
               <span style={{ fontWeight: "bold", fontSize: "25px" }}>
                 Summary:

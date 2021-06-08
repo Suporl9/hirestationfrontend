@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import PropTypes from "prop-types";
 import React, { Fragment, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import meImg from "../Home/testimgs/me.JPG";
@@ -15,15 +14,25 @@ import "../Home/CSS/home.css";
 
 import { Link } from "react-router-dom";
 import { Loader } from "../layout/Loader";
+import { addItemToCart } from "../redux/cart/cartActions";
+import { useAlert } from "react-alert";
 
 const ServiceDetails = ({ match }) => {
   const dispatch = useDispatch();
+  const alert = useAlert();
   const { loading, service } = useSelector((state) => state.serviceDetails);
+  const { loadin } = useSelector((state) => state.addToCart);
+  const id = match.params.id;
+
+  const postItemHandler = (id) => {
+    dispatch(addItemToCart(id));
+    alert.success("Service Added To Cart!!");
+  };
 
   useEffect(() => {
-    dispatch(getServiceDetails(match.params.id));
-  }, [dispatch, match.params.id]);
-  // console.log(service); // comes 3rd time //first two rimeempty object
+    dispatch(getServiceDetails(id));
+  }, [dispatch, id]);
+
   return (
     <Fragment>
       <div className="bg">
@@ -170,11 +179,13 @@ const ServiceDetails = ({ match }) => {
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Body>
-                          <Link to={`/${service._id}`}>
-                            <button className="card-btn">
-                              Add to wishlist(Rs.{service.price})
-                            </button>
-                          </Link>
+                          <button
+                            className="card-btn"
+                            onClick={() => postItemHandler(id)}
+                            disabled={loadin ? true : false}
+                          >
+                            Add to wishlist(Rs.{service.price})
+                          </button>
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Footer>
@@ -302,9 +313,5 @@ const ServiceDetails = ({ match }) => {
     </Fragment>
   );
 };
-// ServiceDetails.propTypes = {
-//   children: PropTypes.any,
-//   onClickOut: PropTypes.func,
-// };
 
 export default ServiceDetails;
