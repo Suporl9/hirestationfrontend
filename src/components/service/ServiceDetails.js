@@ -12,26 +12,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { getServiceDetails } from "../redux/service/serviceActions";
 import "../Home/CSS/home.css";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 import { addItemToCart } from "../redux/cart/cartActions";
 import { useAlert } from "react-alert";
+import { ADD_TO_CART_ISADDED_RESET } from "../redux/constants/Constants";
 
 const ServiceDetails = ({ match }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const alert = useAlert();
+  const { cartItems } = useSelector((state) => state.getCart);
   const { loading, service } = useSelector((state) => state.serviceDetails);
-  const { loadin } = useSelector((state) => state.addToCart);
+  const { isAdded, loadin } = useSelector((state) => state.addToCart);
   const id = match.params.id;
-
-  const postItemHandler = (id) => {
-    dispatch(addItemToCart(id));
-    alert.success("Service Added To Cart!!");
-  };
 
   useEffect(() => {
     dispatch(getServiceDetails(id));
-  }, [dispatch, id]);
+    if (isAdded) {
+      alert.success("Service Added To Cart!!");
+      dispatch({ type: ADD_TO_CART_ISADDED_RESET });
+      history.push(`/myWishList`);
+    }
+  }, [dispatch, id, isAdded, alert, history]);
+
+  const postItemHandler = (id) => {
+    dispatch(addItemToCart(id));
+  };
+
+  const itemExists = (id) => {
+    return cartItems.some((el) => {
+      return el.service._id === id;
+    });
+  };
+  // console.log(itemExists(id));
 
   return (
     <Fragment>
@@ -179,13 +193,19 @@ const ServiceDetails = ({ match }) => {
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Body>
-                          <button
-                            className="card-btn"
-                            onClick={() => postItemHandler(id)}
-                            disabled={loadin ? true : false}
-                          >
-                            Add to wishlist(Rs.{service.price})
-                          </button>
+                          {itemExists(id) ? (
+                            <button className="card-btn" disabled={true}>
+                              Already In Cart!!
+                            </button>
+                          ) : (
+                            <button
+                              className="card-btn"
+                              onClick={() => postItemHandler(id)}
+                              disabled={loadin ? true : false}
+                            >
+                              Add to wishlist(Rs.{service.price})
+                            </button>
+                          )}
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Footer>

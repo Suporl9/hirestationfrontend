@@ -10,6 +10,7 @@ import {
   DELETE_CART_ITEMS_ERROR,
   DELETE_CART_ITEMS_REQUEST,
   DELETE_CART_ITEMS_SUCCESS,
+  SAVE_ORDER_INFO,
 } from "../constants/Constants";
 
 export const getCartItems = () => async (dispatch) => {
@@ -51,6 +52,12 @@ export const addItemToCart = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: ADD_TO_CART_ERROR, payload: error });
   }
+};
+
+export const saveOrderInfo = (userData) => async (dispatch) => {
+  dispatch({ type: SAVE_ORDER_INFO, payload: userData });
+
+  localStorage.setItem("orderInfo", JSON.stringify(userData));
 };
 
 // export const addItemToCart = (id) => async (dispatch) => {

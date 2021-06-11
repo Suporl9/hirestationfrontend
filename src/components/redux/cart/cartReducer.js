@@ -10,11 +10,13 @@ import {
   DELETE_CART_ITEMS_ERROR,
   DELETE_CART_ITEMS_REQUEST,
   DELETE_CART_ITEMS_SUCCESS,
+  SAVE_ORDER_INFO,
 } from "../constants/Constants";
 
 const initialState = {
   // cartItem: {},
   // cartItemsCount: "",
+  orderInfo: {},
   cartItems: [],
   loading: false,
   error: null,
@@ -34,6 +36,12 @@ export const getCartItemsReducer = (state = initialState, action) => {
         loading: false,
         cartItems: action.payload.myCartItems,
         cartItemsCount: action.payload.cartItemsCount,
+      };
+
+    case SAVE_ORDER_INFO:
+      return {
+        ...state,
+        orderInfo: action.payload,
       };
 
     case CART_ITEMS_ERROR:

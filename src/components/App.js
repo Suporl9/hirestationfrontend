@@ -25,6 +25,9 @@ import { ForgotPassword } from "./Me/ForgotPassword";
 import { ResetPassword } from "./Me/ResetPassword";
 import { MyWishList } from "./cart/MyWishList";
 import { getCartItems } from "./redux/cart/cartActions";
+import { OrderInfo } from "./orderAndPayment/OrderInfo";
+import { OrderConfirm } from "./orderAndPayment/OrderConfirm";
+import { OrderPayment } from "./orderAndPayment/OrderPayment";
 // import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
@@ -59,6 +62,9 @@ function App() {
           component={UpdatePassword}
         />
         <ProtectedRoute path="/myWishList" component={MyWishList} />
+        <ProtectedRoute path="/order" exact component={OrderInfo} />
+        <ProtectedRoute path="/order/confirm" component={OrderConfirm} />
+        <ProtectedRoute path="/order/payment" component={OrderPayment} />
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />
         {/* when path:{service/:id} tried it shows error and goes to service/services/:id // so fix that error later on*/}

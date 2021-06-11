@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
 import { deleteCartItem, getCartItems } from "../redux/cart/cartActions";
 import { ReactComponent as Bin } from "./ntrash.svg";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CLEAR_MESSAGE } from "../redux/constants/Constants";
 
 export const MyWishList = () => {
@@ -72,12 +72,20 @@ export const MyWishList = () => {
                               >
                                 <Bin />
                               </button>
-                              <button
-                                className="card-btn1"
-                                style={{ marginLeft: "5%" }}
+                              <Link
+                                to="/order"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
+                                }}
                               >
-                                Order Now!
-                              </button>
+                                <button
+                                  className="card-btn1"
+                                  style={{ marginLeft: "5%" }}
+                                >
+                                  Order Now!
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         ))}

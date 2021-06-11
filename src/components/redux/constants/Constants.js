@@ -86,6 +86,10 @@ export const DELETE_CART_ITEMS_SUCCESS = "DELETE_CART_ITEMS_SUCCESS";
 export const DELETE_CART_ITEMS_ERROR = "DELETE_CART_ITEMS_ERROR";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
+//save Order info(LocalStorage)
+
+export const SAVE_ORDER_INFO = "SAVE_SHIPPING_INFO";
+
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";
