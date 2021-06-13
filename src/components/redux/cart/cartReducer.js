@@ -10,6 +10,9 @@ import {
   DELETE_CART_ITEMS_ERROR,
   DELETE_CART_ITEMS_REQUEST,
   DELETE_CART_ITEMS_SUCCESS,
+  GET_ITEM_SESSION_STORAGE,
+  GET_ORDER_INFO_SESSION_STORAGE,
+  SAVE_ITEM_SESSION_STORAGE,
   SAVE_ORDER_INFO,
 } from "../constants/Constants";
 
@@ -28,6 +31,22 @@ export const getCartItemsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+
+    case SAVE_ITEM_SESSION_STORAGE:
+      return {
+        ...state,
+        cartItem: action.payload,
+      };
+    case GET_ORDER_INFO_SESSION_STORAGE:
+      return {
+        ...state,
+        orderInfo: action.payload,
+      };
+    case GET_ITEM_SESSION_STORAGE:
+      return {
+        ...state,
+        cartItem: action.payload,
       };
 
     case CART_ITEMS_SUCCESS:

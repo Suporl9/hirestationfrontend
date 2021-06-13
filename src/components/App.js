@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   // Redirect,
@@ -28,6 +28,9 @@ import { getCartItems } from "./redux/cart/cartActions";
 import { OrderInfo } from "./orderAndPayment/OrderInfo";
 import { OrderConfirm } from "./orderAndPayment/OrderConfirm";
 import { OrderPayment } from "./orderAndPayment/OrderPayment";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 // import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
@@ -36,11 +39,23 @@ import { OrderPayment } from "./orderAndPayment/OrderPayment";
 
 function App() {
   const dispatch = useDispatch();
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
   // const {cart}
   useEffect(() => {
     dispatch(loadUser());
     dispatch(getCartItems());
+
+    async function getStripeApiKey() {
+      const data = await axios
+        .get("/payment/stripeApiKey")
+        .then((resp) => resp.data);
+
+      setStripeApiKey(data.stripeApiKey);
+    }
+    getStripeApiKey();
   });
+
   // const { user } = useSelector((state) => state.auth);
   return (
     <Router>
@@ -49,7 +64,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/search/:keyword" component={Home} />
         <Route path={`/category/:category`} component={Home} />
-
+        <Route path="/service/:id" component={ServiceDetails} />
         <Route path="/welcome" component={Welcomepage} />
 
         <Route path="/signup" component={SignUp} />
@@ -63,13 +78,17 @@ function App() {
         />
         <ProtectedRoute path="/myWishList" component={MyWishList} />
         <ProtectedRoute path="/order" exact component={OrderInfo} />
-        <ProtectedRoute path="/order/confirm" component={OrderConfirm} />
-        <ProtectedRoute path="/order/payment" component={OrderPayment} />
+        <ProtectedRoute path="/order/confirm" exact component={OrderConfirm} />
+
+        {stripeApiKey && (
+          <Elements stripe={loadStripe(stripeApiKey)}>
+            <ProtectedRoute path="/payment" exact component={OrderPayment} />
+          </Elements>
+        )}
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />
         {/* when path:{service/:id} tried it shows error and goes to service/services/:id // so fix that error later on*/}
         {/* <Route path="services/:keyword" component={Home} /> */}
-        <Route path="/:id" component={ServiceDetails} />
         {/* <Redirect from="/**" to="/welcome" /> */}
       </Switch>
       <Footer />

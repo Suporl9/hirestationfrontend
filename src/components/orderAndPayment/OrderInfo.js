@@ -7,13 +7,20 @@ import { CheckOutSteps } from "./CheckOutSteps";
 export const OrderInfo = () => {
   const history = useHistory();
   const { orderInfo } = useSelector((state) => state.getCart);
-  const [phoneNumber, setPhoneNumber] = useState(orderInfo.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(
+    orderInfo ? orderInfo.phoneNumber : ""
+  );
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveOrderInfo({ phoneNumber }));
     history.push("/order/confirm");
   };
+  // useEffect(() => {
+  //   if (orderInfo) {
+  //     setPhoneNumber(orderInfo.phoneNumber);
+  //   }
+  // }, [orderInfo]);
   return (
     <div className="bg1">
       <CheckOutSteps orderInfo />
@@ -32,11 +39,12 @@ export const OrderInfo = () => {
             <h5 className="h6bold" style={{ marginBottom: "5%" }}>
               Phone Number:
             </h5>
+            {/* some problem in input displaying session storage number  */}
             <input
               type="text"
               className="oldPassword"
-              value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+              value={phoneNumber}
             />
             <button className="card-btn" type="submit">
               Continue

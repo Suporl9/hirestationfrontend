@@ -12,20 +12,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { getServiceDetails } from "../redux/service/serviceActions";
 import "../Home/CSS/home.css";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 import { addItemToCart } from "../redux/cart/cartActions";
 import { useAlert } from "react-alert";
 import { ADD_TO_CART_ISADDED_RESET } from "../redux/constants/Constants";
 
-const ServiceDetails = ({ match }) => {
+const ServiceDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const alert = useAlert();
   const { cartItems } = useSelector((state) => state.getCart);
   const { loading, service } = useSelector((state) => state.serviceDetails);
   const { isAdded, loadin } = useSelector((state) => state.addToCart);
-  const id = match.params.id;
+  // const id = match.params.id;
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getServiceDetails(id));

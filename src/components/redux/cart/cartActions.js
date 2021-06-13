@@ -10,6 +10,9 @@ import {
   DELETE_CART_ITEMS_ERROR,
   DELETE_CART_ITEMS_REQUEST,
   DELETE_CART_ITEMS_SUCCESS,
+  GET_ITEM_SESSION_STORAGE,
+  GET_ORDER_INFO_SESSION_STORAGE,
+  SAVE_ITEM_SESSION_STORAGE,
   SAVE_ORDER_INFO,
 } from "../constants/Constants";
 
@@ -57,9 +60,24 @@ export const addItemToCart = (id) => async (dispatch) => {
 export const saveOrderInfo = (userData) => async (dispatch) => {
   dispatch({ type: SAVE_ORDER_INFO, payload: userData });
 
-  localStorage.setItem("orderInfo", JSON.stringify(userData));
+  sessionStorage.setItem("orderInfo", JSON.stringify(userData));
 };
 
+export const addCartItemSession = (itemData) => async (dispatch) => {
+  dispatch({ type: SAVE_ITEM_SESSION_STORAGE, payload: itemData });
+
+  sessionStorage.setItem("cartItem", JSON.stringify(itemData));
+};
+export const getCartItetmSession = () => async (dispatch) => {
+  const data = sessionStorage.getItem("cartItem");
+  const newData = JSON.parse(data);
+  dispatch({ type: GET_ITEM_SESSION_STORAGE, payload: newData });
+};
+export const getOrderInfoSession = () => async (dispatch) => {
+  const data = sessionStorage.getItem("orderInfo");
+  const newData = JSON.parse(data);
+  dispatch({ type: GET_ORDER_INFO_SESSION_STORAGE, payload: newData });
+};
 // export const addItemToCart = (id) => async (dispatch) => {
 //   const data = await axios
 //     .get(`/services/${id}`)

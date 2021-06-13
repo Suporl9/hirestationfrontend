@@ -22,7 +22,7 @@ function MyServices() {
         services &&
         services.map((service) => (
           <div key={service._id} className="myServiceCard">
-            <Link to="/">
+            <Link to={`/service/${service._id}`}>
               <img
                 src={service.images[0].url}
                 alt="serviceImg"
@@ -31,7 +31,10 @@ function MyServices() {
             </Link>
             <div className="card-content">
               <h5 className="nameh5">{service.user[0].fullname}</h5>
-              <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to={`/service/${service._id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <h2 className="titleh2" style={{ lineHeight: "1.6" }}>
                   {service.title}
                 </h2>
@@ -54,7 +57,7 @@ function MyServices() {
                 className="cardetailsbtn"
                 style={{ margin: "1rem 0 0.5rem 0" }}
               >
-                <Link to="/">
+                <Link to={`/service/${service._id}`}>
                   <button className="card-btn">View details</button>
                 </Link>
               </div>

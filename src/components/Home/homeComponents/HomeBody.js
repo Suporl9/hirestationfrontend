@@ -155,7 +155,7 @@ export default function HomeBody({ match }) {
                   {services &&
                     services.map((service) => (
                       <div key={service._id} className="card">
-                        <Link to={`/${service._id}`}>
+                        <Link to={`/service/${service._id}`}>
                           <img
                             src={service.images[0].url}
                             alt="serviceImg"
@@ -165,7 +165,7 @@ export default function HomeBody({ match }) {
                         <div className="card-content">
                           <h5 className="nameh5">{service.user[0].fullname}</h5>
                           <Link
-                            to={`/${service._id}`}
+                            to={`/service/${service._id}`}
                             style={{ textDecoration: "none", color: "inherit" }}
                           >
                             <h2
@@ -194,7 +194,7 @@ export default function HomeBody({ match }) {
                             className="cardetailsbtn"
                             style={{ margin: "1rem 0 0.5rem 0" }}
                           >
-                            <Link to={`/${service._id}`}>
+                            <Link to={`/service/${service._id}`}>
                               <button className="card-btn">View details</button>
                             </Link>
                           </div>

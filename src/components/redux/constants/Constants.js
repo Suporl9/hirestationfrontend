@@ -89,7 +89,11 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 //save Order info(LocalStorage)
 
 export const SAVE_ORDER_INFO = "SAVE_SHIPPING_INFO";
+export const GET_ORDER_INFO_SESSION_STORAGE = "GET_ORDER_INFO_SESSION_STORAGE";
+//save item order in sessionstorage
 
+export const SAVE_ITEM_SESSION_STORAGE = "SAVE_ITEM_SESSION_STORAGE";
+export const GET_ITEM_SESSION_STORAGE = "GET_ITEM_SESSION_STORAGE";
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";

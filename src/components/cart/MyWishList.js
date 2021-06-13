@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
-import { deleteCartItem, getCartItems } from "../redux/cart/cartActions";
+import {
+  addCartItemSession,
+  deleteCartItem,
+  getCartItems,
+} from "../redux/cart/cartActions";
 import { ReactComponent as Bin } from "./ntrash.svg";
 import { Link, useHistory } from "react-router-dom";
 import { CLEAR_MESSAGE } from "../redux/constants/Constants";
@@ -27,6 +31,9 @@ export const MyWishList = () => {
       dispatch({ type: CLEAR_MESSAGE });
     } //clear up the message in state
   }, [dispatch, history, message]);
+  const AddItemToSession = (cartItem) => {
+    dispatch(addCartItemSession(cartItem));
+  };
 
   return (
     <div className="bg">
@@ -47,18 +54,42 @@ export const MyWishList = () => {
                         cartItems.map((cartItem) => (
                           <div key={cartItem._id} className="cardleft">
                             <div className="titleandphoto">
-                              <img
-                                src={cartItem.service.images[0].url}
-                                alt="gig"
+                              <Link
+                                to={`/service/${cartItem.service._id}`}
                                 style={{
-                                  height: "100px",
-                                  width: "120px",
-                                  borderRadius: "5px",
+                                  textDecoration: "none",
+                                  color: "inherit",
                                 }}
-                              />
+                              >
+                                <img
+                                  src={cartItem.service.images[0].url}
+                                  alt="gig"
+                                  style={{
+                                    height: "100px",
+                                    width: "120px",
+                                    borderRadius: "5px",
+                                  }}
+                                />
+                              </Link>
+                              {/* <Link
+                                to={`/${cartItem.service._id}`}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
+                                }}
+                              > */}
                               <span className="titlerow">
-                                {cartItem.service.title}
+                                <Link
+                                  to={`/service/${cartItem.service._id}`}
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "inherit",
+                                  }}
+                                >
+                                  {cartItem.service.title}
+                                </Link>
                               </span>
+                              {/* </Link> */}
                             </div>
 
                             <h2 style={{ marginTop: "20px" }}>
@@ -82,6 +113,7 @@ export const MyWishList = () => {
                                 <button
                                   className="card-btn1"
                                   style={{ marginLeft: "5%" }}
+                                  onClick={() => AddItemToSession(cartItem)}
                                 >
                                   Order Now!
                                 </button>
