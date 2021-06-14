@@ -838,6 +838,15 @@
 
 /* end of mywishlist */
 
+/* credit card details */
+
+.elementsdiv {
+  background-color: rgb(12, 12, 12);
+  border-radius: 5px;
+}
+
+/* end of credit card details */
+
 /* Udate Password page */
 
 .pwcarddiv {
