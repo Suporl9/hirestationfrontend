@@ -6,6 +6,7 @@ import {
   deleteCartReducer,
   getCartItemsReducer,
 } from "./redux/cart/cartReducer";
+import { newOrderReducer } from "./redux/order/orderReducer";
 
 import {
   serviceDetailsReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   addToCart: cartReducer,
   getCart: getCartItemsReducer,
   deleteCartItem: deleteCartReducer,
+  newOrder: newOrderReducer,
 });
 
 const initialState = {};

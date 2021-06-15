@@ -15,6 +15,7 @@ import {
 } from "../redux/cart/cartActions";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { clearOrderError, createOrder } from "../redux/order/orderActions";
 
 // const options = {
 //   //this is not working for now
@@ -26,19 +27,30 @@ import { useHistory } from "react-router";
 //   },
 // };
 export const OrderPayment = () => {
-  const { cartItem } = useSelector((state) => state.getCart);
+  const { cartItem, orderInfo } = useSelector((state) => state.getCart);
+  const { error } = useSelector((state) => state.newOrder);
   const alert = useAlert();
-  // const order = {};
+  const order = {
+    service: cartItem && cartItem.service,
+    orderInfo,
+    // paymentInfo: orderInfo,
+    totalPrice: cartItem && cartItem.service.price,
+  };
   const stripe = useStripe();
   const elements = useElements();
-
+  // const {}
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     dispatch(getCartItetmSession());
     dispatch(getOrderInfoSession());
-  }, [dispatch]);
+    if (error) {
+      alert.error(error);
+      dispatch(clearOrderError());
+    }
+  }, [dispatch, alert, error]);
 
   const paymentData = {
     amount: Math.round(cartItem && cartItem.service.price * 100),
@@ -77,7 +89,13 @@ export const OrderPayment = () => {
         document.querySelector(".card-btn").disabled = false;
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          history.push("/success");
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch(createOrder(order));
+          alert.success("payment successfull!!");
+          history.push("/myWishList");
         } else {
           alert.error("There was  some issue in payment processing!!");
         }
@@ -89,7 +107,7 @@ export const OrderPayment = () => {
   };
 
   return (
-    <div className="bg">
+    <div className="bg4">
       <CheckOutSteps orderInfo confirmOrder payment />
       <div className="pwcarddiv">
         <div className="passwordcard">
@@ -170,7 +188,13 @@ export const OrderPayment = () => {
                 className="oldPassword"
               />
             </div>
-            <h5 className="h6bold" style={{ marginBottom: "5%" }}>
+            <span style={{ fontSize: "15px", color: "orange" }}>
+              Use : 04/44
+            </span>
+            <h5
+              className="h6bold"
+              style={{ marginTop: "5%", marginBottom: "5%" }}
+            >
               Card CVC:
             </h5>
             <div className="elementsdiv">
@@ -201,6 +225,7 @@ export const OrderPayment = () => {
                 className="oldPassword"
               />
             </div>
+            <span style={{ fontSize: "15px", color: "orange" }}>Use : 444</span>
             <button className="card-btn" type="submit">
               PAY - (Rs.{cartItem && cartItem.service.price})
             </button>

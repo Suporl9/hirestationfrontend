@@ -11,6 +11,17 @@
   overflow: hidden;
   color: var(--main-white);
 }
+.bg4 {
+  background: rgb(26, 24, 22);
+  background: linear-gradient(
+    180deg,
+    rgba(26, 24, 22, 1) 95%,
+    rgba(39, 39, 43, 1) 100%
+  );
+  min-height: 55rem;
+  overflow: hidden;
+  color: var(--main-white);
+}
 .bg1 {
   background: rgb(26, 24, 22);
   background: linear-gradient(
