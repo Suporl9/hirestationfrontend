@@ -90,16 +90,26 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 export const SAVE_ORDER_INFO = "SAVE_SHIPPING_INFO";
 export const GET_ORDER_INFO_SESSION_STORAGE = "GET_ORDER_INFO_SESSION_STORAGE";
+
 //save item order in sessionstorage
 
 export const SAVE_ITEM_SESSION_STORAGE = "SAVE_ITEM_SESSION_STORAGE";
 export const GET_ITEM_SESSION_STORAGE = "GET_ITEM_SESSION_STORAGE";
-//cloudinary (avatar)
+
+//create new order
 
 export const CREATE_ORDER_REQUEST = "CREATE_ORDER_REQUEST";
 export const CREATE_ORDER_SUCCESS = "CREATE_ORDER_SUCCESS";
 export const CREATE_ORDER_FAIL = "CREATE_ORDER_FAIL";
 export const CLEAR_ORDER_ERROR = "CLEAR_ORDER_ERROR";
+
+//get the user orders
+
+export const GET_ORDERS_REQUEST = "GET_ORDERS_REQUEST";
+export const GET_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";
+export const GET_ORDERS_FAIL = "GET_ORDERS_FAIL";
+
+//cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";
 // export const AVATAR_SUCCESS = "AVATAR_SUCCESS";

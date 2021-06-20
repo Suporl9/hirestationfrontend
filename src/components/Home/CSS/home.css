@@ -99,7 +99,7 @@
 }
 
 .cards {
-  padding: 1rem 3rem 3rem 3rem;
+  padding: 1rem 3rem 1rem 3rem;
   margin-left: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -305,9 +305,12 @@
   display: flex;
   justify-content: center;
   font-weight: 900;
-  margin: 2% 0 4% 0;
+  /* margin: 2% 0 4% 0; */
 }
 
+.pagination {
+  margin: 4rem 0 4rem 0;
+}
 .pagination > li > a {
   background-color: rgb(17, 17, 17);
   color: #f83636;
@@ -603,6 +606,39 @@
   flex-direction: row;
   /* font-weight: bold; */
 }
+.myprofilebodytable {
+  width: 80%;
+  margin: auto;
+  padding-top: 5%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  /* font-weight: bold; */
+}
+.table {
+  color: #fff;
+  background-color: var(--main-dark);
+}
+.custom-select {
+  margin: 0.5rem 0 1rem 0 !important;
+  font-weight: bold;
+}
+.form-control {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+/* .datatable-search {
+  justify-content: center !important;
+  margin-bottom: 1rem !important;
+} */
+/* .table.tr {
+  background-color: #fd4c4c;
+} */
 .myprofilebody1 {
   width: 80%;
   margin: auto;

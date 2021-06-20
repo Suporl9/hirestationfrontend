@@ -31,6 +31,7 @@ import { OrderPayment } from "./orderAndPayment/OrderPayment";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { MyOrders } from "./Me/MyOrders";
 // import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
@@ -79,14 +80,16 @@ function App() {
         <ProtectedRoute path="/myWishList" component={MyWishList} />
         <ProtectedRoute path="/order" exact component={OrderInfo} />
         <ProtectedRoute path="/order/confirm" exact component={OrderConfirm} />
+        <ProtectedRoute path="/orders/me" component={MyOrders} />
 
+        <Route path="/forgotPassword" component={ForgotPassword} />
+        <Route path="/password/reset/:token" component={ResetPassword} />
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
             <ProtectedRoute path="/payment" exact component={OrderPayment} />
           </Elements>
         )}
-        <Route path="/forgotPassword" component={ForgotPassword} />
-        <Route path="/password/reset/:token" component={ResetPassword} />
+
         {/* when path:{service/:id} tried it shows error and goes to service/services/:id // so fix that error later on*/}
         {/* <Route path="services/:keyword" component={Home} /> */}
         {/* <Redirect from="/**" to="/welcome" /> */}

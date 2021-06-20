@@ -137,7 +137,7 @@ function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/orders" className="listyleLink">
+                    <Link to="/orders/me" className="listyleLink">
                       Orders
                     </Link>
                   </li>
