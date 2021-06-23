@@ -47,7 +47,7 @@ export const OrderConfirm = () => {
               <div className="cardleft">
                 <div className="titleandphoto1">
                   <Link
-                    to={`/${cartItem && cartItem.service._id}`}
+                    to={`/service/${cartItem && cartItem.service._id}`}
                     style={{
                       textDecoration: "none",
                       color: "inherit",
@@ -65,7 +65,7 @@ export const OrderConfirm = () => {
                   </Link>
                   <span className="titlerow1">
                     <Link
-                      to={`/${cartItem && cartItem.service._id}`}
+                      to={`/service/${cartItem && cartItem.service._id}`}
                       style={{
                         textDecoration: "none",
                         color: "inherit",

@@ -32,6 +32,9 @@ import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { MyOrders } from "./Me/MyOrders";
+import { OrderDetails } from "./Me/OrderDetails";
+// import { OrderDetails } from "./orderAndPayment/OrderDetails";
+// import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
 
 //as cors sends the credentials axios alloes the credentails(cookies or token) tto be saved in browser
@@ -81,6 +84,7 @@ function App() {
         <ProtectedRoute path="/order" exact component={OrderInfo} />
         <ProtectedRoute path="/order/confirm" exact component={OrderConfirm} />
         <ProtectedRoute path="/orders/me" component={MyOrders} />
+        <ProtectedRoute path="/order/:id" component={OrderDetails} />
 
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />

@@ -63,7 +63,7 @@ export const MyOrders = () => {
           ),
 
         action: (
-          <Link to="/welcome">
+          <Link to={`/order/${order._id}`}>
             <img
               src={editpng}
               alt="editPng"

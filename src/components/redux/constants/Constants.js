@@ -109,6 +109,12 @@ export const GET_ORDERS_REQUEST = "GET_ORDERS_REQUEST";
 export const GET_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";
 export const GET_ORDERS_FAIL = "GET_ORDERS_FAIL";
 
+//order details
+
+export const ORDER_DETAILS_REQUEST = "ORDER_DETAILS_REQUEST";
+export const ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS";
+export const ORDER_DETAILS_FAIL = "ORDER_DETAILS_FAIL";
+
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";

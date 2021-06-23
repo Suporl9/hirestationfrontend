@@ -521,6 +521,29 @@
 .h6bold {
   font-weight: bold;
 }
+.h6boldorder {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--main-dark);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin-top: 3.5rem;
+}
+.h6boldorderi {
+  font-weight: bold;
+}
+.orderdeliverflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--main-dark);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin-top: 3.5rem;
+}
+
 .h6bold.li {
   font-size: 15px;
   padding: 0.4rem;
@@ -776,7 +799,7 @@
   border-radius: 5px;
   width: 100%;
   min-height: 16rem;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   margin-top: 3.8rem;
   margin-right: 8rem;
   font-weight: bold;
@@ -932,6 +955,38 @@
 }
 
 /* End of Udate Password page */
+
+/* order details page */
+
+.orderdetails {
+  width: 80%;
+  margin: auto;
+}
+
+.orderdetailsflex {
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+}
+.notpaid {
+  text-transform: uppercase;
+  background-color: #f83636;
+  text-shadow: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+.paid {
+  text-transform: uppercase;
+  background-color: rgb(8, 180, 8);
+  text-shadow: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+/* .paid{
+
+} */
+/* end of order details page */
 
 @media (max-width: 1300px) {
   .cards {
@@ -1190,5 +1245,11 @@
   }
   .myitemscardright1 {
     height: 19rem;
+  }
+  .h6boldorder {
+    font-size: 18px;
+  }
+  .orderdetailsflex {
+    margin-bottom: 15%;
   }
 }

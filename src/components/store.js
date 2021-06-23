@@ -9,6 +9,7 @@ import {
 import {
   getMyOrdersReducer,
   newOrderReducer,
+  orderDetailsReducer,
 } from "./redux/order/orderReducer";
 
 import {
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   deleteCartItem: deleteCartReducer,
   newOrder: newOrderReducer,
   getMyOrders: getMyOrdersReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 const initialState = {};

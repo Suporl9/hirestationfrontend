@@ -71,13 +71,6 @@ export const MyWishList = () => {
                                   }}
                                 />
                               </Link>
-                              {/* <Link
-                                to={`/${cartItem.service._id}`}
-                                style={{
-                                  textDecoration: "none",
-                                  color: "inherit",
-                                }}
-                              > */}
                               <span className="titlerow">
                                 <Link
                                   to={`/service/${cartItem.service._id}`}

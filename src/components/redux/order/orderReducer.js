@@ -6,6 +6,9 @@ import {
   GET_ORDERS_FAIL,
   GET_ORDERS_REQUEST,
   GET_ORDERS_SUCCESS,
+  ORDER_DETAILS_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
 } from "../constants/Constants";
 
 const initialState = {
@@ -13,6 +16,7 @@ const initialState = {
   orders: [],
   error: "",
   order: {},
+  orderDetails: {},
 };
 
 export const newOrderReducer = (state = initialState, action) => {
@@ -72,6 +76,31 @@ export const getMyOrdersReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+      };
+    default:
+      return state;
+  }
+};
+export const orderDetailsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ORDER_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case ORDER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        orderDetails: action.payload.order,
+      };
+
+    case ORDER_DETAILS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
       };
     default:
       return state;
