@@ -115,6 +115,13 @@ export const ORDER_DETAILS_REQUEST = "ORDER_DETAILS_REQUEST";
 export const ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS";
 export const ORDER_DETAILS_FAIL = "ORDER_DETAILS_FAIL";
 
+//new service review
+
+export const NEW_REVIEW_REQUEST = "NEW_REVIEW_REQUEST";
+export const NEW_REVIEW_SUCCESS = "NEW_REVIEW_SUCCESS";
+export const NEW_REVIEW_RESET = "NEW_REVIEW_RESET";
+export const NEW_REVIEW_FAIL = "NEW_REVIEW_FAIL";
+
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";

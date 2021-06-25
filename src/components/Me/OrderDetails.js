@@ -3,16 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails } from "../redux/order/orderActions";
 import { Loader } from "../layout/Loader";
+import { useAlert } from "react-alert";
 
 export const OrderDetails = () => {
   const { user } = useSelector((state) => state.auth);
-  const { orderDetails, loading } = useSelector((state) => state.orderDetails);
+  const { orderDetails, loading, error } = useSelector(
+    (state) => state.orderDetails
+  );
   const { id } = useParams();
+  const alert = useAlert();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOrderDetails(id));
-  }, [dispatch, id]);
-  // const {loading}
+    if (error) {
+      alert.error(error);
+    }
+  }, [dispatch, id, alert, error]);
   return (
     <div className="bg">
       <div className="orderdetails">

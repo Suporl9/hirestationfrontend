@@ -9,6 +9,9 @@ import {
   FETCH_SERVICE_DETAILS_ERROR,
   FETCH_SERVICE_DETAILS_SUCCESS,
   FETCH_SUCCESS,
+  NEW_REVIEW_FAIL,
+  NEW_REVIEW_REQUEST,
+  NEW_REVIEW_SUCCESS,
   USER_SERVICES_ERROR,
   USER_SERVICES_REQUEST,
   USER_SERVICES_SUCCESS,
@@ -78,5 +81,21 @@ export const getUserServices = () => async (dispatch) => {
     dispatch({ type: USER_SERVICES_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_SERVICES_ERROR, payload: error });
+  }
+};
+export const newReview = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_REVIEW_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put("/services/review", userData, config);
+
+    dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: NEW_REVIEW_FAIL, payload: error });
   }
 };

@@ -9,6 +9,10 @@ import {
   USER_SERVICES_REQUEST,
   USER_SERVICES_SUCCESS,
   USER_SERVICES_ERROR,
+  NEW_REVIEW_REQUEST,
+  NEW_REVIEW_SUCCESS,
+  NEW_REVIEW_FAIL,
+  NEW_REVIEW_RESET,
 } from "../constants/Constants";
 
 const initialState = {
@@ -74,6 +78,38 @@ export const serviceDetailsReducer = (state = initialState, action) => {
         service: action.payload.getService,
       };
     case FETCH_SERVICE_DETAILS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
+      };
+    default:
+      return state;
+  }
+};
+
+export const newReviewReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NEW_REVIEW_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case NEW_REVIEW_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: action.payload.success,
+      };
+
+    case NEW_REVIEW_RESET:
+      return {
+        ...state,
+        success: false,
+      };
+
+    case NEW_REVIEW_FAIL:
       return {
         ...state,
         loading: false,

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import meImg from "../Home/testimgs/me.JPG";
 import { ReactComponent as Star } from "../Home/testimgs/star.svg";
@@ -17,13 +17,18 @@ import { Loader } from "../layout/Loader";
 import { addItemToCart } from "../redux/cart/cartActions";
 import { useAlert } from "react-alert";
 import { ADD_TO_CART_ISADDED_RESET } from "../redux/constants/Constants";
+import { PopUp } from "./PopUp";
 
 const ServiceDetails = () => {
+  // const boxref = useRef(null);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const alert = useAlert();
+  const [isOpen, setIsOpen] = useState();
   const { cartItems } = useSelector((state) => state.getCart);
   const { loading, service } = useSelector((state) => state.serviceDetails);
+  // const { success } = useSelector((state) => state.newReview);
   const { isAdded, loadin } = useSelector((state) => state.addToCart);
   // const id = match.params.id;
   const { id } = useParams();
@@ -39,6 +44,10 @@ const ServiceDetails = () => {
 
   const postItemHandler = (id) => {
     dispatch(addItemToCart(id));
+  };
+
+  const togglePopUp = (e) => {
+    setIsOpen(!isOpen);
   };
 
   const itemExists = (id) => {
@@ -292,7 +301,13 @@ const ServiceDetails = () => {
               <div className="reviewdiv">
                 <div className="reviewpanel">
                   <div className="reviewcontent">
-                    <h1 className="servicetitleh1">Reviews(2 total)</h1>
+                    <div className="reviewsandreviewbtn">
+                      <h1 className="servicetitleh1">Reviews(2 total)</h1>
+                      <button onClick={togglePopUp} className="card-btn3">
+                        Submit Review
+                      </button>
+                      {isOpen && <PopUp handleClose={togglePopUp} id={id} />}
+                    </div>
 
                     <div className="userswithreview">
                       {service.reviews &&
@@ -312,7 +327,13 @@ const ServiceDetails = () => {
                               <div className="reviewfield">
                                 <div className="starRating">
                                   <Star />
-                                  <div className="serviceRating3">
+                                  <div
+                                    className="serviceRating3"
+                                    style={{
+                                      fontWeight: "bold",
+                                      marginLeft: "1%",
+                                    }}
+                                  >
                                     {review.rating}
                                   </div>
                                 </div>
