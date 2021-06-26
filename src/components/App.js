@@ -33,6 +33,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { MyOrders } from "./Me/MyOrders";
 import { OrderDetails } from "./Me/OrderDetails";
+import { DashBoard } from "./Admin/DashBoard";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -85,6 +86,7 @@ function App() {
         <ProtectedRoute path="/order/confirm" exact component={OrderConfirm} />
         <ProtectedRoute path="/orders/me" component={MyOrders} />
         <ProtectedRoute path="/order/:id" component={OrderDetails} />
+        <ProtectedRoute path="/dashboard" component={DashBoard} />
 
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />

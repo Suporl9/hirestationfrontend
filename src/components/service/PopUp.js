@@ -38,7 +38,7 @@ export const PopUp = ({ handleClose, id }) => {
       dispatch({ type: NEW_REVIEW_RESET });
       handleClose();
     }
-  }, [error, success, alert, dispatch, id, handleClose]);
+  }, [error, alert, dispatch, id, handleClose, success]);
   return (
     <Fragment>
       <div className="popup-box">

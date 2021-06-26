@@ -629,6 +629,9 @@ input[type="radio"] {
 .h6bold {
   font-weight: bold;
 }
+.h6boldii {
+  font-weight: bold;
+}
 .h6boldorder {
   font-weight: bold;
   display: flex;
@@ -1096,7 +1099,111 @@ input[type="radio"] {
 } */
 /* end of order details page */
 
+/* Dashboard section */
+
+.sideBarAndDash {
+  display: flex;
+  flex-direction: row;
+}
+.sideBarBg {
+  background-color: #24252a;
+  color: rgb(190, 250, 24);
+  width: 25%;
+  min-height: 50rem;
+  padding: 2% 1% 1% 1%;
+  font-weight: bold;
+}
+.tabpanel {
+  width: 100%;
+}
+
+.tabs-container {
+  list-style: none;
+  /* background-color: red; */
+}
+.tab-selected {
+  padding: 10px 5px 5px 10px;
+  cursor: pointer;
+  margin-bottom: 5%;
+  /* text-shadow: none; */
+}
+.active {
+  background: rgb(26, 24, 22);
+  border-radius: 4px;
+}
+.dashboardflex {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+.amountdiv {
+  background-color: rgb(27, 126, 255);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8% 0 8% 0;
+  /* width: 100%; */
+}
+.secondflexrow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  justify-content: space-between;
+}
+.servicediv {
+  background-color: rgb(1, 134, 1);
+  border-radius: 4px;
+  padding: 10% 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-right: 5%; */
+}
+.usersdiv {
+  background-color: rgb(22, 115, 158);
+  border-radius: 4px;
+  padding: 10% 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-right: 5%; */
+}
+.ordersdiv {
+  background-color: rgb(179, 44, 20);
+  border-radius: 4px;
+  padding: 10% 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* .totalAmountdiv {
+  background-color: rgb(27, 126, 255);
+  width: 100%;
+} */
+/* End of DashBoard Section */
+
 @media (max-width: 1300px) {
+  .secondflexrow {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0 5% 0;
+    justify-content: space-between;
+  }
+  .servicediv {
+    margin-bottom: 2%;
+  }
+  .usersdiv {
+    margin-bottom: 2%;
+  }
+  .ordersdiv {
+    margin-bottom: 2%;
+  }
   .cards {
     margin-left: 3.3rem;
     display: grid;
@@ -1286,6 +1393,9 @@ input[type="radio"] {
     width: 100%;
     margin: 8.8% 0 15% 0;
     height: 22rem;
+  }
+  .h6boldii {
+    font-size: 10px;
   }
 }
 @media (max-width: 700px) {

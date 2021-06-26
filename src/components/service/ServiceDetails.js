@@ -28,7 +28,7 @@ const ServiceDetails = () => {
   const [isOpen, setIsOpen] = useState();
   const { cartItems } = useSelector((state) => state.getCart);
   const { loading, service } = useSelector((state) => state.serviceDetails);
-  // const { success } = useSelector((state) => state.newReview);
+  const { success } = useSelector((state) => state.newReview);
   const { isAdded, loadin } = useSelector((state) => state.addToCart);
   // const id = match.params.id;
   const { id } = useParams();
@@ -40,7 +40,7 @@ const ServiceDetails = () => {
       dispatch({ type: ADD_TO_CART_ISADDED_RESET });
       history.push(`/myWishList`);
     }
-  }, [dispatch, id, isAdded, alert, history]);
+  }, [dispatch, success, id, isAdded, alert, history]);
 
   const postItemHandler = (id) => {
     dispatch(addItemToCart(id));
