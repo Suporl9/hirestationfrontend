@@ -12,6 +12,9 @@ import {
   NEW_REVIEW_FAIL,
   NEW_REVIEW_REQUEST,
   NEW_REVIEW_SUCCESS,
+  NEW_SERVICE_FAIL,
+  NEW_SERVICE_REQUEST,
+  NEW_SERVICE_SUCCESS,
   USER_SERVICES_ERROR,
   USER_SERVICES_REQUEST,
   USER_SERVICES_SUCCESS,
@@ -97,5 +100,23 @@ export const newReview = (userData) => async (dispatch) => {
     dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEW_REVIEW_FAIL, payload: error });
+  }
+};
+
+export const addNewService = (serviceData) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_SERVICE_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post("/services/new", serviceData, config);
+
+    dispatch({ type: NEW_SERVICE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: NEW_SERVICE_FAIL, payload: error });
   }
 };

@@ -4,11 +4,12 @@ export const DashBoardTabComponent = () => {
   return (
     <Fragment>
       <div className="dashboardflex">
+        {/* <div className="mgTopdashb"> */}
         <span
           style={{
             fontWeight: "bold",
             fontSize: "25px",
-            margin: "2% 0 2% 0",
+            margin: "4% 0 2% 0",
           }}
         >
           DashBoard:
@@ -32,6 +33,7 @@ export const DashBoardTabComponent = () => {
             <h2 className="totalAmountdiv">Rs.6776</h2>
           </div>
         </div>
+        {/* </div> */}
       </div>
     </Fragment>
   );

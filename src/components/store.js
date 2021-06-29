@@ -14,6 +14,7 @@ import {
 
 import {
   newReviewReducer,
+  newServiceReducer,
   serviceDetailsReducer,
   serviceReducer,
 } from "./redux/service/serviceReducer";
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   getMyOrders: getMyOrdersReducer,
   orderDetails: orderDetailsReducer,
   newReview: newReviewReducer,
+  newService: newServiceReducer,
 });
 
 const initialState = {};

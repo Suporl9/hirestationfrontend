@@ -122,6 +122,13 @@ export const NEW_REVIEW_SUCCESS = "NEW_REVIEW_SUCCESS";
 export const NEW_REVIEW_RESET = "NEW_REVIEW_RESET";
 export const NEW_REVIEW_FAIL = "NEW_REVIEW_FAIL";
 
+//new service
+
+export const NEW_SERVICE_REQUEST = "NEW_SERVICE_REQUEST";
+export const NEW_SERVICE_SUCCESS = "NEW_SERVICE_SUCCESS";
+export const NEW_SERVICE_FAIL = "NEW_SERVICE_FAIL";
+export const NEW_SERVICE_RESET = "NEW_SERVICE_RESET ";
+
 //cloudinary (avatar)
 
 // export const AVATAR_REQUEST = "AVATAR_REQUEST";

@@ -162,6 +162,37 @@
   margin-top: 5%;
   align-self: end;
 }
+
+.delete-btn {
+  padding: 9px 25px;
+  background-color: rgb(14, 13, 13);
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 100%;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  text-shadow: #000 2px;
+  outline: none;
+  margin-top: 5%;
+  align-self: end;
+}
+.edit-btn {
+  padding: 9px 25px;
+  background-color: rgb(6, 88, 126);
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 100%;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  text-shadow: #000 2px;
+  outline: none;
+  margin-top: 5%;
+  align-self: end;
+}
 .card-btn3 {
   padding: 9px 25px;
   background-color: #ff960d;
@@ -631,6 +662,13 @@ input[type="radio"] {
 }
 .h6boldii {
   font-weight: bold;
+  color: #fff;
+}
+.h6boldii1 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 15px;
+  margin-left: 10%;
 }
 .h6boldorder {
   font-weight: bold;
@@ -894,6 +932,12 @@ input[type="radio"] {
   flex-direction: column;
   width: 17rem;
 }
+.myServiceCard1 {
+  display: flex;
+  background-color: var(--main-dark);
+  flex-direction: column;
+  width: 18rem;
+}
 
 /* End of my Profile Page and Update */
 
@@ -1127,16 +1171,37 @@ input[type="radio"] {
   margin-bottom: 5%;
   /* text-shadow: none; */
 }
+.tab-selected1 {
+  padding: 10px 5px 5px 10px;
+  cursor: pointer;
+  /* margin-bottom: 5%; */
+  /* text-shadow: none; */
+}
 .active {
   background: rgb(26, 24, 22);
   border-radius: 4px;
 }
+.active1 {
+  background: rgb(31, 28, 25);
+  border-radius: 2px;
+}
+
 .dashboardflex {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: auto;
 }
+.dashboardflexnew {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  width: 90%;
+  margin: auto;
+}
+/* .mgTopdashb {
+  margin-top: -2%;
+} */
 .amountdiv {
   background-color: rgb(27, 126, 255);
   border-radius: 4px;
@@ -1186,9 +1251,80 @@ input[type="radio"] {
   background-color: rgb(27, 126, 255);
   width: 100%;
 } */
+
+.newServiceBg {
+  background-color: var(--main-dark);
+  margin: 5% 0 10% 0;
+  padding: 4%;
+  width: 70%;
+}
+.imgpreviewcontainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4%;
+}
+.labelname {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 4% 0 4% 0;
+}
+.gigsinput {
+  width: 100%;
+  font-weight: bold;
+  padding: 0.6rem;
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+  background-color: rgb(173, 196, 196);
+  height: 3rem;
+  margin-top: 2%;
+}
+.gigtitle1 {
+  display: flex;
+  flex-direction: row;
+  margin: 4% 0 4% 0;
+  /* height: 4rem; */
+}
+.categori {
+  margin-right: 5%;
+}
+.pricee {
+  position: relative;
+}
+.gigpinput {
+  padding-left: 7% !important;
+}
+.static-value {
+  position: absolute;
+  left: 10px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #444;
+  top: 65px;
+}
+
+.optionc {
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  /* height: 1rem; */
+  /* width: 50%; */
+}
+
+/* .gigtinput {
+  border-radius: 0 !important;
+} */
 /* End of DashBoard Section */
 
 @media (max-width: 1300px) {
+  .static-value {
+    top: 55px;
+  }
+  .gigpinput {
+    padding-left: 12% !important;
+  }
   .secondflexrow {
     display: flex;
     flex-direction: column;
@@ -1397,8 +1533,34 @@ input[type="radio"] {
   .h6boldii {
     font-size: 10px;
   }
+  .h6boldii1 {
+    font-size: 8px;
+  }
 }
 @media (max-width: 700px) {
+  .newServiceBg {
+    background-color: var(--main-dark);
+    margin: 5% 0 10% 0;
+    padding: 4%;
+    width: 100%;
+  }
+  .gigtitle1 {
+    display: flex;
+    flex-direction: column;
+    margin: 4% 0 8% 0;
+    /* height: 4rem; */
+  }
+  .static-value {
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #444;
+    top: 45px;
+  }
+  .gigpinput {
+    padding-left: 17% !important;
+  }
   .cards {
     display: flex;
     flex-direction: column;

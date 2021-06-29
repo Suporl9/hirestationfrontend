@@ -13,6 +13,10 @@ import {
   NEW_REVIEW_SUCCESS,
   NEW_REVIEW_FAIL,
   NEW_REVIEW_RESET,
+  NEW_SERVICE_REQUEST,
+  NEW_SERVICE_SUCCESS,
+  NEW_SERVICE_FAIL,
+  NEW_SERVICE_RESET,
 } from "../constants/Constants";
 
 const initialState = {
@@ -115,6 +119,41 @@ export const newReviewReducer = (state = {}, action) => {
         loading: false,
         error: action.payload.response.data.message,
       };
+    default:
+      return state;
+  }
+};
+export const newServiceReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case NEW_SERVICE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case NEW_SERVICE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: action.payload.success,
+        service: action.payload.service,
+      };
+
+    case NEW_SERVICE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
+      };
+
+    case NEW_SERVICE_RESET:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: null,
+      };
+
     default:
       return state;
   }

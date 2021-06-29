@@ -73,22 +73,49 @@ h2 {
 .right form {
   width: 328px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
 
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
   display: block;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 4px;
   border: none;
-  padding: 0.8rem;
+  background-color: rgb(210, 216, 216);
+  padding: 0.6rem;
   margin-bottom: 1.25rem;
   font-size: 1rem;
   outline: none;
   color: black;
 
   font-weight: 900;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(210, 216, 216);
+  padding: 0.6rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  outline: none;
+  color: black;
+
+  font-weight: 900;
+}
+form input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
 
 label {
