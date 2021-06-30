@@ -3,6 +3,9 @@ import axios from "axios";
 
 import {
   CLEAR_ERROR,
+  DELETE_SERVICE_FAIL,
+  DELETE_SERVICE_REQUEST,
+  DELETE_SERVICE_SUCCESS,
   FETCH_ERROR,
   FETCH_SERVICES,
   FETCH_SERVICE_DETAILS,
@@ -118,5 +121,17 @@ export const addNewService = (serviceData) => async (dispatch) => {
     dispatch({ type: NEW_SERVICE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEW_SERVICE_FAIL, payload: error });
+  }
+};
+
+export const deleteService = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_SERVICE_REQUEST });
+
+    const { data } = await axios.delete(`/services/${id}`);
+
+    dispatch({ type: DELETE_SERVICE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: DELETE_SERVICE_FAIL, payload: error });
   }
 };

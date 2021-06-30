@@ -1,20 +1,55 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserServices } from "../redux/service/serviceActions";
-import { Link } from "react-router-dom";
+import {
+  clearErrors,
+  deleteService,
+  getUserServices,
+} from "../redux/service/serviceActions";
+import { useAlert } from "react-alert";
+
+import { Link, useHistory } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 import { FaStar } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { SideBar } from "./SideBar";
 import { MdModeEdit } from "react-icons/md";
+import {
+  DELETE_SERVICE_CLEAR_ERROR,
+  DELETE_SERVICE_RESET,
+} from "../redux/constants/Constants";
 
 export const MyServices = () => {
   const dispatch = useDispatch();
+  const { loading, services, error } = useSelector((state) => state.services);
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.deleteOrUpdateService
+  );
+  const history = useHistory();
+  const alert = useAlert();
   useEffect(() => {
     dispatch(getUserServices());
-  }, [dispatch]);
 
-  const { loading, services } = useSelector((state) => state.services);
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch({ type: DELETE_SERVICE_CLEAR_ERROR });
+    }
+
+    if (isDeleted) {
+      alert.success("Service Deleted Successfully!!");
+      history.push("/dashboard/services");
+      dispatch({ type: DELETE_SERVICE_RESET });
+    }
+  }, [dispatch, alert, history, isDeleted, error, deleteError]);
+
+  const deleteHandler = (id) => {
+    dispatch(deleteService(id));
+  };
+
   return (
     <Fragment>
       <div className="bg">
@@ -89,16 +124,17 @@ export const MyServices = () => {
                               <span>Edit</span>
                             </button>
                           </Link>
-                          <Link to={`/service/${service._id}`}>
-                            <button className="delete-btn">
-                              <AiFillDelete
-                                color="#fd4c4c"
-                                size="25"
-                                style={{ marginRight: "5%" }}
-                              />
-                              <span>Delete</span>
-                            </button>
-                          </Link>
+                          <button
+                            className="delete-btn"
+                            onClick={() => deleteHandler(service._id)}
+                          >
+                            <AiFillDelete
+                              color="#fd4c4c"
+                              size="25"
+                              style={{ marginRight: "5%" }}
+                            />
+                            <span>Delete</span>
+                          </button>
                         </div>
                       </div>
                     </div>

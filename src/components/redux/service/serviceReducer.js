@@ -17,6 +17,12 @@ import {
   NEW_SERVICE_SUCCESS,
   NEW_SERVICE_FAIL,
   NEW_SERVICE_RESET,
+  NEW_SERVICE_FAIL_RESET,
+  DELETE_SERVICE_REQUEST,
+  DELETE_SERVICE_SUCCESS,
+  DELETE_SERVICE_FAIL,
+  DELETE_SERVICE_RESET,
+  DELETE_SERVICE_CLEAR_ERROR,
 } from "../constants/Constants";
 
 const initialState = {
@@ -154,6 +160,48 @@ export const newServiceReducer = (state = initialState, action) => {
         error: null,
       };
 
+    case NEW_SERVICE_FAIL_RESET:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const deleteOrUpdateServiceReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case DELETE_SERVICE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case DELETE_SERVICE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isDeleted: action.payload.success,
+      };
+
+    case DELETE_SERVICE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
+      };
+    case DELETE_SERVICE_RESET:
+      return {
+        ...state,
+        loading: false,
+        isDeleted: false,
+      };
+
+    case DELETE_SERVICE_CLEAR_ERROR:
+      return { ...state, error: null };
     default:
       return state;
   }

@@ -55,14 +55,19 @@ export const MyWishList = () => {
                           <div key={cartItem._id} className="cardleft">
                             <div className="titleandphoto">
                               <Link
-                                to={`/service/${cartItem.service._id}`}
+                                to={`/service/${
+                                  cartItem.service && cartItem.service._id
+                                }`}
                                 style={{
                                   textDecoration: "none",
                                   color: "inherit",
                                 }}
                               >
                                 <img
-                                  src={cartItem.service.images[0].url}
+                                  src={
+                                    cartItem.service &&
+                                    cartItem.service.images[0].url
+                                  }
                                   alt="gig"
                                   style={{
                                     height: "100px",
@@ -73,20 +78,22 @@ export const MyWishList = () => {
                               </Link>
                               <span className="titlerow">
                                 <Link
-                                  to={`/service/${cartItem.service._id}`}
+                                  to={`/service/${
+                                    cartItem.service && cartItem.service._id
+                                  }`}
                                   style={{
                                     textDecoration: "none",
                                     color: "inherit",
                                   }}
                                 >
-                                  {cartItem.service.title}
+                                  {cartItem.service && cartItem.service.title}
                                 </Link>
                               </span>
                               {/* </Link> */}
                             </div>
 
                             <h2 style={{ marginTop: "20px" }}>
-                              Rs.{cartItem.service.price}
+                              Rs.{cartItem.service && cartItem.service.price}
                             </h2>
                             <div className="btns">
                               <button
@@ -150,7 +157,11 @@ export const MyWishList = () => {
                 <h5 className="h6bold">Total Price:</h5>
                 <h5 className="h6bold">
                   Rs.
-                  {cartItems.reduce((acc, item) => item.service.price + acc, 0)}
+                  {cartItems &&
+                    cartItems.reduce(
+                      (acc, item) => item.service.price + acc,
+                      0
+                    )}
                 </h5>
               </div>
             </div>
