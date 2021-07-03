@@ -114,7 +114,7 @@ export const MyServices = () => {
                           <Link to={`/service/${service._id}`}>
                             <button className="card-btn">View details</button>
                           </Link>
-                          <Link to={`/service/${service._id}`}>
+                          <Link to={`/dashboard/service/${service._id}`}>
                             <button className="edit-btn">
                               <MdModeEdit
                                 color="#d1c51c"

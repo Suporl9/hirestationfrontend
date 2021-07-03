@@ -23,6 +23,12 @@ import {
   DELETE_SERVICE_FAIL,
   DELETE_SERVICE_RESET,
   DELETE_SERVICE_CLEAR_ERROR,
+  UPDATE_SERVICE_REQUEST,
+  UPDATE_SERVICE_SUCCESS,
+  UPDATE_SERVICE_FAIL,
+  UPDATE_SERVICE_RESET,
+  UPDATE_SERVICE_CLEAR_ERROR,
+  FETCH_SERVICE_DETAILS_RESET_ERROR,
 } from "../constants/Constants";
 
 const initialState = {
@@ -92,6 +98,13 @@ export const serviceDetailsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.response.data.message,
+      };
+
+    case FETCH_SERVICE_DETAILS_RESET_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: null,
       };
     default:
       return state;
@@ -174,6 +187,7 @@ export const newServiceReducer = (state = initialState, action) => {
 
 export const deleteOrUpdateServiceReducer = (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_SERVICE_REQUEST:
     case DELETE_SERVICE_REQUEST:
       return {
         ...state,
@@ -187,12 +201,20 @@ export const deleteOrUpdateServiceReducer = (state = initialState, action) => {
         isDeleted: action.payload.success,
       };
 
+    case UPDATE_SERVICE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload.success,
+      };
+    case UPDATE_SERVICE_FAIL:
     case DELETE_SERVICE_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload.response.data.message,
       };
+
     case DELETE_SERVICE_RESET:
       return {
         ...state,
@@ -200,8 +222,18 @@ export const deleteOrUpdateServiceReducer = (state = initialState, action) => {
         isDeleted: false,
       };
 
+    case UPDATE_SERVICE_RESET:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: false,
+      };
+    case UPDATE_SERVICE_CLEAR_ERROR:
     case DELETE_SERVICE_CLEAR_ERROR:
-      return { ...state, error: null };
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

@@ -18,6 +18,9 @@ import {
   NEW_SERVICE_FAIL,
   NEW_SERVICE_REQUEST,
   NEW_SERVICE_SUCCESS,
+  UPDATE_SERVICE_FAIL,
+  UPDATE_SERVICE_REQUEST,
+  UPDATE_SERVICE_SUCCESS,
   USER_SERVICES_ERROR,
   USER_SERVICES_REQUEST,
   USER_SERVICES_SUCCESS,
@@ -133,5 +136,22 @@ export const deleteService = (id) => async (dispatch) => {
     dispatch({ type: DELETE_SERVICE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: DELETE_SERVICE_FAIL, payload: error });
+  }
+};
+
+export const updateService = (id, serviceData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_SERVICE_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put(`/services/${id}`, serviceData, config);
+
+    dispatch({ type: UPDATE_SERVICE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: UPDATE_SERVICE_FAIL, payload: error });
   }
 };
