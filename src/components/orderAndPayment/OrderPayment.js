@@ -35,6 +35,7 @@ export const OrderPayment = () => {
     orderInfo,
     // paymentInfo: orderInfo,
     totalPrice: cartItem && cartItem.service.price,
+    adminUser: cartItem.service && cartItem.service.user[0],
   };
   const stripe = useStripe();
   const elements = useElements();
@@ -44,6 +45,7 @@ export const OrderPayment = () => {
   const history = useHistory();
 
   useEffect(() => {
+    // console.log(cartItem.service.user[0]);
     dispatch(getCartItetmSession());
     dispatch(getOrderInfoSession());
     if (error) {

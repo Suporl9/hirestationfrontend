@@ -5,7 +5,7 @@ import { FaLaptopCode, FaPlus } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
 import { CgNotes } from "react-icons/cg";
 import { Link } from "react-router-dom";
-export const SideBar = ({ dashBoard, servicees, users, orders }) => {
+export const SideBar = ({ dashBoard, servicees, users, myOrders }) => {
   return (
     <Fragment>
       <div className="sideBarBg">
@@ -150,7 +150,7 @@ export const SideBar = ({ dashBoard, servicees, users, orders }) => {
               </div>
             </Link>
           )}
-          {orders ? (
+          {myOrders ? (
             <Link
               to="/dashboard/orders"
               style={{
