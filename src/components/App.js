@@ -39,6 +39,7 @@ import { NewService } from "./Admin/NewService";
 import { UpdateService } from "./Admin/UpdateService";
 import { MyServiceOrders } from "./Admin/MyServiceOrders";
 import { AdminOrderDetails } from "./Admin/AdminOrderDetails";
+import { UserProfile } from "./layout/UserProfile";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -79,6 +80,7 @@ function App() {
 
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/user/:id" component={UserProfile} />
         <ProtectedRoute path="/me" exact component={MyProfile} />
         <ProtectedRoute path="/me/update" component={UpdateForm} />
         <ProtectedRoute

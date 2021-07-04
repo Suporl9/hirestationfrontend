@@ -25,6 +25,7 @@ import {
 import {
   authReducer,
   forgotPasswodReducer,
+  userDetailsReducer,
   userUpdateReducer,
 } from "./redux/user/userReducer";
 
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
   newService: newServiceReducer,
   deleteOrUpdateService: deleteOrUpdateServiceReducer,
   updateOrder: updateOrderReducer,
+  userDetails: userDetailsReducer,
 });
 
 const initialState = {};

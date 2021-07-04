@@ -45,19 +45,19 @@ export const MyProfile = () => {
                   className="cardetailsbtn"
                   style={{ margin: "1rem 0 0.5rem 0" }}
                 >
-                  <Link to="me/update">
+                  <Link to="/me/update">
                     <button className="card-btn">Update Profile</button>
                   </Link>
-                  <Link to="me/updatePassword">
+                  <Link to="/me/updatePassword">
                     <button className="card-btn">Change Password</button>
                   </Link>
                 </div>
               </div>
               <div className="secondprofilecard">
-                <Link to="/orders" style={{ textDecoration: "none" }}>
+                <Link to="/orders/me" style={{ textDecoration: "none" }}>
                   <h6 className="ordersh6 a">My Orders</h6>
                 </Link>
-                <Link to="/orders" style={{ textDecoration: "none" }}>
+                <Link to="/dashboard" style={{ textDecoration: "none" }}>
                   <h6 className="ordersh6">DashBoard</h6>
                 </Link>
               </div>
@@ -77,7 +77,9 @@ export const MyProfile = () => {
                   {user.bio ? (
                     user.bio
                   ) : (
-                    <Fragment>(No Bio Available)</Fragment>
+                    <Fragment>
+                      <p>No Bio Available</p>
+                    </Fragment>
                   )}
                 </h6>
               </div>

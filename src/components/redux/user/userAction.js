@@ -13,6 +13,9 @@ import {
   FORGOT_PASSWORD_ERROR,
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
+  GET_USER_DETAILS_FAIL,
+  GET_USER_DETAILS_REQUEST,
+  GET_USER_DETAILS_SUCCESS,
   LOAD_USER_ERROR,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
@@ -177,11 +180,24 @@ export const resetPassword = (token, password) => async (dispatch) => {
   }
 };
 
+export const getUserDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_USER_DETAILS_REQUEST });
+
+    const { data } = await axios.get(`/auth/user/${id}`);
+
+    dispatch({ type: GET_USER_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: GET_USER_DETAILS_FAIL, payload: error });
+  }
+};
+
 export const clearErrors = () => async (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
   });
 };
+
 // export const avatarUpdate = (avatar) => async (dispatch) => {
 //   try {
 //     dispatch({ type: AVATAR_REQUEST });

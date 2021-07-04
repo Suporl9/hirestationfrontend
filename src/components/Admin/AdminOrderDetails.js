@@ -88,6 +88,17 @@ export const AdminOrderDetails = () => {
                     <h6 className="h6bold" style={{ marginTop: "1.5%" }}>
                       email : {orderDetails.user && orderDetails.user.email}
                     </h6>
+
+                    <Link
+                      to={`/user/${orderDetails.user && orderDetails.user._id}`}
+                    >
+                      <button
+                        className="card-btn"
+                        style={{ marginBottom: "3%" }}
+                      >
+                        View Profile
+                      </button>
+                    </Link>
                   </div>
                   <div className="orderdeliverflex">
                     <h5 className="h6boldorderi">Payment :</h5>

@@ -2,12 +2,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import meImg from "../Home/testimgs/me.JPG";
-import { ReactComponent as Star } from "../Home/testimgs/star.svg";
-// import { ReactComponent as Calendar } from "../Home/testimgs/calendar.svg";
-// import { ReactComponent as Cart } from "../Home/testimgs/shopping-cart.svg";
-// import { ReactComponent as Comment } from "../Home/testimgs/comment.svg";
-import { Card } from "react-bootstrap";
 
+import { Card } from "react-bootstrap";
+import { FcComments } from "react-icons/fc";
+import { MdShoppingCart } from "react-icons/md";
+import { FaStar } from "react-icons/fa";
+import { GiModernCity } from "react-icons/gi";
+import { FcBusinessman } from "react-icons/fc";
+import { AiFillInfoCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getServiceDetails } from "../redux/service/serviceActions";
 import "../Home/CSS/home.css";
@@ -52,10 +54,10 @@ const ServiceDetails = () => {
 
   const itemExists = (id) => {
     return cartItems.some((el) => {
-      return el.service._id === id;
+      return el.service && el.service._id === id;
     });
   };
-  // console.log(itemExists(id));
+  console.log(itemExists(id));
 
   return (
     <Fragment>
@@ -70,22 +72,32 @@ const ServiceDetails = () => {
                   <div className="serviceDetails">
                     <h1 className="servicetitleh1">{service.title}</h1>
                     <div className="userandreviewflexrow">
-                      <img src={meImg} alt="user" className="meimg" />
+                      <img
+                        src={service.user && service.user[0].avatar.url}
+                        alt="user"
+                        className="meimg"
+                      />
                       <h5 className="userh5">{service.seller}</h5>
                       <div className="vl"></div>
                       <h6
                         className="h6bold"
                         style={{ marginTop: "0.6rem", marginRight: "3%" }}
                       >
-                        Category : &nbsp;&nbsp; {service.category}
+                        Category : &nbsp; {service.category}
                       </h6>
                       <div className="vl"></div>
                       <div
                         className="starRating1"
                         style={{ marginLeft: "-0.5rem" }}
                       >
-                        <Star />
-                        <div className="serviceRating1">{service.ratings}</div>
+                        <FaStar size="22" color="orange" />
+
+                        <div
+                          className="serviceRating1"
+                          // style={{ marginLeft: "2%" }}
+                        >
+                          {service.ratings}
+                        </div>
                         <div className="no_of_reviews1">
                           {service.numOfReviews > 1 ? (
                             <Fragment>
@@ -136,7 +148,8 @@ const ServiceDetails = () => {
                         <Card.Body>
                           <div className="cardtitle">
                             <div className="starRating">
-                              <Star />
+                              <FaStar size="25" color="orange" />
+
                               <div
                                 className="serviceRating"
                                 style={{ fontWeight: "bold" }}
@@ -167,7 +180,7 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <FaStar size="25" color="orange" />
                               </div>
                               <h6 className="h6bold li">Overall Rate</h6>
                             </div>
@@ -176,7 +189,10 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <FcComments
+                                  size="25"
+                                  style={{ marginRight: "5px" }}
+                                />{" "}
                               </div>
                               <h6 className="h6bold li">Reviews</h6>
                             </div>
@@ -185,20 +201,15 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <MdShoppingCart
+                                  color="rgb(27, 126, 255)"
+                                  size="25"
+                                  style={{ marginRight: "5px" }}
+                                />
                               </div>
                               <h6 className="h6bold li">Orders</h6>
                             </div>
                             <h6 className="h6bold">0</h6>
-                          </div>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
-                                <Star />
-                              </div>
-                              <h6 className="h6bold li">Time of Delivery</h6>
-                            </div>
-                            <h6 className="h6bold">2 weeks</h6>
                           </div>
                         </Card.Body>
                         <div className="hl2"></div>
@@ -231,7 +242,11 @@ const ServiceDetails = () => {
                       >
                         <Card.Body>
                           <div className="userpp">
-                            <img src={meImg} alt="me" className="meimg"></img>
+                            <img
+                              src={service.user && service.user[0].avatar.url}
+                              alt="me"
+                              className="meimg"
+                            ></img>
                             <h6 className="h6bold" style={{ marginTop: "5%" }}>
                               {service.seller}
                             </h6>
@@ -242,7 +257,10 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <GiModernCity
+                                  size="25"
+                                  color="rgb(6, 142, 253)"
+                                />
                               </div>
                               <h6 className="h6bold li">From</h6>
                             </div>
@@ -251,7 +269,7 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <FcBusinessman size="25" />
                               </div>
                               <h6 className="h6bold li">Member Since</h6>
                             </div>
@@ -263,7 +281,10 @@ const ServiceDetails = () => {
                           <div className="bodydetails">
                             <div className="leftdetails">
                               <div className="starRating">
-                                <Star />
+                                <AiFillInfoCircle
+                                  size="25"
+                                  color="rgb(6, 253, 150"
+                                />
                               </div>
                               <h5
                                 className="h6bold"
@@ -289,7 +310,9 @@ const ServiceDetails = () => {
                           <Link to={`/${service._id}`}>
                             <button className="card-btn">Contact Me</button>
                           </Link>
-                          <Link to={`/${service._id}`}>
+                          <Link
+                            to={`/user/${service.user && service.user[0]._id}`} //populate this
+                          >
                             <button className="card-btn">View Profile</button>
                           </Link>
                         </Card.Footer>
@@ -302,7 +325,10 @@ const ServiceDetails = () => {
                 <div className="reviewpanel">
                   <div className="reviewcontent">
                     <div className="reviewsandreviewbtn">
-                      <h1 className="servicetitleh1">Reviews(2 total)</h1>
+                      <h1 className="servicetitleh1">
+                        Reviews({service.reviews && service.reviews.length}{" "}
+                        total)
+                      </h1>
                       <button onClick={togglePopUp} className="card-btn3">
                         Submit Review
                       </button>
@@ -322,11 +348,13 @@ const ServiceDetails = () => {
                                     className="meimg"
                                   />
                                 </div>
+                                {/* <Link to={`/user/${review && review.user._id}`}> */}
                                 <div className="username">{review.name}</div>
+                                {/* </Link> */}
                               </div>
                               <div className="reviewfield">
                                 <div className="starRating">
-                                  <Star />
+                                  <FaStar size="25" color="orange" />
                                   <div
                                     className="serviceRating3"
                                     style={{

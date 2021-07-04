@@ -25,10 +25,15 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_ERROR,
+  GET_USER_DETAILS_REQUEST,
+  GET_USER_DETAILS_SUCCESS,
+  GET_USER_DETAILS_FAIL,
+  GET_USER_DETAILS_CLEAR_ERROR,
 } from "../constants/Constants";
 
 const initialState = {
   user: {},
+  userDet: {},
   loading: false,
   error: "",
   isAuthenticated: false,
@@ -85,6 +90,36 @@ export const authReducer = (state = initialState, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const userDetailsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_USER_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case GET_USER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        userDet: action.payload.user,
+      };
+    case GET_USER_DETAILS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.response.data.message,
+      };
+    case GET_USER_DETAILS_CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

@@ -157,11 +157,11 @@ export const MyWishList = () => {
                 <h5 className="h6bold">Total Price:</h5>
                 <h5 className="h6bold">
                   Rs.
-                  {cartItems &&
+                  {/* {cartItems &&
                     cartItems.reduce(
                       (acc, item) => item.service.price + acc,
                       0
-                    )}
+                    )} */}
                 </h5>
               </div>
             </div>

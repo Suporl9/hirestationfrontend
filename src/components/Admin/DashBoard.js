@@ -31,10 +31,7 @@ export const DashBoard = () => {
                   <h2 className="totalAmountdiv">Services:</h2>
                   <h2 className="totalAmountdiv">Rs.6776</h2>
                 </div>
-                <div className="usersdiv">
-                  <h2 className="totalAmountdiv">Users:</h2>
-                  <h2 className="totalAmountdiv">Rs.6776</h2>
-                </div>
+
                 <div className="ordersdiv">
                   <h2 className="totalAmountdiv">Orders:</h2>
                   <h2 className="totalAmountdiv">Rs.6776</h2>

@@ -870,6 +870,11 @@ input[type="radio"] {
   flex-direction: column;
   /* width: 65%; */
 }
+.profilecardsleft1 {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
 
 .profilecardsleftupdate {
   display: flex;
@@ -923,6 +928,11 @@ input[type="radio"] {
 
 .profilecardsright {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.profilecardsright1 {
+  /* width: 90%; */
   display: flex;
   flex-direction: column;
 }
@@ -1320,20 +1330,13 @@ input[type="radio"] {
   padding: 10% 12%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  margin-right: 2%;
   /* margin-right: 5%; */
 }
-.usersdiv {
-  background-color: rgb(22, 115, 158);
-  border-radius: 4px;
-  padding: 10% 12%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin-right: 5%; */
-}
+
 .ordersdiv {
   background-color: rgb(179, 44, 20);
   border-radius: 4px;
@@ -1342,6 +1345,7 @@ input[type="radio"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 /* .totalAmountdiv {
   background-color: rgb(27, 126, 255);
@@ -1485,6 +1489,9 @@ input[type="radio"] {
   .profilecardsright {
     width: 100%;
   }
+  .profilecardsright1 {
+    width: 100%;
+  }
   .myitemscardright {
     width: 100%;
     margin: 8.8% 0 15% 0;
@@ -1568,6 +1575,9 @@ input[type="radio"] {
   }
 
   .profilecardsleft {
+    width: 100%;
+  }
+  .profilecardsleft1 {
     width: 100%;
   }
 
