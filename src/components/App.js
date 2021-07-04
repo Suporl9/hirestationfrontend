@@ -38,6 +38,7 @@ import { MyServices } from "./Admin/MyServices";
 import { NewService } from "./Admin/NewService";
 import { UpdateService } from "./Admin/UpdateService";
 import { MyServiceOrders } from "./Admin/MyServiceOrders";
+import { AdminOrderDetails } from "./Admin/AdminOrderDetails";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -110,6 +111,11 @@ function App() {
         <ProtectedRoute
           path="/dashboard/orders"
           component={MyServiceOrders}
+          exact
+        />
+        <ProtectedRoute
+          path="/dashboard/serviceDetails/:id"
+          component={AdminOrderDetails}
           exact
         />
 

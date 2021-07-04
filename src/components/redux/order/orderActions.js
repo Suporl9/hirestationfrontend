@@ -4,12 +4,18 @@ import {
   CREATE_ORDER_FAIL,
   CREATE_ORDER_REQUEST,
   CREATE_ORDER_SUCCESS,
+  GET_ADMIN_ORDERS_ERROR,
+  GET_ADMIN_ORDERS_REQUEST,
+  GET_ADMIN_ORDERS_SUCCESS,
   GET_ORDERS_FAIL,
   GET_ORDERS_REQUEST,
   GET_ORDERS_SUCCESS,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
+  UPDATE_ORDER_FAIL,
+  UPDATE_ORDER_REQUEST,
+  UPDATE_ORDER_SUCCESS,
 } from "../constants/Constants";
 
 export const createOrder = (order) => async (dispatch) => {
@@ -45,6 +51,18 @@ export const myOrders = () => async (dispatch) => {
   }
 };
 
+export const getAdminOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ADMIN_ORDERS_REQUEST });
+
+    const { data } = await axios.get("/order/myOrders");
+
+    dispatch({ type: GET_ADMIN_ORDERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: GET_ADMIN_ORDERS_ERROR, payload: error });
+  }
+};
+
 export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
@@ -54,6 +72,28 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ORDER_DETAILS_FAIL, payload: error });
+  }
+};
+
+export const updateOrder = (id, orderData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ORDER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put(
+      `/order/myOrders/${id}`,
+      orderData,
+      config
+    );
+
+    dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: UPDATE_ORDER_FAIL, payload: error });
   }
 };
 

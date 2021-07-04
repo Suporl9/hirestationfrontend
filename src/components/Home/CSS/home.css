@@ -427,6 +427,26 @@ input[type="radio"] {
   border-color: #f83636 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+.loader2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  width: 80px;
+  height: 80px;
+  padding-left: 0;
+}
+.loader2:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #f83636;
+  border-color: #f83636 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
@@ -678,6 +698,7 @@ input[type="radio"] {
 .h6boldorder {
   font-weight: bold;
   display: flex;
+  font-size: 19px;
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--main-dark);
@@ -1187,6 +1208,15 @@ input[type="radio"] {
   text-shadow: none;
   border-radius: 4px;
   padding: 0.4rem;
+  font-size: 22px;
+}
+.notpaid1 {
+  text-transform: uppercase;
+  color: #f83636;
+  text-shadow: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 22px;
 }
 .paid {
   text-transform: uppercase;
@@ -1194,6 +1224,15 @@ input[type="radio"] {
   text-shadow: none;
   border-radius: 4px;
   padding: 0.4rem;
+  font-size: 22px;
+}
+.paid1 {
+  text-transform: uppercase;
+  color: rgb(11, 199, 11);
+  text-shadow: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 20px;
 }
 /* .paid{
 
@@ -1374,6 +1413,31 @@ input[type="radio"] {
   border-radius: 0 !important;
 } */
 /* End of DashBoard Section */
+
+/* admin order Details page */
+
+.dashoarddetailsmr {
+  /* display: flex;
+  flex-direction: row; */
+  width: 80%;
+  margin: auto;
+}
+.dashoarddetailsflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.orderdetailss {
+  width: 80%;
+}
+.changestatus {
+  width: 25%;
+  margin: 5% 0 0 5%;
+}
+.oditm {
+  font-size: 22px !important;
+}
+/* end of admin order Details page */
 
 @media (max-width: 1300px) {
   .static-value {
@@ -1613,6 +1677,9 @@ input[type="radio"] {
   .liTitle {
     font-size: 15px;
   }
+  .h6bold {
+    font-size: 15px !important;
+  }
   .h6boldii {
     font-size: 10px;
   }
@@ -1620,13 +1687,47 @@ input[type="radio"] {
     font-size: 8px;
   }
   .titlerow {
-    font-size: 14px;
+    font-size: 15px !important;
+  }
+  .h2price {
+    font-size: 15px !important;
+  }
+  .oditm {
+    font-size: 20px !important;
+  }
+  .h6boldorderi {
+    font-size: 17px;
+  }
+
+  .h6boldorder {
+    font-size: 13px !important;
   }
   .flexdownorder {
     padding: 3%;
   }
   .myitemscardleftorder {
     margin: 5% 0 5% 0;
+  }
+  .dashoarddetailsflex {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .changestatus {
+    width: 80%;
+    margin: 5% 0 0 0;
+  }
+  .notpaid {
+    font-size: 20px;
+    margin-top: 5%;
+  }
+  .paid {
+    margin-top: 5%;
+    font-size: 20px;
+  }
+  .orderdeliverflex {
+    display: flex;
+    flex-direction: column;
   }
 }
 @media (max-width: 700px) {

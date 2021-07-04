@@ -7,9 +7,11 @@ import {
   getCartItemsReducer,
 } from "./redux/cart/cartReducer";
 import {
+  getAdminOrdersReducer,
   getMyOrdersReducer,
   newOrderReducer,
   orderDetailsReducer,
+  updateOrderReducer,
 } from "./redux/order/orderReducer";
 
 import {
@@ -37,10 +39,12 @@ const rootReducer = combineReducers({
   deleteCartItem: deleteCartReducer,
   newOrder: newOrderReducer,
   getMyOrders: getMyOrdersReducer,
+  getAdminOrders: getAdminOrdersReducer,
   orderDetails: orderDetailsReducer,
   newReview: newReviewReducer,
   newService: newServiceReducer,
   deleteOrUpdateService: deleteOrUpdateServiceReducer,
+  updateOrder: updateOrderReducer,
 });
 
 const initialState = {};
