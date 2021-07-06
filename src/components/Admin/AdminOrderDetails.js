@@ -77,15 +77,15 @@ export const AdminOrderDetails = () => {
                       className="hl"
                       style={{ marginTop: "1.5%", marginBottom: "3%" }}
                     ></div>
-                    <h6 className="h6bold">
+                    <h6 className="h6boldii">
                       Name : {orderDetails.user && orderDetails.user.fullname}
                     </h6>
-                    <h6 className="h6bold" style={{ marginTop: "1.5%" }}>
+                    <h6 className="h6boldii" style={{ marginTop: "1.5%" }}>
                       phone Number :
                       {orderDetails.orderInfo &&
                         orderDetails.orderInfo.phoneNumber}
                     </h6>
-                    <h6 className="h6bold" style={{ marginTop: "1.5%" }}>
+                    <h6 className="h6boldii" style={{ marginTop: "1.5%" }}>
                       email : {orderDetails.user && orderDetails.user.email}
                     </h6>
 

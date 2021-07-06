@@ -9,7 +9,7 @@ export const CheckOutSteps = ({ orderInfo, confirmOrder, payment }) => {
       {orderInfo ? (
         <Link to="/order" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="numandinfo">
-            <div className="num active">1</div>
+            <div className="num active2">1</div>
             <div className="step active-step">Order Info</div>
           </div>
         </Link>
@@ -22,7 +22,7 @@ export const CheckOutSteps = ({ orderInfo, confirmOrder, payment }) => {
         </Link>
       )}
       <div className="arrow">
-        <Arrow />
+        <Arrow className="arrowSvg" />
       </div>
       {confirmOrder ? (
         <Link
@@ -30,7 +30,7 @@ export const CheckOutSteps = ({ orderInfo, confirmOrder, payment }) => {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div className="numandinfo">
-            <div className="num active one">2</div>
+            <div className="num active2 one">2</div>
             <div className="step active-step">Confirm Order</div>
           </div>
         </Link>
@@ -43,7 +43,7 @@ export const CheckOutSteps = ({ orderInfo, confirmOrder, payment }) => {
         </Link>
       )}
       <div className="arrow">
-        <Arrow />
+        <Arrow className="arrowSvg" />
       </div>
       {payment ? (
         <Link
@@ -51,7 +51,7 @@ export const CheckOutSteps = ({ orderInfo, confirmOrder, payment }) => {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div className="numandinfo">
-            <div className="num active one">3</div>
+            <div className="num active2 one">3</div>
             <div className="step active-step">Payment</div>
           </div>
         </Link>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
-import meImg from "../Home/testimgs/me.JPG";
+// import meImg from "../Home/testimgs/me.JPG";
 
 import { Card } from "react-bootstrap";
 import { FcComments } from "react-icons/fc";
@@ -80,10 +80,10 @@ const ServiceDetails = () => {
                       <h5 className="userh5">{service.seller}</h5>
                       <div className="vl"></div>
                       <h6
-                        className="h6bold"
+                        className="h6boldii"
                         style={{ marginTop: "0.6rem", marginRight: "3%" }}
                       >
-                        Category : &nbsp; {service.category}
+                        Category: &nbsp; {service.category}
                       </h6>
                       <div className="vl"></div>
                       <div
@@ -96,7 +96,7 @@ const ServiceDetails = () => {
                           className="serviceRating1"
                           // style={{ marginLeft: "2%" }}
                         >
-                          {service.ratings}
+                          {service.ratings}&nbsp;
                         </div>
                         <div className="no_of_reviews1">
                           {service.numOfReviews > 1 ? (
@@ -128,7 +128,12 @@ const ServiceDetails = () => {
                     </div>
 
                     <div className="gigdescription">
-                      <h1 className="servicetitleh1">About This Gig</h1>
+                      <h1
+                        className="servicetitleh1"
+                        style={{ paddingTop: "4%" }}
+                      >
+                        About This Gig
+                      </h1>
 
                       <p className="descriptp" style={{ fontWeight: "bold" }}>
                         {service.description}
@@ -141,10 +146,7 @@ const ServiceDetails = () => {
                 <div className="detailsflexright">
                   <div className="twoCards">
                     <div className="servicedetailscard">
-                      <Card
-                        style={{ width: "22rem" }}
-                        className="cardServiceDetails"
-                      >
+                      <Card className="cardServiceDetails">
                         <Card.Body>
                           <div className="cardtitle">
                             <div className="starRating">
@@ -166,7 +168,7 @@ const ServiceDetails = () => {
                         <Card.Body>
                           <div className="contbeforeOrder">
                             <h6
-                              className="h6bold"
+                              className="h6boldii"
                               style={{ lineHeight: "1.6" }}
                             >
                               Contact Me Before Ordering for your project
@@ -231,15 +233,14 @@ const ServiceDetails = () => {
                         <div className="hl2"></div>
                         <Card.Footer>
                           <h4 style={{ fontWeight: "bold" }}>Extra</h4>
-                          <h6>No extra services right now.</h6>
+                          <h6 className="h6boldii">
+                            No extra services right now.
+                          </h6>
                         </Card.Footer>
                       </Card>
                     </div>
                     <div className="aboutsellercard">
-                      <Card
-                        style={{ width: "22rem" }}
-                        className="cardServiceDetails"
-                      >
+                      <Card className="cardServiceDetails">
                         <Card.Body>
                           <div className="userpp">
                             <img
@@ -343,7 +344,7 @@ const ServiceDetails = () => {
                               <div className="userpicandname">
                                 <div className="userpic">
                                   <img
-                                    src={meImg}
+                                    src={review.user && review.user.avatar.url}
                                     alt="user"
                                     className="meimg"
                                   />

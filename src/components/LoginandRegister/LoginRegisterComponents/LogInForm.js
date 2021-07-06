@@ -7,7 +7,8 @@ import { Link, useHistory } from "react-router-dom";
 import { Login } from "../../redux/user/userAction";
 import "../CSS/LoginRegister.css";
 import { Loader } from "../../layout/Loader";
-// import { useAlert } from "react-alert";
+import { CLEAR_ERRORS } from "../../redux/constants/Constants";
+import { useAlert } from "react-alert";
 
 //alert error to be done later
 function Loginform() {
@@ -16,9 +17,11 @@ function Loginform() {
   const history = useHistory();
   const emailref = useRef(null);
   const dispatch = useDispatch();
-  // const alert = useAlert();
+  const alert = useAlert();
 
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     // console.log(error);
@@ -26,11 +29,11 @@ function Loginform() {
     if (isAuthenticated) {
       history.push("/");
     }
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
-  }, [history, isAuthenticated]);
+    if (error) {
+      alert.error(error);
+      dispatch({ type: CLEAR_ERRORS });
+    }
+  }, [history, isAuthenticated, dispatch, error, alert]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -66,7 +69,7 @@ function Loginform() {
                   <input
                     className="email"
                     name="email"
-                    type="text"
+                    type="email"
                     ref={emailref}
                     value={email}
                     onChange={(e) => {
@@ -91,12 +94,12 @@ function Loginform() {
                     Forgot password?
                   </h6>
                 </Link>
-                <div className="input-container cta">
+                {/* <div className="input-container cta">
                   <label className="checkbox-container">
                     <input type="checkbox" />
                     <span className="checkmark">Remember me.</span>
                   </label>
-                </div>
+                </div> */}
                 <button className="signup-btn" type="submit">
                   Log In
                 </button>

@@ -537,8 +537,8 @@ input[type="radio"] {
 
 .detailsflexrow {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-
   padding: 7% 0 0 0;
   position: relative;
 }
@@ -549,7 +549,7 @@ input[type="radio"] {
 .detailsflexleft {
   margin-left: -2rem;
   /* margin-right: 2rem; */
-  padding-right: 2rem;
+  padding-right: 5%;
   /* border: 0.2px solid gray; */
   border-radius: 5px;
   background-color: var(--main-dark);
@@ -656,21 +656,24 @@ input[type="radio"] {
   font-weight: bold;
 }
 .detailsflexright {
-  position: relative;
-  margin-left: 2rem;
+  display: flex;
+  /* margin-left: 2rem; */
+  flex-direction: column;
+  margin-left: 2%;
+  justify-content: center;
 }
 
-.servicedetailscard {
+/* .servicedetailscard {
   position: sticky;
   left: 0;
   top: 0;
   bottom: 1rem;
-}
-.card {
+} */
+/* .card {
   position: sticky;
   right: 0;
   top: 0;
-}
+} */
 .twoCards {
   display: flex;
   flex-direction: column;
@@ -838,6 +841,14 @@ input[type="radio"] {
   background-color: #fd4c4c;
 } */
 .myprofilebody1 {
+  width: 80%;
+  margin: auto;
+  /* padding-top: 5%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.myprofilebodyforspan {
   width: 80%;
   margin: auto;
   padding-top: 5%;
@@ -1032,7 +1043,7 @@ input[type="radio"] {
   background-color: var(--main-dark);
   padding: 1.5rem;
   display: flex;
-  margin: 8.4% 0 15% 5%;
+  margin: 5% 0 15% 5%;
   height: 15rem;
   flex-direction: column;
   justify-content: center;
@@ -1287,6 +1298,10 @@ input[type="radio"] {
   background: rgb(26, 24, 22);
   border-radius: 4px;
 }
+.active2 {
+  background: #f83636;
+  border-radius: 50%;
+}
 .active1 {
   background: rgb(31, 28, 25);
   border-radius: 2px;
@@ -1442,7 +1457,9 @@ input[type="radio"] {
   font-size: 22px !important;
 }
 /* end of admin order Details page */
-
+.cardServiceDetails {
+  width: 22rem;
+}
 @media (max-width: 1300px) {
   .static-value {
     top: 55px;
@@ -1474,10 +1491,8 @@ input[type="radio"] {
   .detailsflexrow {
     display: flex;
     flex-direction: column;
+    /* padding: 0; */
     /* align-items: center; */
-  }
-  .detailsflexright {
-    padding-top: 5rem;
   }
 
   .myServiceCards {
@@ -1505,6 +1520,12 @@ input[type="radio"] {
   .myprofilebody1 {
     display: flex;
     flex-direction: column;
+  }
+  .detailsflexright {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 @media (max-width: 1000px) {
@@ -1656,19 +1677,31 @@ input[type="radio"] {
   /* .num.active {
     background-color: #fd4c4c;
   } */
-  .num.active.one {
+  .active2 {
+    background: #f83636;
+    border-radius: 50%;
+  }
+
+  .num.active2.one {
     margin-left: 1.2rem;
   }
   .step {
-    line-height: 35px;
-    font-size: 14px;
+    line-height: 1.5;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgb(190, 184, 184);
     margin-right: 0.2rem;
   }
   .arrow {
     margin-top: 4px;
     margin-right: -15px;
+    /* margin-left: .; */
   }
+  /* .arrowSvg {
+    margin-left: -50px;
+  } */
   .checkout-progress {
     margin: 10% 0 5% 0;
   }
@@ -1691,10 +1724,11 @@ input[type="radio"] {
     font-size: 15px !important;
   }
   .h6boldii {
-    font-size: 10px;
+    font-size: 12px;
   }
   .h6boldii1 {
-    font-size: 8px;
+    font-size: 10px;
+    margin-left: 0;
   }
   .titlerow {
     font-size: 15px !important;
@@ -1770,11 +1804,12 @@ input[type="radio"] {
     margin-left: 2.3rem;
   }
   .imgcarousel {
-    width: 21rem;
+    width: 16rem;
   }
   .itemcarousel {
-    height: 12rem;
+    height: 10rem;
   }
+
   .firstuser {
     padding: 1rem 3rem 1rem 1rem;
     display: flex;
@@ -1815,9 +1850,11 @@ input[type="radio"] {
   }
   .servicetitleh1 {
     margin-bottom: 8%;
+    font-size: 19px;
   }
   .userandreviewflexrow {
     margin-bottom: 8%;
+    font-size: 15px;
   }
   .myServiceCards {
     display: flex;
@@ -1867,5 +1904,49 @@ input[type="radio"] {
   }
   .titleandphotoorder {
     margin-bottom: 5%;
+  }
+  .detailsflexleft {
+    margin-left: 0;
+    /* margin-right: 2rem; */
+    padding-right: 0;
+    /* border: 0.2px solid gray; */
+    border-radius: 5px;
+    background-color: var(--main-dark);
+  }
+  .detailsflexright {
+    margin-left: 0;
+  }
+  .cardServiceDetails {
+    width: 19rem;
+  }
+  .reviewdiv {
+    margin-left: 0;
+    margin-top: 10%;
+  }
+  /* .twoCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  } */
+  .starRating1 {
+    font-size: 12px !important;
+  }
+  .descriptp {
+    font-size: 17px;
+  }
+  .card-btn {
+    font-size: 12px !important;
+  }
+  .card-btn3 {
+    font-size: 12px !important;
+  }
+  .cards {
+    margin-left: 0;
+  }
+  .servicesearch {
+    margin-top: 10%;
+  }
+  .myServiceCard1 {
+    width: 15rem;
   }
 }

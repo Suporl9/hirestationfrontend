@@ -5,32 +5,46 @@ import "../CSS/LoginRegister.css";
 import defaultImg from "../img/default.png";
 import { Register } from "../../redux/user/userAction";
 import { Loader } from "../../layout/Loader";
+import { CLEAR_ERRORS } from "../../redux/constants/Constants";
+import { useAlert } from "react-alert";
 // import axios from "axios";
 // import { userContext } from "../../context/Globalcontext";
 
 function SignUpform() {
   const history = useHistory();
-  const [user, setUser] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-    passwordverify: "",
-  });
+  // const [user, setUser] = useState({
+  //   fullname: "",
+  //   email: "",
+  //   password: "",
+  //   passwordverify: "",
+  // });
+
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordverify, setPasswordVerify] = useState("");
 
   const [avatar, setAvatar] = useState("");
-
+  const alert = useAlert();
   const [avatarPreview, setAvatarPreview] = useState(defaultImg);
-  const { fullname, email, password, passwordverify } = user;
+  // const { fullname, email, password, passwordverify } = user;
   const dispatch = useDispatch();
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     if (isAuthenticated) {
       history.push("/");
     }
-  }, [history, isAuthenticated]);
+    if (error) {
+      alert.error(error);
+      dispatch({ type: CLEAR_ERRORS });
+    }
+  }, [history, isAuthenticated, error, alert, dispatch]);
   const submitHandler = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.set("fullname", fullname);
     formData.set("email", email);
@@ -58,8 +72,6 @@ function SignUpform() {
 
       // reader.readAsDataURL(e.target.files[0]);
       // console.log("reader:", reader.readAsDataURL);
-    } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
 
@@ -96,7 +108,7 @@ function SignUpform() {
                     name="fullname"
                     type="text"
                     value={fullname}
-                    onChange={onChange}
+                    onChange={(e) => setFullName(e.target.value)}
                   ></input>
                 </div>
                 <div className="input-container email">
@@ -106,7 +118,7 @@ function SignUpform() {
                     name="email"
                     type="email"
                     value={email}
-                    onChange={onChange}
+                    onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
                 <div className="input-container password">
@@ -116,7 +128,7 @@ function SignUpform() {
                     name="password"
                     type="password"
                     value={password}
-                    onChange={onChange}
+                    onChange={(e) => setPassword(e.target.value)}
                   ></input>
                 </div>
                 <div className="input-container password">
@@ -126,7 +138,7 @@ function SignUpform() {
                     name="passwordverify"
                     type="password"
                     value={passwordverify}
-                    onChange={onChange}
+                    onChange={(e) => setPasswordVerify(e.target.value)}
                   ></input>
                 </div>
                 <div className="input-container password">

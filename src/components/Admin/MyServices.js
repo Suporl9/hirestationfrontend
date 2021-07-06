@@ -24,6 +24,7 @@ export const MyServices = () => {
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.deleteOrUpdateService
   );
+  // const { cartItemsCount } = useSelector((state) => state.getCart);
   const history = useHistory();
   const alert = useAlert();
   useEffect(() => {
@@ -48,6 +49,7 @@ export const MyServices = () => {
 
   const deleteHandler = (id) => {
     dispatch(deleteService(id));
+    // history.push("/dashboard/services");
   };
 
   return (

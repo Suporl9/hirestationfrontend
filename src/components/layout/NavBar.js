@@ -91,14 +91,11 @@ function Navbar() {
             <Link to="/myWishList">
               <div className="icon-button">
                 <span className="material-icons">
-                  <Cart />
+                  <Cart className="cart-icon" />
                 </span>
                 <span className="icon-button_badge">{cartItemsCount}</span>
               </div>
             </Link>
-            {/* <Link to="/cart" className="linkcart">
-            <h4 className="h4cart">2</h4>
-          </Link> */}
           </div>
         )}
         {user ? (
@@ -113,11 +110,7 @@ function Navbar() {
                   <img
                     src={user.avatar && user.avatar.url}
                     alt={user && user.fullname}
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "50%",
-                    }}
+                    className="navimg"
                   />
                 </div>
               </button>
@@ -164,6 +157,9 @@ function Navbar() {
             </div>
           )
         )}
+      </div>
+      <div className="hamburgermenu" style={{ color: "wheat" }}>
+        hello
       </div>
     </nav>
   );

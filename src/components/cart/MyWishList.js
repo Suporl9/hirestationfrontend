@@ -37,6 +37,11 @@ export const MyWishList = () => {
 
   return (
     <div className="bg">
+      <div className="myprofilebodyforspan">
+        <span style={{ fontWeight: "bold", fontSize: "30px" }}>
+          My WishList:
+        </span>
+      </div>
       {loading ? (
         <Loader />
       ) : (
@@ -45,9 +50,6 @@ export const MyWishList = () => {
             {cartItems.length > 0 ? (
               <Fragment>
                 <div className="h1andmyitemscardleft">
-                  <span style={{ fontWeight: "bold", fontSize: "30px" }}>
-                    My WishList:
-                  </span>
                   <div className="myitemscardleft">
                     <div className="gigstitleandphoto">
                       {cartItems &&
@@ -128,14 +130,6 @@ export const MyWishList = () => {
             ) : (
               <Fragment>
                 <div className="h1andmyitemscardleft">
-                  <span
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: "30px",
-                    }}
-                  >
-                    My WishList:
-                  </span>
                   <div className="myitemscardleft">
                     <div className="nogigscart">
                       <h2>WishList is Empty.</h2>
@@ -157,11 +151,11 @@ export const MyWishList = () => {
                 <h5 className="h6bold">Total Price:</h5>
                 <h5 className="h6bold">
                   Rs.
-                  {/* {cartItems &&
+                  {cartItems &&
                     cartItems.reduce(
                       (acc, item) => item.service.price + acc,
                       0
-                    )} */}
+                    )}
                 </h5>
               </div>
             </div>
