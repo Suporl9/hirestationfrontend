@@ -80,7 +80,7 @@ const ServiceDetails = () => {
                       <h5 className="userh5">{service.seller}</h5>
                       <div className="vl"></div>
                       <h6
-                        className="h6boldii"
+                        className="h6boldiicat"
                         style={{ marginTop: "0.6rem", marginRight: "3%" }}
                       >
                         Category: &nbsp; {service.category}

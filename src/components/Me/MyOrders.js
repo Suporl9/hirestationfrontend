@@ -53,22 +53,18 @@ export const MyOrders = () => {
         status:
           order.orderStatus &&
           String(order.orderStatus).includes("Delivered") ? (
-            <p style={{ fontSize: "16px", fontWeight: "bold", color: "green" }}>
+            <p className="porderstatus" style={{ color: "green" }}>
               {order.orderStatus}
             </p>
           ) : (
-            <p style={{ fontSize: "16px", fontWeight: "bold", color: "red" }}>
+            <p className="porderstatus" style={{ color: "red" }}>
               {order.orderStatus}
             </p>
           ),
 
         action: (
           <Link to={`/order/${order._id}`}>
-            <img
-              src={editpng}
-              alt="editPng"
-              style={{ height: "35px", width: "35px" }}
-            ></img>
+            <img src={editpng} alt="editPng" className="editpngs"></img>
           </Link>
         ),
       });

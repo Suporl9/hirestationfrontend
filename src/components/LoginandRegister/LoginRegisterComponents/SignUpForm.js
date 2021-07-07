@@ -167,9 +167,9 @@ function SignUpform() {
                       <label
                         className="custom-file-label"
                         htmlFor="customFile"
-                        style={{ fontWeight: "bold" }}
+                        style={{ fontWeight: "bold", fontSize: "12px" }}
                       >
-                        Choose Avatar
+                        Choose Avatar(less than 700kb)
                       </label>
                     </div>
                   </div>

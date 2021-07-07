@@ -587,6 +587,7 @@ input[type="radio"] {
   flex-direction: row;
   margin-bottom: -10px;
   margin: 0.3rem 1rem 0 0;
+  font-weight: bold;
 }
 .hl {
   border-bottom: 1px solid gray;
@@ -689,6 +690,10 @@ input[type="radio"] {
   font-weight: bold;
 }
 .h6boldii {
+  font-weight: bold;
+  color: #fff;
+}
+.h6boldiicat {
   font-weight: bold;
   color: #fff;
 }
@@ -819,6 +824,10 @@ input[type="radio"] {
 .table {
   color: #fff;
   background-color: var(--main-dark);
+}
+.editpngs {
+  height: 35px;
+  width: 35px;
 }
 .custom-select {
   margin: 0.5rem 0 1rem 0 !important;
@@ -1460,6 +1469,12 @@ input[type="radio"] {
 .cardServiceDetails {
   width: 22rem;
 }
+
+.porderstatus {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 @media (max-width: 1300px) {
   .static-value {
     top: 55px;
@@ -1726,6 +1741,10 @@ input[type="radio"] {
   .h6boldii {
     font-size: 12px;
   }
+  .h6boldiicat {
+    font-size: 10px;
+    margin-left: -5%;
+  }
   .h6boldii1 {
     font-size: 10px;
     margin-left: 0;
@@ -1929,7 +1948,8 @@ input[type="radio"] {
     justify-content: center;
   } */
   .starRating1 {
-    font-size: 12px !important;
+    font-size: 11px !important;
+    margin-left: -7% !important;
   }
   .descriptp {
     font-size: 17px;
@@ -1948,5 +1968,21 @@ input[type="radio"] {
   }
   .myServiceCard1 {
     width: 15rem;
+  }
+  .userh5 {
+    font-weight: bold;
+    font-size: 12px;
+    /* margin: 0.3rem 1rem 0 0.5rem; */
+  }
+  .myprofilebodytable {
+    font-size: 8px;
+  }
+  .porderstatus {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .editpngs {
+    height: 20px;
+    width: 20px;
   }
 }

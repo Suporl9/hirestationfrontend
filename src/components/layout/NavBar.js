@@ -14,14 +14,13 @@ import { logOutUser } from "../redux/user/userAction";
 
 function Navbar() {
   const { user, loading } = useSelector((state) => state.auth);
+
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const { cartItemsCount } = useSelector((state) => state.getCart);
   // const { cartItem, isAdded, loadin } = useSelector((state) => state.addToCart);
-  const onCLickHandler = () => {
-    setIsActive(!isActive);
-  };
+  const onCLickHandler = () => setIsActive(!isActive);
   const logOutHandler = () => {
     dispatch(logOutUser());
   };
@@ -31,10 +30,15 @@ function Navbar() {
     "Web-Programming",
     "Mobile-Apps",
   ];
-
+  // const handleClick = (e) =>{
+  //   const x = document.querySelector(".wrapper");
+  //   if(x.style.)
+  // }
   // const string = "abc bcd";
   // console.log("abc", string.split(" ")[0]);
   useEffect(() => {
+    // console.log(isActive);
+    // setIsActive(false);
     const pageClickEvent = (e) => {
       if (
         dropdownRef.current !== null &&
@@ -49,7 +53,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("click", pageClickEvent);
     };
-  }, [isActive]);
+  }, [isActive, cartItemsCount]);
 
   return (
     <nav>
@@ -79,7 +83,7 @@ function Navbar() {
           </ul>
         </li>
         <li className="listyle">
-          <Link to="/welcome" className="listyleLink">
+          <Link to="/dashboard/services/new" className="listyleLink">
             Become a seller
           </Link>
         </li>
@@ -158,8 +162,44 @@ function Navbar() {
           )
         )}
       </div>
-      <div className="hamburgermenu" style={{ color: "wheat" }}>
-        hello
+      <div className="hammenu">
+        <input type="checkbox" id="active" />
+        <label htmlFor="active" className="menu-btn">
+          <i className="fas fa-bars"></i>
+        </label>
+        <div className="wrapper">
+          <ul>
+            <li className="innerulli">
+              <Link to="/" className="listyleLink">
+                Explore
+              </Link>
+            </li>
+            <li className="innerulli">
+              <Link to="/" className="listyleLink ct">
+                Categories &nbsp;
+                {/* <i className="fa fa-sort-desc" aria-hidden="true"></i> */}
+              </Link>
+              {/* <ul className="wrapper">
+                {Categories.map((categori) => (
+                  <li className="innerulli" key={categori}>
+                    <Link to={`/category/${categori}`} className="listyleLink">
+                      {categori}
+                    </Link>
+                  </li>
+                ))}
+              </ul> */}
+            </li>
+            <li className="innerulli">
+              <Link to="/dashboard/services/new" className="listyleLink">
+                Become a seller
+              </Link>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="content">
+            <div className="title">Fullscreen Overlay Navigation Bar</div>
+            <p>using only HTML CSS</p>
+          </div> */}
       </div>
     </nav>
   );
