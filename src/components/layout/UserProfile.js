@@ -6,6 +6,7 @@ import { GET_USER_DETAILS_CLEAR_ERROR } from "../redux/constants/Constants";
 import { useAlert } from "react-alert";
 import { FaStar } from "react-icons/fa";
 import { Loader } from "./Loader";
+// import {} from "react-bootstrap"
 export const UserProfile = () => {
   const alert = useAlert();
   const { userDet, loading, error } = useSelector((state) => state.userDetails);
@@ -19,7 +20,10 @@ export const UserProfile = () => {
       dispatch({ type: GET_USER_DETAILS_CLEAR_ERROR });
     }
   }, [dispatch, alert, error, id]);
-
+  const sendEmail = () => {
+    const mailto = `mailto:${userDet && userDet.email}`;
+    window.location.href = mailto;
+  };
   return (
     <div className="bg">
       {loading ? (
@@ -48,22 +52,21 @@ export const UserProfile = () => {
 
                 <div className="locationfrom" style={{ marginBottom: "5%" }}>
                   <h6 className="h6bold">From:</h6>
-                  <h6 className="h6bold">kathmandu</h6>
+                  <h6 className="h6bold">{userDet && userDet.from}</h6>
                 </div>
                 <div className="locationfrom">
                   <h6 className="h6bold">Joined On:</h6>
                   <h6 className="h6bold">
-                    {/* {String(user.createdAt).substring(0, 10)} */}
-                    06/29
+                    {userDet && String(userDet.createdAt).substring(0, 10)}
                   </h6>
                 </div>
                 <div
                   className="cardetailsbtn"
                   style={{ margin: "1rem 0 0.5rem 0" }}
                 >
-                  <Link to="/user">
-                    <button className="card-btn">Message</button>
-                  </Link>
+                  <button className="card-btn" onClick={sendEmail}>
+                    Message
+                  </button>
                 </div>
               </div>
             </div>

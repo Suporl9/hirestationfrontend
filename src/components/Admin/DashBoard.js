@@ -47,8 +47,12 @@ export const DashBoard = () => {
               </span>
 
               <div className="amountdiv">
-                <h2 className="totalAmountdiv">Total Amount:</h2>
-                <h2 className="totalAmountdiv">Rs.6776</h2>
+                <h2 className="totalAmountdiv">Total Amount(Orders):</h2>
+                <h2 className="totalAmountdiv">
+                  Rs.
+                  {adminOrders &&
+                    adminOrders.reduce((acc, item) => item.totalPrice + acc, 0)}
+                </h2>
               </div>
               <div className="secondflexrow">
                 <div className="servicediv">

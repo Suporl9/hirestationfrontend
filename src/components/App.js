@@ -41,6 +41,7 @@ import { MyServiceOrders } from "./Admin/MyServiceOrders";
 import { AdminOrderDetails } from "./Admin/AdminOrderDetails";
 import { UserProfile } from "./layout/UserProfile";
 import { CategoriesMView } from "./layout/CategoriesMView";
+import { Users } from "./Admin/Users";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -123,6 +124,7 @@ function App() {
           component={AdminOrderDetails}
           exact
         />
+        <ProtectedRoute path="/dashboard/users" component={Users} exact />
 
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />

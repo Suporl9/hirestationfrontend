@@ -70,7 +70,7 @@ export const OrderPayment = () => {
       res = await axios.post("/payment/process", paymentData, config);
 
       const clientSecret = res.data.client_secret;
-      console.log("clientsecret", clientSecret);
+      // console.log("clientsecret", clientSecret);
 
       if (!stripe || !elements) {
         return;

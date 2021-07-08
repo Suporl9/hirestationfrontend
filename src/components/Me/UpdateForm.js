@@ -12,6 +12,7 @@ export const UpdateForm = () => {
   const history = useHistory();
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [place, setPlace] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState(defaultImg);
@@ -24,6 +25,7 @@ export const UpdateForm = () => {
       setFullName(user.fullname);
       setEmail(user.email);
       setBio(user.bio);
+      setPlace(user.from);
       setAvatarPreview(user.avatar && user.avatar.url);
     }
     if (isUpdated) {
@@ -40,11 +42,10 @@ export const UpdateForm = () => {
     formData.set("fullname", fullname);
     formData.set("email", email);
     formData.set("bio", bio);
+    formData.set("from", place);
 
     formData.set("avatar", avatar);
     dispatch(updateUser(formData));
-    // console.log(formData.fullname);
-    // console.log(avatar);
   };
   const onChange = (e) => {
     const file = e.target.files[0];
@@ -158,6 +159,21 @@ export const UpdateForm = () => {
                         type="text"
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}
+                      ></input>
+                    </div>
+                    <div className="input-container email">
+                      <label
+                        htmlFor="from-field"
+                        style={{ fontWeight: "bold", margin: "4% 0" }}
+                      >
+                        From:
+                      </label>
+                      <input
+                        className="fname"
+                        name="bio"
+                        type="text"
+                        value={place}
+                        onChange={(e) => setPlace(e.target.value)}
                       ></input>
                     </div>
                     <div

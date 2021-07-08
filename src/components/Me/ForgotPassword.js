@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { FORGOT_PASSWORD_SUCCESS_RESET } from "../redux/constants/Constants";
 import { clearErrors, forgotPassword } from "../redux/user/userAction";
 
 export const ForgotPassword = () => {
@@ -19,6 +20,7 @@ export const ForgotPassword = () => {
     }
     if (message) {
       alert.success(message);
+      dispatch({ type: FORGOT_PASSWORD_SUCCESS_RESET });
     }
   }, [message, alert, error, dispatch]);
 

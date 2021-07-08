@@ -33,12 +33,12 @@ export const MyProfile = () => {
 
                 <div className="locationfrom" style={{ marginBottom: "5%" }}>
                   <h6 className="h6bold">From:</h6>
-                  <h6 className="h6bold">kathmandu</h6>
+                  <h6 className="h6bold">{user && user.from}</h6>
                 </div>
                 <div className="locationfrom">
                   <h6 className="h6bold">Joined On:</h6>
                   <h6 className="h6bold">
-                    {String(user.createdAt).substring(0, 10)}
+                    {user && String(user.createdAt).substring(0, 10)}
                   </h6>
                 </div>
                 <div

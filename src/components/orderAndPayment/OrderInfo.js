@@ -43,8 +43,9 @@ export const OrderInfo = () => {
             <input
               type="text"
               className="oldPassword"
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              name="phoneNumber"
               value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
             <button className="card-btn" type="submit">
               Continue

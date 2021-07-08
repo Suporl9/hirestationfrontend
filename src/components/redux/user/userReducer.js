@@ -29,6 +29,7 @@ import {
   GET_USER_DETAILS_SUCCESS,
   GET_USER_DETAILS_FAIL,
   GET_USER_DETAILS_CLEAR_ERROR,
+  FORGOT_PASSWORD_SUCCESS_RESET,
 } from "../constants/Constants";
 
 const initialState = {
@@ -178,6 +179,7 @@ export const forgotPasswodReducer = (state = initialState, action) => {
         ...state,
         message: action.payload.message,
         loading: false,
+        success: action.payload.success,
         // error: "",
       };
     case RESET_PASSWORD_SUCCESS:
@@ -193,6 +195,13 @@ export const forgotPasswodReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.response.data.message,
       };
+
+    case FORGOT_PASSWORD_SUCCESS_RESET:
+      return {
+        ...state,
+        message: null,
+      };
+
     case CLEAR_ERRORS:
       return {
         ...state,

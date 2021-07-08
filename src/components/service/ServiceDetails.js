@@ -57,8 +57,11 @@ const ServiceDetails = () => {
       return el.service && el.service._id === id;
     });
   };
-  console.log(itemExists(id));
-
+  // console.log(itemExists(id));
+  const sendEmail = () => {
+    const mailto = `mailto:${service.user && service.user[0].email}`;
+    window.location.href = mailto;
+  };
   return (
     <Fragment>
       <div className="bg">
@@ -265,7 +268,9 @@ const ServiceDetails = () => {
                               </div>
                               <h6 className="h6bold li">From</h6>
                             </div>
-                            <h6 className="h6bold li">Kathmandu</h6>
+                            <h6 className="h6bold li">
+                              {service.user && service.user[0].from}
+                            </h6>
                           </div>
                           <div className="bodydetails">
                             <div className="leftdetails">
@@ -274,7 +279,13 @@ const ServiceDetails = () => {
                               </div>
                               <h6 className="h6bold li">Member Since</h6>
                             </div>
-                            <h6 className="h6bold li">May 18,2021</h6>
+                            <h6 className="h6bold li">
+                              {service.user &&
+                                String(service.user[0].createdAt).substring(
+                                  0,
+                                  10
+                                )}
+                            </h6>
                           </div>
                         </Card.Body>
                         <div className="hl2"></div>
@@ -308,9 +319,9 @@ const ServiceDetails = () => {
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Footer>
-                          <Link to={`/${service._id}`}>
-                            <button className="card-btn">Contact Me</button>
-                          </Link>
+                          <button className="card-btn" onClick={sendEmail}>
+                            Contact Me
+                          </button>
                           <Link
                             to={`/user/${service.user && service.user[0]._id}`} //populate this
                           >
