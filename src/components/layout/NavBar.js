@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 // eslint-disable-next-line
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import img1 from "../welcomepage/welcomepagecoponents/imgs/logo.png";
 // import wishlist from "../Home/testimgs/wishlist.svg";
 import { ReactComponent as Cart } from "./cart.svg";
@@ -14,6 +14,9 @@ import { logOutUser } from "../redux/user/userAction";
 
 function Navbar() {
   const { user, loading } = useSelector((state) => state.auth);
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
 
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef(null);
@@ -22,6 +25,7 @@ function Navbar() {
   // const { cartItem, isAdded, loadin } = useSelector((state) => state.addToCart);
   const onCLickHandler = () => setIsActive(!isActive);
   const logOutHandler = () => {
+    setIsActive(!isActive);
     dispatch(logOutUser());
   };
   const Categories = [
@@ -30,12 +34,7 @@ function Navbar() {
     "Web-Programming",
     "Mobile-Apps",
   ];
-  // const handleClick = (e) =>{
-  //   const x = document.querySelector(".wrapper");
-  //   if(x.style.)
-  // }
-  // const string = "abc bcd";
-  // console.log("abc", string.split(" ")[0]);
+
   useEffect(() => {
     // console.log(isActive);
     // setIsActive(false);
@@ -61,21 +60,21 @@ function Navbar() {
         <img className="logo" src={img1} alt="logo" />
       </Link>
 
-      <ul className="nav_links">
+      <ul className={click ? "nav_links active" : "nav_links"}>
         <li className="listyle">
-          <Link to="/" className="listyleLink">
+          <Link to="/" className="listyleLink" onClick={handleClick}>
             Explore
           </Link>
         </li>{" "}
         <li className="listyle">
-          <Link to="/" className="listyleLink ct">
+          <Link to="/category" className="listyleLink ct" onClick={handleClick}>
             Categories &nbsp;
             <i className="fa fa-sort-desc" aria-hidden="true"></i>
           </Link>
           <ul className="innerul">
             {Categories.map((categori) => (
               <li className="innerulli" key={categori}>
-                <Link to={`/category/${categori}`} className="listyleLink">
+                <Link to={`/category/${categori}`} className="listyleLinka">
                   {categori}
                 </Link>
               </li>
@@ -83,7 +82,11 @@ function Navbar() {
           </ul>
         </li>
         <li className="listyle">
-          <Link to="/dashboard/services/new" className="listyleLink">
+          <Link
+            to="/dashboard/services/new"
+            className="listyleLink"
+            onClick={handleClick}
+          >
             Become a seller
           </Link>
         </li>
@@ -97,7 +100,9 @@ function Navbar() {
                 <span className="material-icons">
                   <Cart className="cart-icon" />
                 </span>
-                <span className="icon-button_badge">{cartItemsCount}</span>
+                <span className="icon-button_badge">
+                  {cartItemsCount && cartItemsCount}
+                </span>
               </div>
             </Link>
           </div>
@@ -120,21 +125,33 @@ function Navbar() {
               </button>
               <div
                 ref={dropdownRef}
-                className={`menu ${isActive ? "active" : "inactive"}`}
+                className={isActive ? "menu active" : "menu inactive"}
               >
                 <ul>
                   <li>
-                    <Link to="/me" className="listyleLink">
+                    <Link
+                      to="/me"
+                      className="listyleLinkprofile"
+                      onClick={onCLickHandler}
+                    >
                       Profile
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard" className="listyleLink">
+                    <Link
+                      to="/dashboard"
+                      className="listyleLinkprofile"
+                      onClick={onCLickHandler}
+                    >
                       Dashboard
                     </Link>
                   </li>
                   <li>
-                    <Link to="/orders/me" className="listyleLink">
+                    <Link
+                      to="/orders/me"
+                      className="listyleLinkprofile"
+                      onClick={onCLickHandler}
+                    >
                       Orders
                     </Link>
                   </li>
@@ -142,7 +159,7 @@ function Navbar() {
                   <li className="libg">
                     <Link
                       to="/"
-                      className="listyleLink"
+                      className="listyleLinkprofile"
                       onClick={logOutHandler}
                     >
                       Log Out
@@ -162,44 +179,8 @@ function Navbar() {
           )
         )}
       </div>
-      <div className="hammenu">
-        <input type="checkbox" id="active" />
-        <label htmlFor="active" className="menu-btn">
-          <i className="fas fa-bars"></i>
-        </label>
-        <div className="wrapper">
-          <ul>
-            <li className="innerulli">
-              <Link to="/" className="listyleLink">
-                Explore
-              </Link>
-            </li>
-            <li className="innerulli">
-              <Link to="/" className="listyleLink ct">
-                Categories &nbsp;
-                {/* <i className="fa fa-sort-desc" aria-hidden="true"></i> */}
-              </Link>
-              {/* <ul className="wrapper">
-                {Categories.map((categori) => (
-                  <li className="innerulli" key={categori}>
-                    <Link to={`/category/${categori}`} className="listyleLink">
-                      {categori}
-                    </Link>
-                  </li>
-                ))}
-              </ul> */}
-            </li>
-            <li className="innerulli">
-              <Link to="/dashboard/services/new" className="listyleLink">
-                Become a seller
-              </Link>
-            </li>
-          </ul>
-        </div>
-        {/* <div className="content">
-            <div className="title">Fullscreen Overlay Navigation Bar</div>
-            <p>using only HTML CSS</p>
-          </div> */}
+      <div className="nav-icon" onClick={handleClick}>
+        <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
     </nav>
   );

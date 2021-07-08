@@ -67,6 +67,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2%;
+  /* width: 90%; */
 }
 .servicesearchfield {
   display: flex;
@@ -1475,6 +1476,53 @@ input[type="radio"] {
   font-weight: bold;
 }
 
+/* categories section */
+
+.categorywidth {
+  width: 80%;
+  margin: auto;
+}
+.flexcategoriessec {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: bold;
+}
+.bigCategori {
+  /* width: 50%; */
+  font-size: 2.2rem;
+  margin-right: 5%;
+}
+.spancat {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+.ListofCategori {
+  display: flex;
+  flex-direction: column;
+}
+.bgforcat {
+  background-color: #2c2828;
+  width: 100%;
+  padding: 0.5rem 10rem;
+  border-radius: 5px;
+  margin-bottom: 5%;
+
+  /* padding: 5%; */
+}
+.listyleLinkPage {
+  text-decoration: none !important;
+  transition: all 0.3s ease 0s;
+  /* padding: 4px 14px; */
+  height: 100%;
+}
+.listyleLinkPage:hover {
+  color: var(--main-red);
+  text-decoration: none;
+}
+/* end of categories section */
+
 @media (max-width: 1300px) {
   .static-value {
     top: 55px;
@@ -1582,6 +1630,7 @@ input[type="radio"] {
   }
   .gigsh1 {
     margin-bottom: 3rem;
+    font-size: 1.5rem;
   }
   .sliderdiv {
     display: flex;
@@ -1594,6 +1643,7 @@ input[type="radio"] {
     padding-right: 0%;
     margin-bottom: 20%;
     font-weight: bold;
+    font-size: 1.3rem;
   }
 
   .myprofilebody {
@@ -1792,8 +1842,40 @@ input[type="radio"] {
     display: flex;
     flex-direction: column;
   }
+  .flexcategoriessec {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .bigCategori {
+    /* width: 50%; */
+    font-size: 1.2rem;
+    margin-bottom: 5%;
+  }
+  .spancat {
+    font-size: 1rem;
+  }
 }
 @media (max-width: 700px) {
+  .bgforcat {
+    background-color: #2c2828;
+    width: 100%;
+    padding: 0.5rem 4.1rem;
+    border-radius: 5px;
+    margin-bottom: 5%;
+
+    /* padding: 5%; */
+  }
+  .spancat {
+    font-size: 0.8rem;
+  }
+  .bigCategori {
+    /* width: 50%; */
+    font-size: 1.2rem;
+    margin: 10% 0 10% 0;
+  }
   .newServiceBg {
     background-color: var(--main-dark);
     margin: 5% 0 10% 0;
@@ -1845,6 +1927,9 @@ input[type="radio"] {
   .servicesearchfield {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* width: 90%; */
   }
   .gigstitleandslider {
     display: flex;
@@ -1860,7 +1945,7 @@ input[type="radio"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 24rem;
+    width: 15rem;
   }
   .h5Range {
     padding-right: 0%;

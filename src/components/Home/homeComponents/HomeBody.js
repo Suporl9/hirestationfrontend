@@ -16,6 +16,7 @@ import { Loader } from "../../layout/Loader";
 
 import PropTypes from "prop-types";
 import Search from "../../layout/Search";
+import { getCartItems } from "../../redux/cart/cartActions";
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -40,6 +41,7 @@ export default function HomeBody({ match }) {
 
   useEffect(() => {
     dispatch(getAllServices(keyword, currentPage, price, category));
+    dispatch(getCartItems());
   }, [dispatch, keyword, currentPage, price, category]);
 
   const setCurrentPageNo = (pageNumber) => {
@@ -144,7 +146,7 @@ export default function HomeBody({ match }) {
                 <div className="nocardsdiv">
                   <div className="nothingtoshowdiv">
                     <div className="h1nodiv">
-                      <h1 style={{ fontWeight: "bold", fontSize: "40px" }}>
+                      <h1 style={{ fontWeight: "bold", fontSize: "30px" }}>
                         No services found.
                       </h1>
                     </div>

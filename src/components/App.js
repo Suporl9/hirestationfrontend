@@ -40,6 +40,7 @@ import { UpdateService } from "./Admin/UpdateService";
 import { MyServiceOrders } from "./Admin/MyServiceOrders";
 import { AdminOrderDetails } from "./Admin/AdminOrderDetails";
 import { UserProfile } from "./layout/UserProfile";
+import { CategoriesMView } from "./layout/CategoriesMView";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -74,7 +75,9 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/search/:keyword" component={Home} />
-        <Route path="/category/:category" component={Home} />
+        <Route path="/category" exact component={CategoriesMView} />
+
+        <Route path="/category/:category" exact component={Home} />
         <Route path="/service/:id" component={ServiceDetails} />
         <Route path="/welcome" component={Welcomepage} />
 

@@ -1,5 +1,5 @@
 nav {
-  background-color: #000;
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +26,9 @@ button {
   display: flex;
   flex-direction: row;
 }
+.nav_links.active {
+  background-color: black;
+}
 .listyle {
   /* display: inline-block; */
   padding: 0 20px;
@@ -33,14 +36,46 @@ button {
   position: relative;
   /* transition: all 0.3s ease; */
 }
+/* .listyle:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.7s ease, background-color 0.5s ease;
+}
+.listyle:hover:after {
+  width: 100%;
+  background: #ffdd40;
+}
+.listyle .active {
+  color: #ffdd40;
+  border: 1px solid #ffdd40;
+} */
 
 .listyleLink {
   text-decoration: none;
   transition: all 0.3s ease 0s;
   padding: 24px 14px;
+  height: 100%;
+}
+
+.listyleLinka {
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+  padding: 24px 14px;
+  height: 100%;
 }
 
 .listyleLink:hover {
+  color: var(--main-red);
+  text-decoration: none;
+}
+.listyleLinkprofile:hover {
+  color: var(--main-red);
+  text-decoration: none;
+}
+.listyleLinka:hover {
   color: var(--main-red);
   text-decoration: none;
 }
@@ -344,6 +379,14 @@ button {
 
 /* end of descripion section css */
 /* ||||||||||||||||||||||||||||| */
+
+/* new nav bar for responsiveness */
+
+.nav-icon {
+  display: none;
+}
+/*  end of new nav bar for responsiveness */
+
 /* footer */
 
 footer {
@@ -496,10 +539,6 @@ footer {
   margin: 15px 0;
 }
 
-input[type="checkbox"] {
-  display: none;
-}
-
 @media (max-width: 1300px) {
   .StuffDone {
     display: flex;
@@ -509,6 +548,7 @@ input[type="checkbox"] {
   }
 }
 @media (max-width: 1000px) {
+  /* .nav_links{} */
   .icon-button {
     position: relative;
     display: flex;
@@ -537,15 +577,76 @@ input[type="checkbox"] {
     width: 5.5rem;
   }
   .nav_links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    list-style: none;
+    text-align: center;
+    margin-right: 2rem;
+  }
+  .nav_links.active {
+    background: var(--main-deep-dark);
+
+    display: flex;
+    justify-content: center;
+    /* align-self: center !important; */
+    height: 100vh;
+    width: 100%;
+    left: 0px;
+    opacity: 1;
+    transition: all 0.3s ease;
+    z-index: 9;
+  }
+  .listyleLink {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+  .listyleLinkprofile {
+    padding: 1.5rem;
+    width: 100%;
+    text-decoration: none !important;
+    /* display: table; */
+  }
+  .nav-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #d8ccc0;
+  }
+
+  .listyle:hover .innerul {
+    display: none;
+    /* width: 100%; */
+  }
+  /* .innerulli {
+    display: none;
+    position: absolute;
+    background-color: rgb(14, 13, 13);
+    list-style: none;
+    padding: 15px;
+    width: 0%;
+    margin-top: 10%;
+    margin-left: -30%;
+    border-radius: 5px;
+    z-index: 1;
+  } */
+  /* .innerulli:hover {
     display: none;
   }
-  .hammenu {
-    opacity: 1;
-    display: block;
-    display: flex;
-    /* justify-content: center; */
-    align-self: center;
-  }
+  .listyleLinka {
+    display: none;
+  } */
+
   .menu-trigger span {
     font-weight: 700;
     vertical-align: middle;
@@ -634,7 +735,13 @@ input[type="checkbox"] {
     padding: 1.2rem 5.5rem;
   }
   .loginandcart {
-    margin-right: 15%;
+    margin-right: 13%;
+  }
+  .h1stuff {
+    font-size: 30px;
+  }
+  .p1stuff {
+    font-size: 20px;
   }
   /* .cartanditems {
     margin-right: 15%;
@@ -650,6 +757,16 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: center;
   } */
-
+  .h1whatis {
+    font-size: 25px;
+  }
+  .p1whatis {
+    font-size: 1rem;
+  }
+  .logoimg {
+    height: 15rem;
+    width: 15rem;
+    margin: 5rem 2rem;
+  }
   /* end of mediaquery footer */
 }
