@@ -58,7 +58,7 @@ function MyServices() {
                 style={{ margin: "1rem 0 0.5rem 0" }}
               >
                 <Link to={`/service/${service._id}`}>
-                  <button className="card-btn">View details</button>
+                  <button className="card-btn-det">View details</button>
                 </Link>
               </div>
             </div>

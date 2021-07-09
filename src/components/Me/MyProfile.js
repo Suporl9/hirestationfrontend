@@ -46,10 +46,10 @@ export const MyProfile = () => {
                   style={{ margin: "1rem 0 0.5rem 0" }}
                 >
                   <Link to="/me/update">
-                    <button className="card-btn">Update Profile</button>
+                    <button className="card-btn-det">Update Profile</button>
                   </Link>
                   <Link to="/me/updatePassword">
-                    <button className="card-btn">Change Password</button>
+                    <button className="card-btn-det">Change Password</button>
                   </Link>
                 </div>
               </div>

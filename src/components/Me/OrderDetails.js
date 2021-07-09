@@ -94,6 +94,7 @@ export const OrderDetails = () => {
                           width: "120px",
                           borderRadius: "5px",
                         }}
+                        className="imgphuto"
                       />
                     </Link>
                     <Link

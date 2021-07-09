@@ -73,7 +73,7 @@ export const ResetPassword = ({ match }) => {
               </div>
             )}
             <Button
-              className="card-btn"
+              className="card-btn-det"
               type="submit"
               style={{
                 padding: "9px 25px",

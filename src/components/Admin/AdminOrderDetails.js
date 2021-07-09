@@ -93,7 +93,7 @@ export const AdminOrderDetails = () => {
                       to={`/user/${orderDetails.user && orderDetails.user._id}`}
                     >
                       <button
-                        className="card-btn"
+                        className="card-btn-det"
                         style={{ marginBottom: "3%" }}
                       >
                         View Profile
@@ -207,7 +207,7 @@ export const AdminOrderDetails = () => {
                     <option value="Delivered">Delivered</option>
                   </select>
                   <button
-                    className="card-btn"
+                    className="card-btn-det"
                     onClick={() =>
                       updateHandler(orderDetails && orderDetails._id)
                     }

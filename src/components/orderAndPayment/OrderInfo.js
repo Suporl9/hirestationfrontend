@@ -47,7 +47,7 @@ export const OrderInfo = () => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
-            <button className="card-btn" type="submit">
+            <button className="card-btn-det" type="submit">
               Continue
             </button>
           </form>

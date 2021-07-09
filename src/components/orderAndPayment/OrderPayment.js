@@ -59,7 +59,7 @@ export const OrderPayment = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    document.querySelector(".card-btn").disabled = true;
+    document.querySelector(".card-btn-det").disabled = true;
     let res;
     try {
       const config = {
@@ -88,7 +88,7 @@ export const OrderPayment = () => {
 
       if (result.error) {
         alert.error(result.error.message);
-        document.querySelector(".card-btn").disabled = false;
+        document.querySelector(".card-btn-det").disabled = false;
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
@@ -97,13 +97,13 @@ export const OrderPayment = () => {
           };
           dispatch(createOrder(order));
           alert.success("payment successfull!!");
-          history.push("/myWishList");
+          history.push("/orders/me");
         } else {
           alert.error("There was  some issue in payment processing!!");
         }
       }
     } catch (error) {
-      document.querySelector(".card-btn").disabled = false;
+      document.querySelector(".card-btn-det").disabled = false;
       alert.error(error.response.data.message);
     }
   };
@@ -228,7 +228,7 @@ export const OrderPayment = () => {
               />
             </div>
             <span style={{ fontSize: "15px", color: "orange" }}>Use : 444</span>
-            <button className="card-btn" type="submit">
+            <button className="card-btn-det" type="submit">
               PAY - (Rs.{cartItem && cartItem.service.price})
             </button>
           </form>

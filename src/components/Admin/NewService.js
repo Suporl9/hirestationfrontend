@@ -220,7 +220,7 @@ export const NewService = () => {
                 </div>
                 <Button
                   type="submit"
-                  className="card-btn"
+                  className="card-btn-det"
                   style={{
                     padding: "9px 25px",
                     backgroundColor: "#fd4c4c",

@@ -112,6 +112,7 @@
   background-color: var(--main-dark);
   flex-direction: column;
   width: 17rem;
+  position: relative;
 }
 
 .card-content {
@@ -148,7 +149,31 @@
   height: 200px;
   width: 100%;
 }
+
 .card-btn {
+  position: absolute;
+  bottom: 10px;
+  /* top: 80%; */
+
+  /* top: -20px; */
+  padding: 9px 25px;
+  background-color: #fd4c4c;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 90%;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  text-shadow: #000 2px;
+  outline: none;
+  margin-top: 5%;
+  /* align-items: flex-end; */
+}
+.card-btn-det {
+  /* top: 80%; */
+
+  /* top: -20px; */
   padding: 9px 25px;
   background-color: #fd4c4c;
   text-transform: uppercase;
@@ -161,7 +186,27 @@
   text-shadow: #000 2px;
   outline: none;
   margin-top: 5%;
-  align-self: end;
+  /* align-items: flex-end; */
+}
+.card-btn-detail {
+  position: absolute;
+  bottom: 10px;
+  /* top: 80%; */
+
+  /* top: -20px; */
+  padding: 9px 25px;
+  background-color: #fd4c4c;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 90%;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  text-shadow: #000 2px;
+  outline: none;
+  margin-top: 5%;
+  /* align-items: flex-end; */
 }
 
 .delete-btn {
@@ -235,6 +280,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 25%;
 }
 .ratings {
   margin-bottom: 10px;
@@ -288,7 +334,7 @@
   background: #00000050;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 16;
 }
 .box {
   position: relative;
@@ -898,7 +944,7 @@ input[type="radio"] {
 .profilecardsleft1 {
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 95%;
 }
 
 .profilecardsleftupdate {
@@ -915,6 +961,7 @@ input[type="radio"] {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
   /* justify-content: center;
   align-items: center; */
 }
@@ -992,6 +1039,7 @@ input[type="radio"] {
   background-color: var(--main-dark);
   flex-direction: column;
   width: 17rem;
+  position: relative;
 }
 .myServiceCard1 {
   display: flex;
@@ -1125,6 +1173,9 @@ input[type="radio"] {
   /* padding-right: 0.5rem; */
   /* width: 100%; */
   /* margin-left: 1rem; */
+}
+.imgphuto {
+  padding-right: 5%;
 }
 .titlerow1 {
   padding-left: 1.5rem;
@@ -2054,10 +2105,13 @@ input[type="radio"] {
     font-size: 11px !important;
     margin-left: -7% !important;
   }
-  .descriptp {
+  /* .descriptp {
     font-size: 17px;
-  }
+  } */
   .card-btn {
+    font-size: 12px !important;
+  }
+  .card-btn-det {
     font-size: 12px !important;
   }
   .card-btn3 {
@@ -2107,5 +2161,8 @@ input[type="radio"] {
   .spanusers {
     margin-bottom: 5%;
     font-size: 20px !important;
+  }
+  .descriptp {
+    font-size: 14px;
   }
 }

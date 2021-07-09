@@ -64,7 +64,7 @@ export const UserProfile = () => {
                   className="cardetailsbtn"
                   style={{ margin: "1rem 0 0.5rem 0" }}
                 >
-                  <button className="card-btn" onClick={sendEmail}>
+                  <button className="card-btn-det" onClick={sendEmail}>
                     Message
                   </button>
                 </div>
@@ -154,7 +154,9 @@ export const UserProfile = () => {
                             style={{ margin: "1rem 0 0.5rem 0" }}
                           >
                             <Link to={`/service/${service._id}`}>
-                              <button className="card-btn">View details</button>
+                              <button className="card-btn-detail">
+                                View details
+                              </button>
                             </Link>
                           </div>
                         </div>

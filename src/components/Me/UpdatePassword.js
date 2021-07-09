@@ -78,7 +78,7 @@ export const UpdatePassword = () => {
                 </span>
               </div>
             )}
-            <button className="card-btn" type="submit">
+            <button className="card-btn-det" type="submit">
               Update Password
             </button>
           </form>

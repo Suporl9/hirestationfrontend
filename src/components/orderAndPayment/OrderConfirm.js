@@ -98,7 +98,7 @@ export const OrderConfirm = () => {
             </h5>
           </div>
           <Link to="/payment">
-            <button className="card-btn">Proceed to payment</button>
+            <button className="card-btn-det">Proceed to payment</button>
           </Link>
         </div>
       </div>

@@ -181,7 +181,7 @@ export const UpdateForm = () => {
                       style={{ margin: "1rem 0 0.5rem 0" }}
                     >
                       <Button
-                        className="card-btn"
+                        className="card-btn-det"
                         type="submit"
                         style={{
                           padding: "9px 25px",

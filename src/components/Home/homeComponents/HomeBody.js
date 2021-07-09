@@ -25,7 +25,7 @@ export default function HomeBody({ match }) {
   //match params  id does not work rightnow fix later
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([298, 20000]);
+  const [price, setPrice] = useState([298, 50000]);
 
   const { keyword, category } = useParams();
   // const keyword = match.params.keyword;  //didn't work for some reason check later on
@@ -77,11 +77,11 @@ export default function HomeBody({ match }) {
                     <Range
                       marks={{
                         298: "Rs.298",
-                        20000: "Rs.20,000",
+                        50000: "Rs.50,000",
                       }}
                       min={298}
-                      max={20000}
-                      defaultValue={[298, 20000]}
+                      max={50000}
+                      defaultValue={[298, 50000]}
                       tipFormatter={(value) => `Rs.${value}`}
                       tipProps={{
                         placement: "top",
@@ -111,11 +111,11 @@ export default function HomeBody({ match }) {
                     <Range
                       marks={{
                         298: "Rs.298",
-                        20000: "Rs.20,000",
+                        50000: "Rs.50,000",
                       }}
                       min={298}
-                      max={20000}
-                      defaultValue={[298, 20000]}
+                      max={50000}
+                      defaultValue={[298, 50000]}
                       tipFormatter={(value) => `Rs.${value}`}
                       tipProps={{
                         placement: "top",

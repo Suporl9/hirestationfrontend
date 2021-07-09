@@ -54,7 +54,7 @@ export const Users = () => {
 
         action: (
           <Link to={`/user/${order.user && order.user._id}`}>
-            <AiFillInfoCircle size="25" fill="#f83636" />
+            <AiFillInfoCircle size="25" fill="rgb(6, 121, 253)" />
           </Link>
         ),
       });

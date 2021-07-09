@@ -175,8 +175,7 @@ const ServiceDetails = () => {
                               style={{ lineHeight: "1.6" }}
                             >
                               Contact Me Before Ordering for your project
-                              estimate. This package includes only 25 hours
-                              dev.work.
+                              estimate.
                             </h6>
                           </div>
                         </Card.Body>
@@ -220,12 +219,12 @@ const ServiceDetails = () => {
                         <div className="hl2"></div>
                         <Card.Body>
                           {itemExists(id) ? (
-                            <button className="card-btn" disabled={true}>
+                            <button className="card-btn-det" disabled={true}>
                               Already In Cart!!
                             </button>
                           ) : (
                             <button
-                              className="card-btn"
+                              className="card-btn-det"
                               onClick={() => postItemHandler(id)}
                               disabled={loadin ? true : false}
                             >
@@ -319,13 +318,15 @@ const ServiceDetails = () => {
                         </Card.Body>
                         <div className="hl2"></div>
                         <Card.Footer>
-                          <button className="card-btn" onClick={sendEmail}>
+                          <button className="card-btn-det" onClick={sendEmail}>
                             Contact Me
                           </button>
                           <Link
                             to={`/user/${service.user && service.user[0]._id}`} //populate this
                           >
-                            <button className="card-btn">View Profile</button>
+                            <button className="card-btn-det">
+                              View Profile
+                            </button>
                           </Link>
                         </Card.Footer>
                       </Card>
@@ -354,15 +355,29 @@ const ServiceDetails = () => {
                             <div className="firstuser">
                               <div className="userpicandname">
                                 <div className="userpic">
-                                  <img
-                                    src={review.user && review.user.avatar.url}
-                                    alt="user"
-                                    className="meimg"
-                                  />
+                                  <Link
+                                    to={`/user/${
+                                      review.user && review.user._id
+                                    }`}
+                                  >
+                                    <img
+                                      src={
+                                        review.user && review.user.avatar.url
+                                      }
+                                      alt="user"
+                                      className="meimg"
+                                    />
+                                  </Link>
                                 </div>
-                                {/* <Link to={`/user/${review && review.user._id}`}> */}
-                                <div className="username">{review.name}</div>
-                                {/* </Link> */}
+                                <Link
+                                  to={`/user/${review.user && review.user._id}`}
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "inherit",
+                                  }}
+                                >
+                                  <div className="username">{review.name}</div>
+                                </Link>
                               </div>
                               <div className="reviewfield">
                                 <div className="starRating">
