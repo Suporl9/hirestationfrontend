@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   // Redirect,
@@ -14,7 +14,7 @@ import Footer from "./layout/Footer";
 import Home from "./Home/Home";
 import Welcomepage from "./welcomepage/welcomepage";
 import ServiceDetails from "./service/ServiceDetails";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { loadUser } from "./redux/user/userAction";
 import { MyProfile } from "./Me/MyProfile";
 import { ProtectedRoute } from "./route/ProtectedRoute";
@@ -28,7 +28,7 @@ import { getCartItems } from "./redux/cart/cartActions";
 import { OrderInfo } from "./orderAndPayment/OrderInfo";
 import { OrderConfirm } from "./orderAndPayment/OrderConfirm";
 import { OrderPayment } from "./orderAndPayment/OrderPayment";
-import axios from "axios";
+// import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { MyOrders } from "./Me/MyOrders";
@@ -42,6 +42,8 @@ import { AdminOrderDetails } from "./Admin/AdminOrderDetails";
 import { UserProfile } from "./layout/UserProfile";
 import { CategoriesMView } from "./layout/CategoriesMView";
 import { Users } from "./Admin/Users";
+
+import { getStripeApiKey } from "./redux/stripeKey/stripeAction";
 // import { OrderDetails } from "./orderAndPayment/OrderDetails";
 // import { OrderDetails } from "./Me/OrderDetails";
 // import store from "./store";
@@ -52,22 +54,24 @@ import { Users } from "./Admin/Users";
 
 function App() {
   const dispatch = useDispatch();
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  const { stripeKey } = useSelector((state) => state.getStripe);
+
 
   // const {cart}
   useEffect(() => {
     dispatch(loadUser());
     dispatch(getCartItems());
+    dispatch(getStripeApiKey());
 
-    async function getStripeApiKey() {
-      const data = await axios
-        .get("/payment/stripeApiKey")
-        .then((resp) => resp.data);
+    // async function getStripeApiKey() {
+    //   const data = await axios
+    //     .get("/payment/stripeApiKey")
+    //     .then((resp) => resp.data);
 
-      setStripeApiKey(data.stripeApiKey);
-    }
-    getStripeApiKey();
-  });
+    //   setStripeApiKey(data.stripeApiKey);
+    // }
+    // getStripeApiKey();
+  }, [dispatch]);
 
   // const { user } = useSelector((state) => state.auth);
   return (
@@ -128,8 +132,8 @@ function App() {
 
         <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/password/reset/:token" component={ResetPassword} />
-        {stripeApiKey && (
-          <Elements stripe={loadStripe(stripeApiKey)}>
+        {stripeKey && (
+          <Elements stripe={loadStripe(stripeKey)}>
             <ProtectedRoute path="/payment" exact component={OrderPayment} />
           </Elements>
         )}

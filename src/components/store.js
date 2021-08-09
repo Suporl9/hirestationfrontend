@@ -21,6 +21,7 @@ import {
   serviceDetailsReducer,
   serviceReducer,
 } from "./redux/service/serviceReducer";
+import { getStripeReducer } from "./redux/stripeKey/stripeReducer";
 
 import {
   authReducer,
@@ -47,6 +48,7 @@ const rootReducer = combineReducers({
   deleteOrUpdateService: deleteOrUpdateServiceReducer,
   updateOrder: updateOrderReducer,
   userDetails: userDetailsReducer,
+  getStripe: getStripeReducer,
 });
 
 const initialState = {};
