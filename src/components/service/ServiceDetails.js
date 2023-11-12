@@ -1,25 +1,25 @@
 /* eslint-disable react/prop-types */
-import React, { Fragment, useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
+import React, { Fragment, useEffect, useState } from 'react';
+import { Carousel } from 'react-bootstrap';
 // import meImg from "../Home/testimgs/me.JPG";
 
-import { Card } from "react-bootstrap";
-import { FcComments } from "react-icons/fc";
-import { MdShoppingCart } from "react-icons/md";
-import { FaStar } from "react-icons/fa";
-import { GiModernCity } from "react-icons/gi";
-import { FcBusinessman } from "react-icons/fc";
-import { AiFillInfoCircle } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { getServiceDetails } from "../redux/service/serviceActions";
-import "../Home/CSS/home.css";
+import { Card } from 'react-bootstrap';
+import { FcComments } from 'react-icons/fc';
+import { MdShoppingCart } from 'react-icons/md';
+import { FaStar } from 'react-icons/fa';
+import { GiModernCity } from 'react-icons/gi';
+import { FcBusinessman } from 'react-icons/fc';
+import { AiFillInfoCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { getServiceDetails } from '../redux/service/serviceActions';
+import '../Home/CSS/home.css';
 
-import { Link, useHistory, useParams } from "react-router-dom";
-import { Loader } from "../layout/Loader";
-import { addItemToCart } from "../redux/cart/cartActions";
-import { useAlert } from "react-alert";
-import { ADD_TO_CART_ISADDED_RESET } from "../redux/constants/Constants";
-import { PopUp } from "./PopUp";
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { Loader } from '../layout/Loader';
+import { addItemToCart } from '../redux/cart/cartActions';
+import { useAlert } from 'react-alert';
+import { ADD_TO_CART_ISADDED_RESET } from '../redux/constants/Constants';
+import { PopUp } from './PopUp';
 
 const ServiceDetails = () => {
   // const boxref = useRef(null);
@@ -38,7 +38,7 @@ const ServiceDetails = () => {
   useEffect(() => {
     dispatch(getServiceDetails(id));
     if (isAdded) {
-      alert.success("Service Added To Cart!!");
+      alert.success('Service Added To Cart!!');
       dispatch({ type: ADD_TO_CART_ISADDED_RESET });
       history.push(`/myWishList`);
     }
@@ -64,44 +64,44 @@ const ServiceDetails = () => {
   };
   return (
     <Fragment>
-      <div className="bg">
+      <div className='bg'>
         {loading ? (
           <Loader />
         ) : (
           <Fragment>
-            <div className="marginauto80">
-              <div className="detailsflexrow">
-                <div className="detailsflexleft">
-                  <div className="serviceDetails">
-                    <h1 className="servicetitleh1">{service.title}</h1>
-                    <div className="userandreviewflexrow">
+            <div className='marginauto80'>
+              <div className='detailsflexrow'>
+                <div className='detailsflexleft'>
+                  <div className='serviceDetails'>
+                    <h1 className='servicetitleh1'>{service.title}</h1>
+                    <div className='userandreviewflexrow'>
                       <img
                         src={service.user && service.user[0].avatar.url}
-                        alt="user"
-                        className="meimg"
+                        alt='user'
+                        className='meimg'
                       />
-                      <h5 className="userh5">{service.seller}</h5>
-                      <div className="vl"></div>
+                      <h5 className='userh5'>{service.seller}</h5>
+                      <div className='vl'></div>
                       <h6
-                        className="h6boldiicat"
-                        style={{ marginTop: "0.6rem", marginRight: "3%" }}
+                        className='h6boldiicat'
+                        style={{ marginTop: '0.6rem', marginRight: '3%' }}
                       >
                         Category: &nbsp; {service.category}
                       </h6>
-                      <div className="vl"></div>
+                      <div className='vl'></div>
                       <div
-                        className="starRating1"
-                        style={{ marginLeft: "-0.5rem" }}
+                        className='starRating1'
+                        style={{ marginLeft: '-0.5rem' }}
                       >
-                        <FaStar size="22" color="orange" />
+                        <FaStar size='22' color='orange' />
 
                         <div
-                          className="serviceRating1"
+                          className='serviceRating1'
                           // style={{ marginLeft: "2%" }}
                         >
-                          {service.ratings}&nbsp;
+                          {String(service.ratings).substring(0, 3)}&nbsp;
                         </div>
-                        <div className="no_of_reviews1">
+                        <div className='no_of_reviews1'>
                           {service.numOfReviews > 1 ? (
                             <Fragment>
                               ({service.numOfReviews} Reviews)
@@ -112,119 +112,122 @@ const ServiceDetails = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="imgcarousel">
-                      <Carousel pause="hover">
+                    <div className='imgcarousel'>
+                      <Carousel pause='hover'>
                         {service.images &&
                           service.images.map((image) => (
                             <Carousel.Item
                               key={image.public_id}
-                              className="itemcarousel"
+                              className='itemcarousel'
                             >
                               <img
-                                className="imgcaroussel"
+                                className='imgcaroussel'
                                 src={image.url}
-                                alt="First slide"
+                                alt='First slide'
                               />
                             </Carousel.Item>
                           ))}
                       </Carousel>
                     </div>
 
-                    <div className="gigdescription">
+                    <div className='gigdescription'>
                       <h1
-                        className="servicetitleh1"
-                        style={{ paddingTop: "4%" }}
+                        className='servicetitleh1'
+                        style={{ paddingTop: '4%' }}
                       >
                         About This Gig
                       </h1>
 
-                      <p className="descriptp" style={{ fontWeight: "bold" }}>
+                      <p className='descriptp' style={{ fontWeight: 'bold' }}>
                         {service.description}
                       </p>
 
-                      <div className="hl"></div>
+                      <div className='hl'></div>
                     </div>
                   </div>
                 </div>
-                <div className="detailsflexright">
-                  <div className="twoCards">
-                    <div className="servicedetailscard">
-                      <Card className="cardServiceDetails">
+                <div className='detailsflexright'>
+                  <div className='twoCards'>
+                    <div className='servicedetailscard'>
+                      <Card className='cardServiceDetails'>
                         <Card.Body>
-                          <div className="cardtitle">
-                            <div className="starRating">
-                              <FaStar size="25" color="orange" />
+                          <div className='cardtitle'>
+                            <div className='starRating'>
+                              <FaStar size='25' color='orange' />
 
                               <div
-                                className="serviceRating"
-                                style={{ fontWeight: "bold" }}
+                                className='serviceRating'
+                                style={{ fontWeight: 'bold' }}
                               >
-                                {service.ratings}
+                                {String(service.ratings).substring(0, 3)}
                               </div>
                             </div>
-                            <div className="pricecardtitle">
+                            <div className='pricecardtitle'>
                               Rs.{service.price}
                             </div>
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Body>
-                          <div className="contbeforeOrder">
+                          <div className='contbeforeOrder'>
                             <h6
-                              className="h6boldii"
-                              style={{ lineHeight: "1.6" }}
+                              className='h6boldii'
+                              style={{ lineHeight: '1.6' }}
                             >
                               Contact Me Before Ordering for your project
                               estimate.
                             </h6>
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Body>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
-                                <FaStar size="25" color="orange" />
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
+                                <FaStar size='25' color='orange' />
                               </div>
-                              <h6 className="h6bold li">Overall Rate</h6>
+                              <h6 className='h6bold li'>Overall Rate</h6>
                             </div>
-                            <h6 className="h6bold">{service.ratings}</h6>
+                            <h6 className='h6bold'>
+                              {' '}
+                              {String(service.ratings).substring(0, 3)}
+                            </h6>
                           </div>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
                                 <FcComments
-                                  size="25"
-                                  style={{ marginRight: "5px" }}
-                                />{" "}
+                                  size='25'
+                                  style={{ marginRight: '5px' }}
+                                />{' '}
                               </div>
-                              <h6 className="h6bold li">Reviews</h6>
+                              <h6 className='h6bold li'>Reviews</h6>
                             </div>
-                            <h6 className="h6bold">{service.numOfReviews}</h6>
+                            <h6 className='h6bold'>{service.numOfReviews}</h6>
                           </div>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
                                 <MdShoppingCart
-                                  color="rgb(27, 126, 255)"
-                                  size="25"
-                                  style={{ marginRight: "5px" }}
+                                  color='rgb(27, 126, 255)'
+                                  size='25'
+                                  style={{ marginRight: '5px' }}
                                 />
                               </div>
-                              <h6 className="h6bold li">Orders</h6>
+                              <h6 className='h6bold li'>Orders</h6>
                             </div>
-                            <h6 className="h6bold">0</h6>
+                            <h6 className='h6bold'>0</h6>
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Body>
                           {itemExists(id) ? (
-                            <button className="card-btn-det" disabled={true}>
+                            <button className='card-btn-det' disabled={true}>
                               Already In Cart!!
                             </button>
                           ) : (
                             <button
-                              className="card-btn-det"
+                              className='card-btn-det'
                               onClick={() => postItemHandler(id)}
                               disabled={loadin ? true : false}
                             >
@@ -232,53 +235,53 @@ const ServiceDetails = () => {
                             </button>
                           )}
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Footer>
-                          <h4 style={{ fontWeight: "bold" }}>Extra</h4>
-                          <h6 className="h6boldii">
+                          <h4 style={{ fontWeight: 'bold' }}>Extra</h4>
+                          <h6 className='h6boldii'>
                             No extra services right now.
                           </h6>
                         </Card.Footer>
                       </Card>
                     </div>
-                    <div className="aboutsellercard">
-                      <Card className="cardServiceDetails">
+                    <div className='aboutsellercard'>
+                      <Card className='cardServiceDetails'>
                         <Card.Body>
-                          <div className="userpp">
+                          <div className='userpp'>
                             <img
                               src={service.user && service.user[0].avatar.url}
-                              alt="me"
-                              className="meimg"
+                              alt='me'
+                              className='meimg'
                             ></img>
-                            <h6 className="h6bold" style={{ marginTop: "5%" }}>
+                            <h6 className='h6bold' style={{ marginTop: '5%' }}>
                               {service.seller}
                             </h6>
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Body>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
                                 <GiModernCity
-                                  size="25"
-                                  color="rgb(6, 142, 253)"
+                                  size='25'
+                                  color='rgb(6, 142, 253)'
                                 />
                               </div>
-                              <h6 className="h6bold li">From</h6>
+                              <h6 className='h6bold li'>From</h6>
                             </div>
-                            <h6 className="h6bold li">
+                            <h6 className='h6bold li'>
                               {service.user && service.user[0].from}
                             </h6>
                           </div>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
-                                <FcBusinessman size="25" />
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
+                                <FcBusinessman size='25' />
                               </div>
-                              <h6 className="h6bold li">Member Since</h6>
+                              <h6 className='h6bold li'>Member Since</h6>
                             </div>
-                            <h6 className="h6bold li">
+                            <h6 className='h6bold li'>
                               {service.user &&
                                 String(service.user[0].createdAt).substring(
                                   0,
@@ -287,44 +290,44 @@ const ServiceDetails = () => {
                             </h6>
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Body>
-                          <div className="bodydetails">
-                            <div className="leftdetails">
-                              <div className="starRating">
+                          <div className='bodydetails'>
+                            <div className='leftdetails'>
+                              <div className='starRating'>
                                 <AiFillInfoCircle
-                                  size="25"
-                                  color="rgb(6, 253, 150"
+                                  size='25'
+                                  color='rgb(6, 253, 150'
                                 />
                               </div>
                               <h5
-                                className="h6bold"
-                                style={{ marginLeft: "15%" }}
+                                className='h6bold'
+                                style={{ marginLeft: '15%' }}
                               >
                                 Bio
                               </h5>
                             </div>
                           </div>
                           <div
-                            className="biodescription"
+                            className='biodescription'
                             style={{
-                              fontWeight: "600",
-                              marginTop: "5%",
-                              lineHeight: "1.6",
+                              fontWeight: '600',
+                              marginTop: '5%',
+                              lineHeight: '1.6',
                             }}
                           >
                             {service.sellerBio}
                           </div>
                         </Card.Body>
-                        <div className="hl2"></div>
+                        <div className='hl2'></div>
                         <Card.Footer>
-                          <button className="card-btn-det" onClick={sendEmail}>
+                          <button className='card-btn-det' onClick={sendEmail}>
                             Contact Me
                           </button>
                           <Link
                             to={`/user/${service.user && service.user[0]._id}`} //populate this
                           >
-                            <button className="card-btn-det">
+                            <button className='card-btn-det'>
                               View Profile
                             </button>
                           </Link>
@@ -334,27 +337,27 @@ const ServiceDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="reviewdiv">
-                <div className="reviewpanel">
-                  <div className="reviewcontent">
-                    <div className="reviewsandreviewbtn">
-                      <h1 className="servicetitleh1">
-                        Reviews({service.reviews && service.reviews.length}{" "}
+              <div className='reviewdiv'>
+                <div className='reviewpanel'>
+                  <div className='reviewcontent'>
+                    <div className='reviewsandreviewbtn'>
+                      <h1 className='servicetitleh1'>
+                        Reviews({service.reviews && service.reviews.length}{' '}
                         total)
                       </h1>
-                      <button onClick={togglePopUp} className="card-btn3">
+                      <button onClick={togglePopUp} className='card-btn3'>
                         Submit Review
                       </button>
                       {isOpen && <PopUp handleClose={togglePopUp} id={id} />}
                     </div>
 
-                    <div className="userswithreview">
+                    <div className='userswithreview'>
                       {service.reviews &&
                         service.reviews.map((review, i) => (
-                          <div key={i} className="userborder">
-                            <div className="firstuser">
-                              <div className="userpicandname">
-                                <div className="userpic">
+                          <div key={i} className='userborder'>
+                            <div className='firstuser'>
+                              <div className='userpicandname'>
+                                <div className='userpic'>
                                   <Link
                                     to={`/user/${
                                       review.user && review.user._id
@@ -364,35 +367,35 @@ const ServiceDetails = () => {
                                       src={
                                         review.user && review.user.avatar.url
                                       }
-                                      alt="user"
-                                      className="meimg"
+                                      alt='user'
+                                      className='meimg'
                                     />
                                   </Link>
                                 </div>
                                 <Link
                                   to={`/user/${review.user && review.user._id}`}
                                   style={{
-                                    textDecoration: "none",
-                                    color: "inherit",
+                                    textDecoration: 'none',
+                                    color: 'inherit',
                                   }}
                                 >
-                                  <div className="username">{review.name}</div>
+                                  <div className='username'>{review.name}</div>
                                 </Link>
                               </div>
-                              <div className="reviewfield">
-                                <div className="starRating">
-                                  <FaStar size="25" color="orange" />
+                              <div className='reviewfield'>
+                                <div className='starRating'>
+                                  <FaStar size='25' color='orange' />
                                   <div
-                                    className="serviceRating3"
+                                    className='serviceRating3'
                                     style={{
-                                      fontWeight: "bold",
-                                      marginLeft: "1%",
+                                      fontWeight: 'bold',
+                                      marginLeft: '1%',
                                     }}
                                   >
                                     {review.rating}
                                   </div>
                                 </div>
-                                <h6 className="h6boldreview">
+                                <h6 className='h6boldreview'>
                                   {review.comment}
                                 </h6>
                               </div>

@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Hire Station
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hire Station’ is a web-based service listing website for freelancers. It provides a system where freelancers can post their gigs or hire someone to do their gigs while paying a certain payment amount.
 
-## Available Scripts
+Run this project:
 
-In the project directory, you can run:
+- Step 1 : `npm install`
 
-### `npm start`
+- Step 2 : `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+For backend :
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [https://github.com/iamsumanp/hirestationbackend]
 
-### `npm test`
+This app is created using MERN stack. Stripe is added for payment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- Explore gigs posted,
+  - Add filters to search.
+  - Add range for varying price range.
+- Dashboard Page of User
+- Service description page
+  - Review Gigs after purchasing
+  - Add to cart to order later
+- User Profile Page
+  - Add gigs
+  - Update Account
+- Page for account recovery request submission
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Gigs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699806786/readme%20md/Screenshot_from_2023-11-12_22-17-43_rosknm.png)
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807218/readme%20md/Screenshot_from_2023-11-12_22-22-13_nzuifw.png)
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807289/readme%20md/Screenshot_from_2023-11-12_22-26-19_untqu7.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### User Dashboard
 
-### `npm run eject`
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807219/readme%20md/Screenshot_from_2023-11-12_22-22-44_sgxgug.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807219/readme%20md/Screenshot_from_2023-11-12_22-23-33_vb1nzd.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807220/readme%20md/Screenshot_from_2023-11-12_22-23-23_kyckqy.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807220/readme%20md/Screenshot_from_2023-11-12_22-23-06_fularu.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807219/readme%20md/Screenshot_from_2023-11-12_22-22-49_ifk1ef.png)
 
-## Learn More
+### Payment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807220/readme%20md/Screenshot_from_2023-11-12_22-24-22_k6nxhu.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807823/readme%20md/Screenshot_from_2023-11-12_22-35-06_qgavix.png)
 
-### Code Splitting
+### User creation and Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here:: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807934/readme%20md/Screenshot_from_2023-11-12_22-36-21_euyppv.png)
+![Alt text](https://res.cloudinary.com/hire-station/image/upload/v1699807935/readme%20md/Screenshot_from_2023-11-12_22-36-30_nyr7kj.png)
