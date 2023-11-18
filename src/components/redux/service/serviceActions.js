@@ -1,5 +1,5 @@
 //create an fuction with side effect//because of he thunk middleware
-import axios from "axios";
+import axios from 'axios';
 
 import {
   CLEAR_ERROR,
@@ -24,17 +24,17 @@ import {
   USER_SERVICES_ERROR,
   USER_SERVICES_REQUEST,
   USER_SERVICES_SUCCESS,
-} from "../constants/Constants"; //importing the constants for dispatching the actions
+} from '../constants/Constants'; //importing the constants for dispatching the actions
 
 export const getAllServices =
-  (keyword = "", currentPage = 1, price, category) =>
+  (keyword = '', currentPage = 1, price, category) =>
   async (dispatch) => {
     try {
       dispatch({ type: FETCH_SERVICES }); //set the loading to true
-      let link = `/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+      let link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
       if (category) {
-        link = `/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+        link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
       }
 
       const data = await axios.get(link).then((result) => result.data);
@@ -85,7 +85,7 @@ export const getUserServices = () => async (dispatch) => {
     dispatch({ type: USER_SERVICES_REQUEST });
 
     const data = await axios
-      .get("/services/me")
+      .get('/services/me')
       .then((response) => response.data);
     dispatch({ type: USER_SERVICES_SUCCESS, payload: data });
   } catch (error) {
@@ -97,11 +97,11 @@ export const newReview = (userData) => async (dispatch) => {
     dispatch({ type: NEW_REVIEW_REQUEST });
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
-    const { data } = await axios.put("/services/review", userData, config);
+    const { data } = await axios.put('/services/review', userData, config);
 
     dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
   } catch (error) {
@@ -115,11 +115,11 @@ export const addNewService = (serviceData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
-    const { data } = await axios.post("/services/new", serviceData, config);
+    const { data } = await axios.post('/services/new', serviceData, config);
 
     dispatch({ type: NEW_SERVICE_SUCCESS, payload: data });
   } catch (error) {
@@ -144,7 +144,7 @@ export const updateService = (id, serviceData) => async (dispatch) => {
     dispatch({ type: UPDATE_SERVICE_REQUEST });
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
