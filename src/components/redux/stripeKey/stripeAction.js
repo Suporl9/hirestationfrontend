@@ -1,15 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   GET_STRIPE_API_KEY_ERROR,
   GET_STRIPE_API_KEY_REQUEST,
   GET_STRIPE_API_KEY_SUCCESS,
-} from "../constants/Constants";
+} from '../constants/Constants';
 
 export const getStripeApiKey = () => async (dispatch) => {
   try {
     dispatch({ type: GET_STRIPE_API_KEY_REQUEST });
 
-    const { data } = await axios.get("/payment/stripeApiKey");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URI}/payment/stripeApiKey`
+    );
 
     dispatch({ type: GET_STRIPE_API_KEY_SUCCESS, payload: data });
   } catch (error) {

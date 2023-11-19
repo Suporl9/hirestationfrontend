@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   CLEAR_ERRORS,
   // AVATAR_ERROR,
@@ -30,7 +30,7 @@ import {
   USER_PROFILE_UPDATE_ERROR,
   USER_PROFILE_UPDATE_REQUEST,
   USER_PROFILE_UPDATE_SUCCESS,
-} from "../constants/Constants";
+} from '../constants/Constants';
 
 //login acttion creator
 export const Login = (email, password) => async (dispatch) => {
@@ -42,12 +42,16 @@ export const Login = (email, password) => async (dispatch) => {
     //applicaion/json only to be put in  post or  put request
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const data = await axios
-      .post("/auth/login", { email, password }, config)
+      .post(
+        `${process.env.REACT_APP_API_URI}/auth/login`,
+        { email, password },
+        config
+      )
       .then((result) => result.data);
 
     dispatch({ type: FETCH_LOGIN_SUCCESS, payload: data });
@@ -63,11 +67,11 @@ export const Register = (userData) => async (dispatch) => {
     //multipart/form-data: each value is sent as a block of data ("body part"), with a user agent-defined delimiter ("boundary") separating each part. The keys are given in the Content-Disposition header of each part.
     const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
     };
     const data = await axios
-      .post("/auth/new", userData, config)
+      .post(`${process.env.REACT_APP_API_URI}/auth/new`, userData, config)
       .then((result) => result.data);
 
     dispatch({ type: FETCH_REGISTER_SUCCESS, payload: data });
@@ -83,12 +87,12 @@ export const updateUser = (userData) => async (dispatch) => {
     dispatch({ type: USER_PROFILE_UPDATE_REQUEST });
     const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
     };
 
     const data = await axios
-      .put("/auth/me/update", userData, config)
+      .put(`${process.env.REACT_APP_API_URI}/auth/me/update`, userData, config)
       .then((resp) => resp.data);
 
     dispatch({ type: USER_PROFILE_UPDATE_SUCCESS, payload: data });
@@ -104,12 +108,16 @@ export const updatePassword = (passwords) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const data = await axios
-      .put("/auth/password/update", passwords, config)
+      .put(
+        `${process.env.REACT_APP_API_URI}/auth/password/update`,
+        passwords,
+        config
+      )
       .then((resp) => resp.data);
 
     dispatch({ type: PASSWORD_UPDATE_SUCCESS, payload: data });
@@ -124,7 +132,9 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const data = await axios.get("/auth/me").then((result) => result.data);
+    const data = await axios
+      .get(`${process.env.REACT_APP_API_URI}/auth/me`)
+      .then((result) => result.data);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
@@ -134,7 +144,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const logOutUser = () => async (dispatch) => {
   try {
-    await axios.get("/auth/logout");
+    await axios.get(`${process.env.REACT_APP_API_URI}/auth/logout`);
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_ERROR, payload: error });
@@ -146,12 +156,16 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch({ type: FORGOT_PASSWORD_REQUEST });
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const data = await axios
-      .post("/auth/password/forgot", email, config)
+      .post(
+        `${process.env.REACT_APP_API_URI}/auth/password/forgot`,
+        email,
+        config
+      )
       .then((resp) => resp.data);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data });
@@ -166,12 +180,16 @@ export const resetPassword = (token, password) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const data = await axios
-      .post(`/auth/password/reset/${token}`, password, config)
+      .post(
+        `${process.env.REACT_APP_API_URI}/auth/password/reset/${token}`,
+        password,
+        config
+      )
       .then((resp) => resp.data);
 
     dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data });
@@ -184,7 +202,9 @@ export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/auth/user/${id}`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URI}/auth/user/${id}`
+    );
 
     dispatch({ type: GET_USER_DETAILS_SUCCESS, payload: data });
   } catch (error) {

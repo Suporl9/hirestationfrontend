@@ -31,10 +31,12 @@ export const getAllServices =
   async (dispatch) => {
     try {
       dispatch({ type: FETCH_SERVICES }); //set the loading to true
-      let link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+      // let link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+      let link = `${process.env.REACT_APP_API_URI}/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
       if (category) {
-        link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+        // link = `https://hire-station.onrender.com/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+        link = `${process.env.REACT_APP_API_URI}/services?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
       }
 
       const data = await axios.get(link).then((result) => result.data);
@@ -63,7 +65,7 @@ export const getServiceDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_SERVICE_DETAILS });
     const data = await axios
-      .get(`/services/${id}`)
+      .get(`${process.env.REACT_APP_API_URI}/services/${id}`)
       .then((result) => result.data);
 
     dispatch({
@@ -85,7 +87,7 @@ export const getUserServices = () => async (dispatch) => {
     dispatch({ type: USER_SERVICES_REQUEST });
 
     const data = await axios
-      .get('/services/me')
+      .get(`${process.env.REACT_APP_API_URI}/services/me`)
       .then((response) => response.data);
     dispatch({ type: USER_SERVICES_SUCCESS, payload: data });
   } catch (error) {
@@ -101,7 +103,11 @@ export const newReview = (userData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.put('/services/review', userData, config);
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_API_URI}/services/review`,
+      userData,
+      config
+    );
 
     dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
   } catch (error) {
@@ -119,7 +125,11 @@ export const addNewService = (serviceData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post('/services/new', serviceData, config);
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URI}/services/new`,
+      serviceData,
+      config
+    );
 
     dispatch({ type: NEW_SERVICE_SUCCESS, payload: data });
   } catch (error) {
@@ -131,7 +141,9 @@ export const deleteService = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_SERVICE_REQUEST });
 
-    const { data } = await axios.delete(`/services/${id}`);
+    const { data } = await axios.delete(
+      `${process.env.REACT_APP_API_URI}/services/${id}`
+    );
 
     dispatch({ type: DELETE_SERVICE_SUCCESS, payload: data });
   } catch (error) {
@@ -148,7 +160,11 @@ export const updateService = (id, serviceData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.put(`/services/${id}`, serviceData, config);
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_API_URI}/services/${id}`,
+      serviceData,
+      config
+    );
 
     dispatch({ type: UPDATE_SERVICE_SUCCESS, payload: data });
   } catch (error) {

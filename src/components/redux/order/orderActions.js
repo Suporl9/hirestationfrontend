@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   CLEAR_ORDER_ERROR,
   CREATE_ORDER_FAIL,
@@ -16,18 +16,18 @@ import {
   UPDATE_ORDER_FAIL,
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
-} from "../constants/Constants";
+} from '../constants/Constants';
 
 export const createOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: CREATE_ORDER_REQUEST });
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const data = await axios
-      .post("/order/new", order, config)
+      .post(`${process.env.REACT_APP_API_URI}/order/new`, order, config)
       .then((resp) => resp.data);
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
@@ -43,7 +43,9 @@ export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ORDERS_REQUEST });
 
-    const data = await axios.get("/order/me").then((resp) => resp.data);
+    const data = await axios
+      .get(`${process.env.REACT_APP_API_URI}/order/me`)
+      .then((resp) => resp.data);
 
     dispatch({ type: GET_ORDERS_SUCCESS, payload: data });
   } catch (error) {
@@ -55,7 +57,9 @@ export const getAdminOrders = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ADMIN_ORDERS_REQUEST });
 
-    const { data } = await axios.get("/order/myOrders");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URI}/order/myOrders`
+    );
 
     dispatch({ type: GET_ADMIN_ORDERS_SUCCESS, payload: data });
   } catch (error) {
@@ -67,7 +71,9 @@ export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/order/${id}`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URI}/order/${id}`
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -81,12 +87,12 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const { data } = await axios.put(
-      `/order/myOrders/${id}`,
+      `${process.env.REACT_APP_API_URI}/order/myOrders/${id}`,
       orderData,
       config
     );
