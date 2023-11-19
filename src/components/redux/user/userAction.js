@@ -70,6 +70,7 @@ export const Register = (userData) => async (dispatch) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
+      withCredentials: true,
     };
     const data = await axios
       .post(`${process.env.REACT_APP_API_URI}/auth/new`, userData, config)
@@ -90,6 +91,7 @@ export const updateUser = (userData) => async (dispatch) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
+      withCredentials: true,
     };
 
     const data = await axios
@@ -111,6 +113,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const data = await axios
@@ -159,6 +162,7 @@ export const forgotPassword = (email) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const data = await axios
@@ -183,6 +187,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const data = await axios

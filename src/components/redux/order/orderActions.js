@@ -25,6 +25,7 @@ export const createOrder = (order) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
     const data = await axios
       .post(`${process.env.REACT_APP_API_URI}/order/new`, order, config)
@@ -89,6 +90,7 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const { data } = await axios.put(

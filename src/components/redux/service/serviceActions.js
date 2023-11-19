@@ -101,6 +101,7 @@ export const newReview = (userData) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -123,6 +124,7 @@ export const addNewService = (serviceData) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -158,6 +160,7 @@ export const updateService = (id, serviceData) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
