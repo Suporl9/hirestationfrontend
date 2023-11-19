@@ -44,6 +44,7 @@ export const Login = (email, password) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     };
 
     const data = await axios
